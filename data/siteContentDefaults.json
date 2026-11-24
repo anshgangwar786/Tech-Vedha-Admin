@@ -1,0 +1,1730 @@
+{
+  "site": {
+    "name": "Tech Vedha",
+    "tagline": "Build for Tomorrow",
+    "description": "Tech Vedha is one IT partner for digital marketing, Android and iOS app development, CAD design and planning, custom software and cybersecurity — across India and abroad.",
+    "email": "info@techvedha.tech",
+    "phone": "+91 98765 43210",
+    "whatsappNumber": "",
+    "navLinks": [
+      {
+        "label": "Work",
+        "href": "/#work"
+      },
+      {
+        "label": "About",
+        "href": "/about"
+      },
+      {
+        "label": "Contact",
+        "href": "/contact"
+      }
+    ],
+    "headerLinks": [
+      {
+        "label": "About",
+        "href": "/about"
+      },
+      {
+        "label": "Contact",
+        "href": "/contact"
+      }
+    ]
+  },
+  "home": {
+    "securityLayers": [
+      {
+        "number": "01",
+        "title": "Data protection",
+        "summary": "Your records stay encrypted, backed up and private.",
+        "points": [
+          "Encrypted at rest and in transit",
+          "Verified backups",
+          "Role-based access"
+        ]
+      },
+      {
+        "number": "02",
+        "title": "Network security",
+        "summary": "Only the right traffic reaches your systems.",
+        "points": [
+          "Managed firewall",
+          "Admin access over VPN",
+          "Unused ports closed"
+        ]
+      },
+      {
+        "number": "03",
+        "title": "Threat detection",
+        "summary": "Suspicious activity is spotted and stopped early.",
+        "points": [
+          "Continuous monitoring",
+          "Instant alerts",
+          "Scheduled malware scans"
+        ]
+      },
+      {
+        "number": "04",
+        "title": "Compliance and risk",
+        "summary": "Policies and audit trails keep you review-ready.",
+        "points": [
+          "Access policies",
+          "Audit trail on every change",
+          "Regular risk reviews"
+        ]
+      }
+    ],
+    "processSteps": [
+      {
+        "id": "discover",
+        "number": "01",
+        "title": "Discover",
+        "summary": "We learn your goals, your customers and what the project must do.",
+        "deliverables": [
+          "Project brief",
+          "Scope",
+          "Timeline"
+        ]
+      },
+      {
+        "id": "design",
+        "number": "02",
+        "title": "Design",
+        "summary": "Plans, screens and architecture you review before anything is built.",
+        "deliverables": [
+          "Wireframes",
+          "UI design",
+          "Architecture"
+        ]
+      },
+      {
+        "id": "build",
+        "number": "03",
+        "title": "Build",
+        "summary": "Clean, reviewed code and a secure setup from day one.",
+        "deliverables": [
+          "Development",
+          "Code review",
+          "Secure setup"
+        ]
+      },
+      {
+        "id": "test",
+        "number": "04",
+        "title": "Test",
+        "summary": "Rigorous QA across devices and real-world use before launch.",
+        "deliverables": [
+          "Device testing",
+          "Performance",
+          "Security checks"
+        ]
+      },
+      {
+        "id": "launch",
+        "number": "05",
+        "title": "Launch",
+        "summary": "Deployment, store release and go-live, handled end to end.",
+        "deliverables": [
+          "Deployment",
+          "Play Store",
+          "App Store"
+        ]
+      },
+      {
+        "id": "support",
+        "number": "06",
+        "title": "Support",
+        "summary": "Ongoing updates, fixes and care after launch.",
+        "deliverables": [
+          "Updates",
+          "Monitoring",
+          "Support"
+        ]
+      }
+    ],
+    "qualityGates": [
+      "Code review",
+      "Automated tests",
+      "Device testing",
+      "Performance",
+      "Security scan",
+      "Accessibility"
+    ],
+    "stories": [
+      {
+        "id": "instagram-ads",
+        "column": 0,
+        "kind": "quote",
+        "category": "Marketing",
+        "quote": "Our Instagram ads finally reach people near the store, and enquiries now come straight into WhatsApp. We reply from one place instead of juggling DMs, calls and forms.",
+        "role": "Owner",
+        "company": "Home décor store",
+        "avatar": "/home/avatars/homedecor.jpg"
+      },
+      {
+        "id": "app-launch",
+        "column": 0,
+        "kind": "photo",
+        "category": "Apps",
+        "quote": "Our Android and iOS apps went live together, and updates still keep coming.",
+        "role": "Founder",
+        "company": "Grocery delivery startup",
+        "photo": "/home/stories/app-launch.jpg",
+        "photoAlt": "Founder of a grocery delivery startup in their warehouse"
+      },
+      {
+        "id": "four-to-one",
+        "column": 0,
+        "kind": "stat",
+        "category": "Apps",
+        "stat": "4 → 1",
+        "statLabel": "vendors to manage",
+        "quote": "Design, app, software and marketing — all handled by one team with one invoice.",
+        "role": "Owner",
+        "company": "Multi-brand showroom",
+        "avatar": "/home/avatars/showroom.jpg"
+      },
+      {
+        "id": "3d-showroom",
+        "column": 1,
+        "kind": "photo",
+        "category": "CAD",
+        "quote": "The 3D views let us walk the showroom before a single partition went up.",
+        "role": "Proprietor",
+        "company": "Furniture showroom",
+        "photo": "/home/stories/3d-showroom.jpg",
+        "photoAlt": "Furniture showroom owner holding a tablet with a 3D floor plan"
+      },
+      {
+        "id": "floor-plans",
+        "column": 1,
+        "kind": "featured",
+        "category": "CAD",
+        "quote": "We came for floor plans and stayed for everything else. The same team drew our villas in 2D and 3D, prepared the BOQ, built the booking app and ran the launch campaign. One WhatsApp group replaced four vendors and endless follow-ups.",
+        "role": "Director",
+        "company": "Residential builder",
+        "avatar": "/home/avatars/builder.jpg"
+      },
+      {
+        "id": "clinic-app",
+        "column": 1,
+        "kind": "quote",
+        "category": "Apps",
+        "quote": "Patients book appointments in the app and get WhatsApp reminders. The team tested it on every phone our patients use before launch.",
+        "role": "Clinic administrator",
+        "company": "Healthcare clinic",
+        "avatar": "/home/avatars/clinic.jpg"
+      },
+      {
+        "id": "three-stores",
+        "column": 2,
+        "kind": "stat",
+        "category": "Software",
+        "stat": "3 stores",
+        "statLabel": "on one billing system",
+        "quote": "Billing, stock and staff logins run on one system now — no more end-of-day spreadsheets.",
+        "role": "Managing partner",
+        "company": "Electronics retail chain",
+        "avatar": "/home/avatars/retail.jpg"
+      },
+      {
+        "id": "subscription",
+        "column": 2,
+        "kind": "quote",
+        "category": "Software",
+        "quote": "We chose the subscription model because our processes keep changing. Every new requirement gets added without a new contract, and the security checks run in the background.",
+        "role": "Operations head",
+        "company": "Manufacturing unit",
+        "avatar": "/home/avatars/manufacturing.jpg"
+      },
+      {
+        "id": "cad-drawings",
+        "column": 2,
+        "kind": "quote",
+        "category": "CAD",
+        "quote": "They turn our sketches into accurate CAD drawings quickly, and the bill of quantities matches the drawings line for line, which makes contractor quotes far easier.",
+        "role": "Architect",
+        "company": "Interior design studio",
+        "avatar": "/home/avatars/studio.jpg"
+      },
+      {
+        "id": "youtube-seo",
+        "column": 2,
+        "kind": "photo",
+        "category": "Marketing",
+        "quote": "Our YouTube shorts and Google ranking now bring new customers in every week.",
+        "role": "Owner",
+        "company": "Clothing boutique",
+        "photo": "/home/stories/youtube-seo.jpg",
+        "photoAlt": "Clothing boutique owner smiling in their store"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Can I hire you for just one service?",
+        "answer": "Yes. Each service is available on its own. Many clients start with one and add others as they grow."
+      },
+      {
+        "question": "Do you work with clients outside India?",
+        "answer": "Yes. We work with clients across India and abroad, with meetings and delivery handled remotely."
+      },
+      {
+        "question": "Subscription or one-time software: which suits me?",
+        "answer": "Subscription suits software whose requirements keep evolving and need ongoing support. One-time purchase suits fixed operational needs where you want complete ownership. We recommend one after understanding your requirements."
+      },
+      {
+        "question": "How long does a mobile app take to build?",
+        "answer": "It depends on scope: features, platforms and integrations. After a discovery call we share a timeline for your specific app."
+      },
+      {
+        "question": "What does a CAD project include?",
+        "answer": "Accurate 2D and 3D drawings, smart space planning and a bill of quantities (BOQ), for residential, retail, commercial and industrial projects."
+      },
+      {
+        "question": "Which marketing channels do you manage?",
+        "answer": "SEO, Meta (Facebook and Instagram) ads, YouTube, email and WhatsApp marketing."
+      },
+      {
+        "question": "How do you keep my data secure?",
+        "answer": "Security is built into every layer: data protection, network security, threat detection and prevention, and compliance and risk management."
+      }
+    ],
+    "promises": [
+      "One team",
+      "One timeline",
+      "One invoice",
+      "One point of contact"
+    ]
+  },
+  "about": {
+    "seo": {
+      "title": "About Tech Vedha — One IT Partner for Your Space, Software, Apps and Marketing",
+      "description": "Tech Vedha plans your space, builds its software and apps, secures its data and markets it — one team for businesses in India and abroad.",
+      "keywords": [
+        "about Tech Vedha",
+        "IT company India",
+        "one IT partner",
+        "CAD, software, apps and marketing",
+        "IT services for retail and showrooms"
+      ]
+    },
+    "wingTags": {
+      "marketing": [
+        "SEO",
+        "Meta Ads",
+        "WhatsApp"
+      ],
+      "apps": [
+        "Android",
+        "iOS",
+        "UI/UX"
+      ],
+      "cad": [
+        "2D/3D",
+        "BOQ",
+        "Retail"
+      ],
+      "software": [
+        "Subscription",
+        "Security"
+      ]
+    },
+    "heroFacts": [
+      {
+        "label": "Services",
+        "value": "Four wings, one team"
+      },
+      {
+        "label": "Where",
+        "value": "India and abroad"
+      },
+      {
+        "label": "Software models",
+        "value": "Subscription or one-time"
+      },
+      {
+        "label": "Apps",
+        "value": "Android and iOS"
+      }
+    ],
+    "vendorComparison": [
+      {
+        "topic": "Who you call",
+        "vendors": [
+          "Designer",
+          "Developer",
+          "App agency",
+          "Marketer"
+        ],
+        "us": "One team, one point of contact"
+      },
+      {
+        "topic": "Timelines",
+        "vendors": [
+          "Plan A",
+          "Plan B",
+          "Plan C",
+          "Plan D"
+        ],
+        "us": "One shared plan from start to launch"
+      },
+      {
+        "topic": "Handoffs",
+        "vendors": [
+          "Files emailed",
+          "Briefs repeated",
+          "Specs lost"
+        ],
+        "us": "No handoffs — the same team builds it all"
+      },
+      {
+        "topic": "Updates",
+        "vendors": [
+          "4 chats",
+          "4 status calls"
+        ],
+        "us": "One update covering every wing"
+      },
+      {
+        "topic": "When something breaks",
+        "vendors": [
+          "Who owns it?",
+          "Back-and-forth"
+        ],
+        "us": "One team owns the fix"
+      }
+    ],
+    "audiences": [
+      {
+        "title": "Retail and showrooms",
+        "detail": "Shops and showrooms that need a layout, billing, an app and customers through the door.",
+        "icon": "retail",
+        "tags": [
+          "CAD",
+          "Software",
+          "Apps",
+          "Marketing"
+        ]
+      },
+      {
+        "title": "Homes and builders",
+        "detail": "Homeowners, villa and apartment projects that need accurate plans and costing.",
+        "icon": "homes",
+        "tags": [
+          "2D/3D plans",
+          "BOQ"
+        ]
+      },
+      {
+        "title": "Commercial and industrial",
+        "detail": "Offices, warehouses and plants planned at scale, with software to run them.",
+        "icon": "commercial",
+        "tags": [
+          "Planning",
+          "Software",
+          "Security"
+        ]
+      },
+      {
+        "title": "Growing businesses",
+        "detail": "Teams in India and abroad that want one partner instead of four vendors.",
+        "icon": "growth",
+        "tags": [
+          "Any wing",
+          "India and abroad"
+        ]
+      }
+    ],
+    "loopSteps": [
+      {
+        "service": "cad",
+        "wing": "CAD Design",
+        "covers": {
+          "title": "Design the space",
+          "detail": "Plan the showroom, shop or site with accurate 2D and 3D drawings and a costed bill of quantities.",
+          "tags": [
+            "2D and 3D",
+            "BOQ",
+            "Space planning"
+          ]
+        },
+        "example": {
+          "title": "Showroom floor plan",
+          "tags": [
+            "2D layout",
+            "3D walkthrough",
+            "Costed BOQ"
+          ]
+        }
+      },
+      {
+        "service": "software",
+        "wing": "Software",
+        "covers": {
+          "title": "Build the infrastructure",
+          "detail": "Billing, stock and operations software to run it — on subscription or one-time, protected from day one.",
+          "tags": [
+            "Subscription",
+            "One-time",
+            "Security"
+          ]
+        },
+        "example": {
+          "title": "Billing and stock software",
+          "tags": [
+            "GST billing",
+            "Live stock",
+            "Staff logins"
+          ]
+        }
+      },
+      {
+        "service": "apps",
+        "wing": "Apps",
+        "covers": {
+          "title": "Create the interface",
+          "detail": "Android and iOS apps so customers can browse, book and buy from anywhere.",
+          "tags": [
+            "Android",
+            "iOS",
+            "UI/UX"
+          ]
+        },
+        "example": {
+          "title": "The showroom’s customer app",
+          "tags": [
+            "Product catalogue",
+            "Offers and orders",
+            "Android and iOS"
+          ]
+        }
+      },
+      {
+        "service": "marketing",
+        "wing": "Marketing",
+        "covers": {
+          "title": "Drive the traffic",
+          "detail": "SEO, Meta, YouTube, email and WhatsApp campaigns that bring people to the space and the app.",
+          "tags": [
+            "SEO",
+            "Meta Ads",
+            "WhatsApp"
+          ]
+        },
+        "example": {
+          "title": "Launch campaign",
+          "tags": [
+            "Meta and Google ads",
+            "WhatsApp broadcast",
+            "Local SEO"
+          ]
+        }
+      }
+    ],
+    "loopExampleDetail": "What this step would produce for one example project: a new retail showroom.",
+    "principles": [
+      {
+        "title": "One point of contact",
+        "detail": "You talk to one team for every service, so nothing gets lost between vendors."
+      },
+      {
+        "title": "Plan before we build",
+        "detail": "Drawings, screens and architecture are agreed with you before any build starts."
+      },
+      {
+        "title": "Security from day one",
+        "detail": "Protection is designed into every build, not added at the end."
+      },
+      {
+        "title": "We stay after launch",
+        "detail": "Updates, fixes and support from the same team that built it."
+      }
+    ],
+    "mission": {
+      "statement": "Give businesses one trusted partner for complete IT solutions.",
+      "detail": "Space, software, apps, security and marketing — planned and delivered by the same team."
+    },
+    "vision": {
+      "statement": "Help businesses in India and abroad build for tomorrow.",
+      "regions": [
+        "India",
+        "Abroad"
+      ]
+    }
+  },
+  "contact": {
+    "seo": {
+      "title": "Contact Tech Vedha — Start a Project in India or Abroad",
+      "description": "Send your project details once. One person from Tech Vedha replies with next steps, and a written plan follows the discovery call. Email, WhatsApp or call.",
+      "keywords": [
+        "contact Tech Vedha",
+        "IT company enquiry",
+        "start a project",
+        "hire app developers India",
+        "digital marketing agency contact",
+        "CAD design and planning enquiry"
+      ]
+    },
+    "company": {
+      "city": "India · city to add",
+      "address": "Office address to add",
+      "addressShort": "Address to add",
+      "hours": "Working hours to add",
+      "mapsQuery": "Tech Vedha India",
+      "registration": [
+        {
+          "label": "Registered name",
+          "value": null
+        },
+        {
+          "label": "GSTIN",
+          "value": null
+        },
+        {
+          "label": "UDYAM / MSME",
+          "value": null
+        },
+        {
+          "label": "CIN",
+          "value": null
+        },
+        {
+          "label": "Certifications",
+          "value": null
+        }
+      ]
+    },
+    "phonePlaceholder": "+91 · number to add",
+    "quickContacts": [
+      {
+        "label": "Email",
+        "value": "",
+        "icon": "mail"
+      },
+      {
+        "label": "WhatsApp",
+        "value": "Chat with our team",
+        "icon": "chat"
+      },
+      {
+        "label": "Phone",
+        "value": "",
+        "icon": "phone",
+        "highlight": true
+      },
+      {
+        "label": "Who you talk to",
+        "value": "One point of contact, every service",
+        "icon": "user"
+      }
+    ],
+    "promises": [
+      "Plan before we build",
+      "Security from day one",
+      "We stay after launch"
+    ],
+    "timeframes": [
+      "As soon as possible",
+      "Within a month",
+      "In 1–3 months",
+      "Later this year",
+      "Just exploring"
+    ],
+    "channels": [
+      {
+        "title": "Email",
+        "icon": "mail",
+        "description": "Briefs, tenders, purchase orders and documents.",
+        "value": "",
+        "tag": {
+          "icon": "file",
+          "label": "Best for detailed briefs"
+        },
+        "cta": "Write to us"
+      },
+      {
+        "title": "WhatsApp",
+        "icon": "chat",
+        "description": "Quick questions, voice notes and photos of your space or app.",
+        "value": "Chat with our team",
+        "tag": {
+          "icon": "clock",
+          "label": "Answered in working hours"
+        },
+        "cta": "Start a chat"
+      },
+      {
+        "title": "Call",
+        "icon": "phone",
+        "description": "Talk through a project that needs to start soon.",
+        "value": "",
+        "tag": {
+          "icon": "user",
+          "label": "One point of contact"
+        },
+        "cta": "Call now"
+      }
+    ],
+    "nextSteps": [
+      {
+        "title": "We get back to you",
+        "detail": "One point of contact confirms your goals and what you need."
+      },
+      {
+        "title": "Discovery call and plan",
+        "detail": "We map the wings you need and share a written plan."
+      },
+      {
+        "title": "Agree, then build",
+        "detail": "Drawings, screens and campaigns approved before work starts."
+      }
+    ]
+  },
+  "services": {
+    "items": [
+      {
+        "id": "marketing",
+        "slug": "digital-marketing",
+        "number": "01",
+        "wing": "Foot traffic",
+        "title": "Digital Marketing",
+        "summary": "SEO, Meta, YouTube, email and WhatsApp campaigns that bring customers in.",
+        "short": [
+          "Digital Marketing"
+        ],
+        "offerings": [
+          {
+            "title": "SEO",
+            "detail": "Rank higher, grow organic traffic"
+          },
+          {
+            "title": "Meta Ads",
+            "detail": "Facebook and Instagram campaigns"
+          },
+          {
+            "title": "YouTube Marketing",
+            "detail": "Video and channel growth"
+          },
+          {
+            "title": "Email Marketing",
+            "detail": "Targeted global campaigns"
+          },
+          {
+            "title": "WhatsApp Marketing",
+            "detail": "Broadcasts and business messaging"
+          }
+        ]
+      },
+      {
+        "id": "apps",
+        "slug": "app-development",
+        "number": "02",
+        "wing": "Front doors",
+        "title": "App Development",
+        "summary": "Android and iOS apps, designed, tested, launched and supported.",
+        "short": [
+          "App Development"
+        ],
+        "offerings": [
+          {
+            "title": "Android Apps",
+            "detail": "Native, high-performance"
+          },
+          {
+            "title": "iOS Apps",
+            "detail": "Secure, intuitive"
+          },
+          {
+            "title": "UI/UX Design",
+            "detail": "Interfaces people enjoy"
+          },
+          {
+            "title": "Testing and Launch",
+            "detail": "QA to store release"
+          },
+          {
+            "title": "Ongoing Support",
+            "detail": "Updates and maintenance"
+          }
+        ]
+      },
+      {
+        "id": "cad",
+        "slug": "cad-design-and-planning",
+        "number": "03",
+        "wing": "Architecture",
+        "title": "CAD Design and Planning",
+        "summary": "2D/3D plans and BOQ for homes, retail spaces and industry.",
+        "short": [
+          "CAD Design"
+        ],
+        "offerings": [
+          {
+            "title": "Residential",
+            "detail": "Homes, villas, apartments"
+          },
+          {
+            "title": "Retail and Showrooms",
+            "detail": "Shop layout planning"
+          },
+          {
+            "title": "Commercial and Industrial",
+            "detail": "Large-scale planning"
+          },
+          {
+            "title": "2D and 3D Modelling",
+            "detail": "Accurate drawings"
+          },
+          {
+            "title": "BOQ",
+            "detail": "Bill of quantities"
+          }
+        ]
+      },
+      {
+        "id": "software",
+        "slug": "software-and-cybersecurity",
+        "number": "04",
+        "wing": "Foundation",
+        "title": "Software and Cybersecurity",
+        "summary": "Custom software on subscription or one-time, protected end to end.",
+        "short": [
+          "Software",
+          "Cybersecurity"
+        ],
+        "offerings": [
+          {
+            "title": "Subscription Software",
+            "detail": "Monthly or yearly, always supported"
+          },
+          {
+            "title": "One-time Software",
+            "detail": "Full ownership"
+          },
+          {
+            "title": "Threat Detection",
+            "detail": "Prevention and monitoring"
+          },
+          {
+            "title": "Network and Data Protection",
+            "detail": "Secure your assets"
+          },
+          {
+            "title": "Compliance and Risk",
+            "detail": "Stay audit-ready"
+          }
+        ]
+      }
+    ]
+  },
+  "service-apps": {
+    "id": "apps",
+    "seo": {
+      "title": "Android and iOS App Development",
+      "description": "Native Android and iOS apps, designed, tested, launched on the Play Store and App Store, and supported by one team. Start a project with Tech Vedha.",
+      "keywords": [
+        "app development company",
+        "Android app development",
+        "iOS app development",
+        "mobile app development India",
+        "UI/UX design",
+        "app testing and launch",
+        "app maintenance and support"
+      ]
+    },
+    "hero": {
+      "title": "Apps your customers",
+      "highlight": "keep opening.",
+      "intro": "Native Android and iOS apps, designed, tested, launched and supported by one team — so your app keeps getting better after launch.",
+      "platforms": [
+        "Android",
+        "iOS"
+      ]
+    },
+    "coverage": {
+      "title": [
+        "Everything your app needs,",
+        "under one roof."
+      ],
+      "intro": "Five parts of one build. Hire us for one, or for all of them together.",
+      "items": [
+        {
+          "title": "iOS Apps",
+          "detail": "Secure, intuitive iPhone and iPad apps that feel at home on Apple devices."
+        },
+        {
+          "title": "UI/UX Design",
+          "detail": "Screens and flows you review and approve before any code is written."
+        },
+        {
+          "title": "Testing and Launch",
+          "detail": "QA on real devices, then store listing, submission and release."
+        },
+        {
+          "title": "Ongoing Support",
+          "detail": "Updates, fixes and new features as your business and your users change."
+        },
+        {
+          "title": "Android Apps",
+          "detail": "Native, high-performance apps for the phones most of your customers carry."
+        }
+      ],
+      "helpText": "Tell us the idea. We'll suggest the right mix of the five."
+    },
+    "whyUs": {
+      "title": [
+        "One team, from first",
+        "screen to every update."
+      ],
+      "points": [
+        {
+          "title": "Native performance",
+          "detail": "Built for each platform, so the app feels fast and smooth."
+        },
+        {
+          "title": "Design-led UI",
+          "detail": "Screens designed with you and approved before code."
+        },
+        {
+          "title": "Tested before launch",
+          "detail": "QA on real Android and iOS devices before release."
+        },
+        {
+          "title": "Support after launch",
+          "detail": "Updates and fixes from the team that built it."
+        }
+      ]
+    },
+    "deliverables": {
+      "title": [
+        "Real things you can",
+        "hold, test and ship."
+      ],
+      "intro": "Every project ends with deliverables you own and can review at each step.",
+      "cards": [
+        {
+          "title": "Android and iOS apps",
+          "detail": "Native apps for both platforms, built from screens you approved.",
+          "visual": "app-screens",
+          "href": "#what-we-cover"
+        },
+        {
+          "title": "A release you can trust",
+          "detail": "Every build is tested on real devices and checked off before it reaches the stores.",
+          "visual": "release-checklist",
+          "href": "#how-it-works"
+        }
+      ],
+      "ownership": {
+        "title": "You own everything",
+        "detail": "Handed over at launch, in your name.",
+        "items": [
+          "Source code",
+          "Design files",
+          "Store accounts in your name",
+          "Documentation"
+        ]
+      }
+    },
+    "useCases": {
+      "title": [
+        "Apps for the way",
+        "your business runs."
+      ],
+      "intro": "From the shop floor to the field team — pick the one that sounds like you.",
+      "items": [
+        {
+          "title": "Retail and e-commerce",
+          "detail": "Catalogue, cart and payments for your store."
+        },
+        {
+          "title": "Bookings and appointments",
+          "detail": "Let customers pick a slot and pay ahead."
+        },
+        {
+          "title": "Field staff",
+          "detail": "Orders, visits and photos from the road."
+        },
+        {
+          "title": "Internal tools",
+          "detail": "Stock, approvals and reports for your team."
+        },
+        {
+          "title": "Customer loyalty",
+          "detail": "Points, offers and reminders that bring people back."
+        },
+        {
+          "title": "Showroom catalogues",
+          "detail": "Show every product, even what is not on the floor."
+        }
+      ]
+    },
+    "process": {
+      "title": [
+        "How your app",
+        "gets built."
+      ],
+      "intro": "Pick where you're starting from. The steps change to match.",
+      "ctaDetail": "Tell us about your app and we'll start with a discovery call.",
+      "tracks": [
+        {
+          "id": "new",
+          "label": "New app",
+          "steps": [
+            {
+              "title": "Discover",
+              "summary": "We learn your business, your customers and what the app must do, then agree scope and timeline.",
+              "deliverables": [
+                "Project brief",
+                "Scope",
+                "Timeline"
+              ]
+            },
+            {
+              "title": "Design",
+              "summary": "Wireframes and UI for every key screen. You review and approve them before anything is built.",
+              "deliverables": [
+                "Wireframes",
+                "UI design",
+                "Clickable prototype"
+              ]
+            },
+            {
+              "title": "Build",
+              "summary": "Native development for Android and iOS, with code reviews and a secure setup from day one.",
+              "deliverables": [
+                "Android",
+                "iOS",
+                "Code review"
+              ]
+            },
+            {
+              "title": "Test",
+              "summary": "QA across real devices and real-world use: sign-up, payments, performance and security checks.",
+              "deliverables": [
+                "Device testing",
+                "Performance",
+                "Security checks"
+              ]
+            },
+            {
+              "title": "Launch",
+              "summary": "Store listings, submission and go-live on the Play Store and App Store.",
+              "deliverables": [
+                "Play Store",
+                "App Store",
+                "Go-live"
+              ]
+            },
+            {
+              "title": "Support",
+              "summary": "Ongoing updates, fixes and new features after launch.",
+              "deliverables": [
+                "Updates",
+                "Monitoring",
+                "Support"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "existing",
+          "label": "Existing app",
+          "steps": [
+            {
+              "title": "Audit",
+              "summary": "We review your current app, its code, reviews and analytics to see what is working and what is not.",
+              "deliverables": [
+                "App review",
+                "Code audit",
+                "Findings"
+              ]
+            },
+            {
+              "title": "Plan",
+              "summary": "A prioritised plan of fixes, redesigns and new features, agreed with you.",
+              "deliverables": [
+                "Priorities",
+                "Scope",
+                "Timeline"
+              ]
+            },
+            {
+              "title": "Improve",
+              "summary": "Fixes, UI updates and new features built on top of your existing app.",
+              "deliverables": [
+                "Bug fixes",
+                "Redesign",
+                "New features"
+              ]
+            },
+            {
+              "title": "Test",
+              "summary": "Regression testing so nothing that worked before breaks.",
+              "deliverables": [
+                "Regression tests",
+                "Device testing"
+              ]
+            },
+            {
+              "title": "Release",
+              "summary": "Staged updates to the Play Store and App Store.",
+              "deliverables": [
+                "Release notes",
+                "Store update"
+              ]
+            },
+            {
+              "title": "Care",
+              "summary": "Ongoing monitoring and updates from then on.",
+              "deliverables": [
+                "Monitoring",
+                "Updates",
+                "Support"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "techStack": {
+      "eyebrow": "Tech stack",
+      "title": "Proven tools.",
+      "highlight": "Zero lock-in.",
+      "intro": "We pick the stack that fits your product — not our habits. Everything we ship is modern, well-documented and yours to own.",
+      "highlights": [
+        "iOS · Android · Web from one team",
+        "Open standards, no proprietary lock-in",
+        "Full source code handed over"
+      ],
+      "groups": [
+        {
+          "title": "Mobile",
+          "tagline": "Native & cross-platform apps",
+          "tools": [
+            {
+              "name": "Swift",
+              "color": "#f05138"
+            },
+            {
+              "name": "Kotlin",
+              "color": "#7f52ff"
+            },
+            {
+              "name": "Flutter",
+              "color": "#29b6f6"
+            },
+            {
+              "name": "React Native",
+              "color": "#61dafb"
+            }
+          ]
+        },
+        {
+          "title": "Frontend",
+          "tagline": "Fast, accessible interfaces",
+          "tools": [
+            {
+              "name": "React",
+              "color": "#61dafb"
+            },
+            {
+              "name": "Next.js"
+            },
+            {
+              "name": "TypeScript",
+              "color": "#3178c6"
+            },
+            {
+              "name": "Tailwind",
+              "color": "#06b6d4"
+            }
+          ]
+        },
+        {
+          "title": "Backend",
+          "tagline": "APIs that scale with you",
+          "tools": [
+            {
+              "name": "Node.js",
+              "color": "#5fa04e"
+            },
+            {
+              "name": "Python",
+              "color": "#3776ab"
+            },
+            {
+              "name": "Go",
+              "color": "#00add8"
+            },
+            {
+              "name": "GraphQL",
+              "color": "#e10098"
+            }
+          ]
+        },
+        {
+          "title": "Data",
+          "tagline": "Storage, sync & real-time",
+          "tools": [
+            {
+              "name": "PostgreSQL",
+              "color": "#4169e1"
+            },
+            {
+              "name": "MongoDB",
+              "color": "#47a248"
+            },
+            {
+              "name": "Redis",
+              "color": "#ff4438"
+            },
+            {
+              "name": "Firebase",
+              "color": "#ffca28"
+            }
+          ]
+        },
+        {
+          "title": "Cloud & DevOps",
+          "tagline": "Ship daily, sleep well",
+          "tools": [
+            {
+              "name": "AWS",
+              "color": "#ff9900"
+            },
+            {
+              "name": "Google Cloud",
+              "color": "#4285f4"
+            },
+            {
+              "name": "Docker",
+              "color": "#2496ed"
+            },
+            {
+              "name": "Kubernetes",
+              "color": "#326ce5"
+            }
+          ]
+        },
+        {
+          "title": "Design & QA",
+          "tagline": "Pixel-checked, test-covered",
+          "tools": [
+            {
+              "name": "Figma",
+              "color": "#f24e1e"
+            },
+            {
+              "name": "Jest",
+              "color": "#c21325"
+            },
+            {
+              "name": "Cypress"
+            },
+            {
+              "name": "GH Actions",
+              "color": "#2088ff"
+            }
+          ]
+        }
+      ]
+    },
+    "faq": {
+      "title": "App questions, answered.",
+      "items": [
+        {
+          "question": "How long does an app take to build?",
+          "answer": "It depends on features, platforms and integrations. After a discovery call we share a timeline for your specific app."
+        },
+        {
+          "question": "Do you build for both Android and iOS?",
+          "answer": "Yes. We build native apps for Android, for iOS, or for both together, depending on what your customers use."
+        },
+        {
+          "question": "Can you improve an app we already have?",
+          "answer": "Yes. We start with an audit of the current app, then plan fixes, redesigns or new features with you."
+        },
+        {
+          "question": "Do I need designs ready before we start?",
+          "answer": "No. Our UI/UX team designs the screens with you, and you approve them before anything is built."
+        },
+        {
+          "question": "Will you publish the app to the stores?",
+          "answer": "Yes. We prepare the store listings and handle submission and release on the Play Store and App Store."
+        },
+        {
+          "question": "Who owns the app and its code?",
+          "answer": "Ownership terms are agreed in your project contract before work starts."
+        },
+        {
+          "question": "What happens after launch?",
+          "answer": "Ongoing support: updates, fixes and improvements as your needs change."
+        }
+      ]
+    }
+  },
+  "service-marketing": {
+    "id": "marketing",
+    "seo": {
+      "title": "Digital Marketing: SEO, Meta, YouTube, Email and WhatsApp",
+      "description": "SEO, Meta and YouTube ads, email and WhatsApp campaigns, planned, run and reported by one team. Bring more customers through your door with Tech Vedha.",
+      "keywords": [
+        "digital marketing agency",
+        "SEO services",
+        "Meta ads",
+        "Facebook and Instagram ads",
+        "YouTube marketing",
+        "email marketing",
+        "WhatsApp marketing",
+        "digital marketing India"
+      ]
+    },
+    "hero": {
+      "title": "Digital marketing",
+      "highlight": "for more customers.",
+      "intro": "Digital marketing services for businesses in India and abroad — SEO, Google and Meta ads, YouTube, email and WhatsApp marketing, planned, run and reported by one team.",
+      "platforms": [
+        "Search",
+        "Social"
+      ]
+    },
+    "coverage": {
+      "title": [
+        "Digital marketing services,",
+        "under one roof."
+      ],
+      "intro": "SEO, paid ads, video, email and WhatsApp marketing. Hire us for one channel, or for a full-funnel plan.",
+      "items": [
+        {
+          "title": "SEO Services",
+          "detail": "Technical, on-page and local SEO that helps you rank higher on Google and grow organic traffic."
+        },
+        {
+          "title": "Meta Ads",
+          "detail": "Facebook and Instagram ad campaigns that reach buyers by interest, location and intent."
+        },
+        {
+          "title": "YouTube Marketing",
+          "detail": "YouTube video ads and channel SEO that put your brand in front of the right viewers."
+        },
+        {
+          "title": "Email Marketing",
+          "detail": "Email campaigns and automations that turn past customers into repeat buyers."
+        },
+        {
+          "title": "WhatsApp Marketing",
+          "detail": "WhatsApp Business broadcasts and messaging that turn enquiries into sales."
+        }
+      ],
+      "helpText": "Tell us the idea. We'll suggest the right mix of the five."
+    },
+    "whyUs": {
+      "title": [
+        "One marketing team, from",
+        "first search to every sale."
+      ],
+      "points": [
+        {
+          "title": "Search-first strategy",
+          "detail": "Keyword research and SEO planned around what your buyers search for."
+        },
+        {
+          "title": "Creative that converts",
+          "detail": "Ad copy and creatives designed with you and approved before launch."
+        },
+        {
+          "title": "Tracked from day one",
+          "detail": "Conversion tracking on every campaign, so ad spend goes where it works."
+        },
+        {
+          "title": "Reports you can read",
+          "detail": "Clear monthly reports on leads, sales and return on ad spend."
+        }
+      ]
+    },
+    "deliverables": {
+      "title": [
+        "Real results you can",
+        "see, track and own."
+      ],
+      "intro": "Every digital marketing campaign comes with tracking, reports and creative assets you own.",
+      "cards": [
+        {
+          "title": "Campaigns on every channel",
+          "detail": "Google Search, Meta, YouTube, email and WhatsApp campaigns, managed from one plan you approved.",
+          "visual": "campaign-dashboard",
+          "href": "#what-we-cover"
+        },
+        {
+          "title": "A launch you can trust",
+          "detail": "Tracking, targeting and ad creatives are checked before any budget is spent.",
+          "visual": "campaign-checklist",
+          "href": "#how-it-works"
+        },
+        {
+          "title": "Rank higher on Google",
+          "detail": "SEO and keyword tracking that moves your pages up for the searches buyers actually make.",
+          "visual": "search-rankings",
+          "href": "#what-we-cover"
+        },
+        {
+          "title": "Reports you can read",
+          "detail": "A monthly report on leads by channel, what worked, and where next month’s budget goes.",
+          "visual": "monthly-report",
+          "href": "#how-it-works"
+        }
+      ],
+      "ownership": {
+        "title": "You own everything",
+        "detail": "Set up in your name from day one.",
+        "items": [
+          "Ad accounts in your name",
+          "Analytics access",
+          "Creative files",
+          "Monthly reports"
+        ]
+      }
+    },
+    "useCases": {
+      "title": [
+        "Digital marketing for the",
+        "way your business runs."
+      ],
+      "intro": "From one store to many cities — lead generation and online growth built for your industry.",
+      "items": [
+        {
+          "title": "Retail stores",
+          "detail": "Local SEO and offers that bring footfall to your shop or showroom."
+        },
+        {
+          "title": "E-commerce",
+          "detail": "Google Shopping, search and social ads that drive online orders."
+        },
+        {
+          "title": "Local services",
+          "detail": "Google Business Profile and local search, so nearby customers find you."
+        },
+        {
+          "title": "Real estate and builders",
+          "detail": "Lead generation for new projects and site visits."
+        },
+        {
+          "title": "Education and coaching",
+          "detail": "Admission campaigns across search, social and YouTube."
+        },
+        {
+          "title": "Restaurants and cafés",
+          "detail": "Reviews, offers and WhatsApp reminders that fill tables."
+        }
+      ]
+    },
+    "process": {
+      "title": [
+        "How we grow",
+        "your business."
+      ],
+      "intro": "Pick where you're starting from. The steps change to match.",
+      "ctaDetail": "Tell us about your business and we'll start with a discovery call.",
+      "tracks": [
+        {
+          "id": "new",
+          "label": "Starting fresh",
+          "steps": [
+            {
+              "title": "Discover",
+              "summary": "We learn your business, your customers and your goals, then agree channels, budget and timeline.",
+              "deliverables": [
+                "Marketing brief",
+                "Goals and KPIs",
+                "Timeline"
+              ]
+            },
+            {
+              "title": "Plan",
+              "summary": "Keyword research, audiences and a channel plan, approved by you before any spend.",
+              "deliverables": [
+                "Keyword research",
+                "Audiences",
+                "Channel plan"
+              ]
+            },
+            {
+              "title": "Create",
+              "summary": "Ad copy, creatives and landing pages written and designed, then approved by you.",
+              "deliverables": [
+                "Ad creatives",
+                "Landing pages",
+                "Content calendar"
+              ]
+            },
+            {
+              "title": "Launch",
+              "summary": "Campaigns go live on Google, Meta, YouTube, email and WhatsApp, with tracking set up first.",
+              "deliverables": [
+                "Conversion tracking",
+                "Campaign setup",
+                "Go-live"
+              ]
+            },
+            {
+              "title": "Optimise",
+              "summary": "Weekly tuning of bids, audiences and keywords, so spend goes where it works.",
+              "deliverables": [
+                "Bid tuning",
+                "A/B tests",
+                "Audience tuning"
+              ]
+            },
+            {
+              "title": "Report",
+              "summary": "Monthly reports on leads and sales, with a clear plan for next month.",
+              "deliverables": [
+                "Monthly report",
+                "Live dashboards",
+                "Next steps"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "existing",
+          "label": "Already running ads",
+          "steps": [
+            {
+              "title": "Audit",
+              "summary": "We review your ad accounts, website, rankings and past campaigns to see what is working and what is not.",
+              "deliverables": [
+                "Account audit",
+                "SEO audit",
+                "Findings"
+              ]
+            },
+            {
+              "title": "Plan",
+              "summary": "A prioritised plan of fixes, new campaigns and budget changes, agreed with you.",
+              "deliverables": [
+                "Priorities",
+                "Goals and KPIs",
+                "Timeline"
+              ]
+            },
+            {
+              "title": "Improve",
+              "summary": "Tracking fixes, new creatives and landing page updates on top of your existing campaigns.",
+              "deliverables": [
+                "Tracking fixes",
+                "New creatives",
+                "Landing pages"
+              ]
+            },
+            {
+              "title": "Launch",
+              "summary": "Campaigns relaunch with fixed tracking, so every change is measured.",
+              "deliverables": [
+                "Relaunch checks",
+                "Conversion tracking"
+              ]
+            },
+            {
+              "title": "Scale",
+              "summary": "Scale the campaigns that work and pause the ones that do not.",
+              "deliverables": [
+                "Budget shifts",
+                "Scaling"
+              ]
+            },
+            {
+              "title": "Report",
+              "summary": "Monthly reports and ongoing optimisation from then on.",
+              "deliverables": [
+                "Live dashboards",
+                "Monthly report",
+                "Next steps"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "techStack": {
+      "eyebrow": "Marketing stack",
+      "title": "Proven tools.",
+      "highlight": "Zero lock-in.",
+      "intro": "We pick the marketing tools that fit your goals — not our habits. Every ad account, report and creative is yours to own.",
+      "highlights": [
+        "Search · Social · Email from one team",
+        "Ad accounts set up in your name",
+        "Clear monthly reporting"
+      ],
+      "groups": [
+        {
+          "title": "Search & SEO",
+          "tagline": "Get found when buyers search",
+          "tools": [
+            {
+              "name": "Search Console",
+              "color": "#458cf5"
+            },
+            {
+              "name": "Semrush",
+              "color": "#ff642d"
+            },
+            {
+              "name": "Business Profile",
+              "image": "/tools/google-business-profile.svg",
+              "color": "#4285f4"
+            },
+            {
+              "name": "GA4",
+              "color": "#e37400"
+            }
+          ]
+        },
+        {
+          "title": "Paid ads",
+          "tagline": "Spend that is aimed and tracked",
+          "tools": [
+            {
+              "name": "Google Ads",
+              "color": "#4285f4"
+            },
+            {
+              "name": "Meta Ads",
+              "color": "#0467df"
+            },
+            {
+              "name": "YouTube Ads",
+              "color": "#ff0000"
+            },
+            {
+              "name": "LinkedIn Ads",
+              "color": "#0a66c2"
+            }
+          ]
+        },
+        {
+          "title": "Social",
+          "tagline": "Content people stop for",
+          "tools": [
+            {
+              "name": "Instagram",
+              "color": "#e4405f"
+            },
+            {
+              "name": "Facebook",
+              "color": "#0866ff"
+            },
+            {
+              "name": "Canva",
+              "image": "/tools/canva.svg",
+              "color": "#00c4cc"
+            },
+            {
+              "name": "Buffer"
+            }
+          ]
+        },
+        {
+          "title": "Email",
+          "tagline": "Campaigns that bring people back",
+          "tools": [
+            {
+              "name": "Mailchimp",
+              "color": "#ffe01b"
+            },
+            {
+              "name": "Brevo",
+              "color": "#0b996e"
+            },
+            {
+              "name": "HubSpot",
+              "color": "#ff7a59"
+            },
+            {
+              "name": "Zapier",
+              "color": "#ff4f00"
+            }
+          ]
+        },
+        {
+          "title": "WhatsApp",
+          "tagline": "Messages where customers chat",
+          "tools": [
+            {
+              "name": "WhatsApp API",
+              "color": "#25d366"
+            },
+            {
+              "name": "Broadcasts",
+              "color": "#25d366"
+            },
+            {
+              "name": "CRM sync",
+              "color": "#ff7a59"
+            },
+            {
+              "name": "Automations",
+              "color": "#ff4f00"
+            }
+          ]
+        },
+        {
+          "title": "Tracking & reports",
+          "tagline": "Know what is working",
+          "tools": [
+            {
+              "name": "Tag Manager",
+              "color": "#246fdb"
+            },
+            {
+              "name": "Looker Studio",
+              "color": "#4285f4"
+            },
+            {
+              "name": "Hotjar",
+              "color": "#ff3c00"
+            },
+            {
+              "name": "Analytics",
+              "color": "#e37400"
+            }
+          ]
+        }
+      ]
+    },
+    "faq": {
+      "title": "Digital marketing questions, answered.",
+      "items": [
+        {
+          "question": "How soon will I see results from SEO and ads?",
+          "answer": "Paid ads can bring visits within days, while SEO usually builds over a few months. We share expected timelines after a discovery call."
+        },
+        {
+          "question": "Do you manage Google Ads and Meta ads?",
+          "answer": "Yes. We plan and run campaigns on Google Search, YouTube, Facebook and Instagram, depending on where your customers are."
+        },
+        {
+          "question": "Can you work with our existing ad accounts?",
+          "answer": "Yes. We start with an audit of your current accounts and campaigns, then plan improvements with you."
+        },
+        {
+          "question": "Who creates the ads and posts?",
+          "answer": "Our team writes and designs the creatives with you, and you approve them before anything goes live."
+        },
+        {
+          "question": "How do you report marketing results?",
+          "answer": "You get a clear monthly report on spend, reach, leads and sales, plus access to live dashboards."
+        },
+        {
+          "question": "Who owns the ad accounts and data?",
+          "answer": "Accounts are set up in your name, so your data and campaign history stay with you."
+        },
+        {
+          "question": "Do you offer digital marketing outside India?",
+          "answer": "Yes. We run digital marketing campaigns for businesses across India and abroad."
+        }
+      ]
+    }
+  }
+}

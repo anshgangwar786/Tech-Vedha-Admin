@@ -1,0 +1,152 @@
+import prisma from "@/app/lib/config/db";
+import { withMongoId } from "@/app/lib/utils/serialize";
+import { requirePermission } from "@/app/lib/utils/authorization";
+import { PERMISSIONS } from "@/app/lib/constants/permissions";
+import { JOIN_LEAD_SOURCE } from "@/utils/joinForm";
+import { normalizeIndianMobile, validateLeadFields } from "@/utils/leadForm";
+import { isJoinSource } from "@/app/lib/utils/leadSource";
+import { NextRequest, NextResponse } from "next/server";
+import { LeadStatus, Prisma } from "@prisma/client";
+
+export async function DELETE(
+  req: NextRequest,
+  context: { params: Promise<{ id: string }> }
+) {
+  const { id } = await context.params;
+  try {
+    const userResult = await requirePermission(req, PERMISSIONS.LEADS_MANAGE);
+    if (userResult instanceof NextResponse) {
+      return userResult;
+    }
+    const userId = userResult.id;
+    if (!userId) {
+      return NextResponse.json(
+        { message: "Unauthorized. Please login to access leads." },
+        { status: 401 }
+      );
+    }
+
+    // Worker applications are managed through /api/applications/[id].
+    const existingLead = await prisma.lead.findFirst({ where: { id, leadSource: { not: JOIN_LEAD_SOURCE } } });
+
+    if (!existingLead) {
+      return NextResponse.json(
+        {
+          message: "Lead Not found corresponding to this id",
+        },
+        {
+          status: 404,
+        }
+      );
+    }
+
+    const deleteLead = await prisma.lead.delete({ where: { id } });
+
+    return NextResponse.json(
+      { message: "Lead Deleted Successfully", deletedLead: withMongoId(deleteLead) },
+      { status: 200 }
+    );
+  } catch (error) {
+    console.log("Error deleting lead", error);
+    return NextResponse.json(
+      { message: "Internal Server Error-deleting lead" },
+      { status: 500 }
+    );
+  }
+}
+
+export async function PUT(
+  req: NextRequest,
+  context: { params: Promise<{ id: string }> }
+) {
+  const { id } = await context.params;
+  try {
+    const userResult = await requirePermission(req, PERMISSIONS.LEADS_MANAGE);
+    if (userResult instanceof NextResponse) {
+      return userResult;
+    }
+    const userId = userResult.id;
+    if (!userId) {
+      return NextResponse.json(
+        { message: "Unauthorized. Please login to access leads." },
+        { status: 401 }
+      );
+    }
+    const body = await req.json();
+
+    // Only known Lead fields — Mongoose silently ignored unknown keys,
+    // Prisma would throw on them.
+    const ALLOWED_FIELDS = [
+      "name",
+      "email",
+      "phoneNo",
+      "status",
+      "leadSource",
+      "formData",
+    ] as const;
+
+    const data: Record<string, unknown> = {};
+    for (const field of ALLOWED_FIELDS) {
+      if (body[field] !== undefined) {
+        data[field] = body[field];
+      }
+    }
+
+    // An enquiry can't be turned into a worker application.
+    if (isJoinSource(data.leadSource)) {
+      return NextResponse.json({ message: "That lead source is reserved" }, { status: 400 });
+    }
+
+    // Bad input → 400, not a Prisma validation 500.
+    if (data.status !== undefined && !(Object.values(LeadStatus) as unknown[]).includes(data.status)) {
+      return NextResponse.json({ message: "Invalid lead status" }, { status: 400 });
+    }
+    if (data.formData === null) {
+      data.formData = Prisma.DbNull; // JSON column: SQL NULL needs the sentinel
+    } else if (data.formData !== undefined && typeof data.formData !== "object") {
+      return NextResponse.json({ message: "formData must be an object" }, { status: 400 });
+    }
+
+    // Worker applications are managed through /api/applications/[id].
+    const existingLead = await prisma.lead.findFirst({ where: { id, leadSource: { not: JOIN_LEAD_SOURCE } } });
+
+    if (!existingLead) {
+      return NextResponse.json(
+        { message: "Lead corresponding to this id not found" },
+        { status: 404 }
+      );
+    }
+
+    // Same name / email / phone rules as Add Lead and the website forms. Only fields that changed are checked,
+    // so an older lead saved under looser rules can still have its status or source updated.
+    const changed = Object.fromEntries(
+      (["name", "email", "phoneNo"] as const)
+        .filter((field) => data[field] !== undefined && data[field] !== existingLead[field])
+        .map((field) => [field, data[field]]),
+    );
+    const fieldErrors = validateLeadFields(changed, true);
+    const firstError = Object.values(fieldErrors)[0];
+    if (firstError) {
+      return NextResponse.json({ message: firstError, fieldErrors }, { status: 400 });
+    }
+    if (typeof changed.name === "string") data.name = changed.name.trim();
+    if (typeof changed.email === "string") data.email = changed.email.trim().toLowerCase();
+    if (typeof changed.phoneNo === "string") data.phoneNo = normalizeIndianMobile(changed.phoneNo) ?? changed.phoneNo;
+
+    const updatedLead = await prisma.lead.update({
+      where: { id },
+      data: data as Prisma.LeadUpdateInput,
+    });
+
+    return NextResponse.json(
+      { message: "Updated Lead data", updatedLead: withMongoId(updatedLead) },
+      { status: 200 }
+    );
+  } catch (error) {
+    console.log("Error updating lead", error);
+    return NextResponse.json(
+      { message: "Internal Server Error-Updating Lead data" },
+      { status: 500 }
+    );
+  }
+}

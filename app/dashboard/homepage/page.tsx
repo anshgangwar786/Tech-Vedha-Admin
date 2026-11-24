@@ -1,0 +1,358 @@
+"use client";
+
+// Homepage editor. Edits the single HomePageContent document that the public
+// homepage at "/" renders (server/homepage.ts). Every section of the page maps
+// to a card below; each card has a Visible/Hidden switch.
+
+import { useCallback, useEffect, useMemo, useState, type ComponentType } from "react";
+import { toast } from "sonner";
+import { RevalidateButton } from "@/components/common/RevalidateButton";
+import {
+  BadgeCheck,
+  Building2,
+  ExternalLink,
+  Eye,
+  FileText,
+  Hammer,
+  HelpCircle,
+  Image as ImageIcon,
+  LayoutTemplate,
+  ListChecks,
+  Mail,
+  Settings2,
+  Sparkles,
+  UserRound,
+  Wrench,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {
+  HOME_META_DEFAULTS,
+  defaultHomeContent,
+  normalizeHomeContent,
+  type HomePageContent,
+  type HomeSectionKey,
+} from "@/app/lib/content/home-content";
+import { SectionCard, TextField } from "@/components/homepage-editor/fields";
+import type { SectionEditorProps } from "@/components/homepage-editor/types";
+import HeroEditor from "@/components/homepage-editor/HeroEditor";
+import ServicesEditor from "@/components/homepage-editor/ServicesEditor";
+import SitesEditor from "@/components/homepage-editor/SitesEditor";
+import WhyEditor from "@/components/homepage-editor/WhyEditor";
+import TradesEditor from "@/components/homepage-editor/TradesEditor";
+import ProcessEditor from "@/components/homepage-editor/ProcessEditor";
+import FounderEditor from "@/components/homepage-editor/FounderEditor";
+import BannerEditor from "@/components/homepage-editor/BannerEditor";
+import FaqEditor from "@/components/homepage-editor/FaqEditor";
+import ContactEditor from "@/components/homepage-editor/ContactEditor";
+import SiteEditor from "@/components/homepage-editor/SiteEditor";
+import { liveSiteUrl, useDraftPreview } from "@/hooks/useDraftPreview";
+import { useUnsavedChangesWarning } from "@/hooks/useUnsavedChangesWarning";
+import SeoScriptsNote from "@/components/seo-editor/SeoScriptsNote";
+// Must match HOMEPAGE_CHANNEL in jmt-frontend/components/homepage/LiveRefresh.tsx.
+// BroadcastChannel is same-origin only, so it reaches homepage tabs only when the
+// frontend is served from the same origin as this admin; otherwise open tabs
+// pick up the save on focus / every 30 s.
+const HOMEPAGE_CHANNEL = "jmt-homepage";
+
+type AnyEditor = ComponentType<SectionEditorProps<HomeSectionKey>>;
+
+/** One card per section; shown in the order chosen for the page (content.sectionOrder). */
+const SECTIONS: { key: HomeSectionKey; title: string; hint: string; icon: React.ElementType; Editor: AnyEditor }[] = [
+  { key: "hero", title: "Hero", hint: "Headline, buttons, trust points and background photo", icon: Sparkles, Editor: HeroEditor as AnyEditor },
+  { key: "services", title: "Services", hint: "Heading and up to four service cards", icon: Wrench, Editor: ServicesEditor as AnyEditor },
+  { key: "sites", title: "Sites we staff", hint: "Carousel of site types", icon: Building2, Editor: SitesEditor as AnyEditor },
+  { key: "why", title: "Why choose us", hint: "Numbered reasons and photo", icon: BadgeCheck, Editor: WhyEditor as AnyEditor },
+  { key: "trades", title: "Trades", hint: "Trade cards with icons and photos", icon: Hammer, Editor: TradesEditor as AnyEditor },
+  { key: "process", title: "How we work", hint: "Step-by-step deployment process", icon: ListChecks, Editor: ProcessEditor as AnyEditor },
+  { key: "founder", title: "Founder", hint: "Founder story, portrait and assurances", icon: UserRound, Editor: FounderEditor as AnyEditor },
+  { key: "banner", title: "Banner", hint: "Wide photo banner with a button", icon: ImageIcon, Editor: BannerEditor as AnyEditor },
+  { key: "faq", title: "FAQ", hint: "Questions for companies and workers, owner card", icon: HelpCircle, Editor: FaqEditor as AnyEditor },
+  { key: "contact", title: "Contact", hint: "Contact card and lead form copy", icon: Mail, Editor: ContactEditor as AnyEditor },
+];
+
+interface EditorState {
+  metaTitle: string;
+  metaDescription: string;
+  content: HomePageContent;
+}
+
+const snapshot = (state: EditorState) => JSON.stringify(state);
+
+/** What Save sends (and Preview shows). Section visibility switches were removed, so every section is shown. */
+const toSaveBody = (state: EditorState) => ({
+  ...state,
+  content: {
+    ...state.content,
+    ...Object.fromEntries(SECTIONS.map(({ key }) => [key, { ...state.content[key], enabled: true }])),
+  },
+});
+
+export default function HomepageDashboardPage() {
+  const [state, setState] = useState<EditorState>(() => ({
+    ...HOME_META_DEFAULTS,
+    content: defaultHomeContent(),
+  }));
+  const [saved, setSaved] = useState<string>("");
+  const [exists, setExists] = useState(true);
+  const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState<string | null>(null);
+  const [saving, setSaving] = useState(false);
+  const [open, setOpen] = useState<Record<string, boolean>>({ hero: true });
+  const liveUrl = liveSiteUrl();
+
+  // After a failed load nothing was loaded, so nothing can be unsaved.
+  const dirty = !loading && !loadError && saved !== "" && snapshot(state) !== saved;
+
+  // Preview: the website with these unsaved edits, in a new tab (hooks/useDraftPreview.ts).
+  const previewPayload = useMemo(
+    () => (loading || loadError ? null : { kind: "homepage" as const, ...toSaveBody(state) }),
+    [loading, loadError, state],
+  );
+  const { openPreview, opening: previewOpening } = useDraftPreview({
+    payload: previewPayload,
+    path: "/",
+    windowName: "jmt-preview-homepage",
+  });
+
+  const applyServerDoc = useCallback((doc: Record<string, unknown> | null | undefined) => {
+    const next: EditorState = {
+      metaTitle: typeof doc?.metaTitle === "string" ? doc.metaTitle : HOME_META_DEFAULTS.metaTitle,
+      metaDescription:
+        typeof doc?.metaDescription === "string" ? doc.metaDescription : HOME_META_DEFAULTS.metaDescription,
+      content: normalizeHomeContent(doc?.content),
+    };
+    setState(next);
+    setSaved(snapshot(next));
+  }, []);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const res = await fetch("/api/homepage", { credentials: "include" });
+        const data = await res.json();
+        if (!res.ok || !data.success) throw new Error(data.message || "Failed to load the homepage");
+        setExists(Boolean(data.exists));
+        applyServerDoc(data.homePage);
+      } catch (error) {
+        const message = (error as Error).message || "Failed to load the homepage";
+        setLoadError(message);
+        toast.error(message, { closeButton: true });
+      } finally {
+        setLoading(false);
+      }
+    })();
+  }, [applyServerDoc]);
+
+  // Warn before leaving with unsaved edits (closing the tab or clicking a dashboard link).
+  useUnsavedChangesWarning(dirty);
+
+  const setSection = <K extends keyof HomePageContent>(key: K, value: HomePageContent[K]) =>
+    setState((prev) => ({ ...prev, content: { ...prev.content, [key]: value } }));
+
+  const toggle = (key: string) => setOpen((prev) => ({ ...prev, [key]: !prev[key] }));
+  const allOpen = useMemo(() => SECTIONS.every((s) => open[s.key]), [open]);
+  const setAll = (value: boolean) =>
+    setOpen(Object.fromEntries(["seo", "site", ...SECTIONS.map((s) => s.key)].map((k) => [k, value])));
+
+  const handleSave = async () => {
+    // Saving after a failed load would overwrite the real content with defaults.
+    if (loadError) return;
+    setSaving(true);
+    const toastId = toast.loading("Saving...");
+    try {
+      const res = await fetch("/api/homepage", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify(toSaveBody(state)),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) throw new Error(data.message || "Failed to save");
+      applyServerDoc(data.homePage);
+      setExists(true);
+      // Open homepage tabs (incl. ones opened via Preview) re-render with the new content.
+      try {
+        const channel = new BroadcastChannel(HOMEPAGE_CHANNEL);
+        channel.postMessage({ type: "saved", at: Date.now() });
+        channel.close();
+      } catch {
+        // BroadcastChannel unsupported — open tabs still pick it up on focus.
+      }
+      toast.success("Homepage saved — the website is updated", { id: toastId, closeButton: true });
+    } catch (error) {
+      toast.error((error as Error).message || "Failed to save", { id: toastId, closeButton: true });
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const handleReset = () => {
+    if (!window.confirm("Discard your unsaved changes?")) return;
+    setState(JSON.parse(saved) as EditorState);
+  };
+
+  if (loading) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-background p-4 sm:p-6">
+        <p className="text-foreground-light">Loading...</p>
+      </div>
+    );
+  }
+
+  const { content } = state;
+
+  return (
+    <div className="min-h-screen bg-background p-4 sm:p-6">
+      <div className="mx-auto max-w-5xl space-y-4">
+        {/* Header — sticky so Save is always reachable on this long form */}
+        <div className="sticky top-14 md:top-0 z-20 -mx-4 sm:-mx-6 mb-2 flex flex-col gap-2 sm:gap-3 border-b border-border bg-background/90 px-4 sm:px-6 py-3 sm:py-4 backdrop-blur sm:flex-row sm:items-center sm:justify-between">
+          <div className="min-w-0">
+            <h1 className="flex items-center gap-2 text-xl sm:text-2xl font-bold text-foreground">
+              <LayoutTemplate className="h-5 w-5 sm:h-6 sm:w-6 text-muted-foreground" /> Homepage
+            </h1>
+            <p className="truncate text-xs sm:text-sm text-muted-foreground">
+              {dirty ? (
+                <span className="text-warning">Unsaved changes</span>
+              ) : (
+                "Every section of the public homepage. Save to publish."
+              )}
+            </p>
+          </div>
+          <div className="flex flex-wrap items-center gap-2 max-sm:[&>*]:h-8 max-sm:[&>*]:px-3">
+            <Button
+              variant="ghost"
+              onClick={() => setAll(!allOpen)}
+              className="text-foreground-light hover:bg-muted/50 hover:text-foreground"
+            >
+              {allOpen ? "Collapse all" : "Expand all"}
+            </Button>
+            {/* The website with the unsaved edits — nothing is published until Save */}
+            <Button
+              variant="outline"
+              onClick={openPreview}
+              disabled={previewOpening || Boolean(loadError)}
+              aria-label="Preview unsaved changes"
+              title="Open the website with your unsaved changes (not published)"
+            >
+              <Eye className="h-4 w-4 sm:mr-2" />
+              <span className="hidden sm:inline">{previewOpening ? "Opening..." : "Preview"}</span>
+            </Button>
+            <Button asChild variant="outline">
+              <a href={liveUrl} target="_blank" rel="noopener noreferrer" aria-label="View live">
+                <ExternalLink className="h-4 w-4 sm:mr-2" />
+                <span className="hidden sm:inline">View live</span>
+              </a>
+            </Button>
+            {dirty && (
+              <Button
+                variant="outline"
+                onClick={handleReset}
+              >
+                Discard
+              </Button>
+            )}
+            <RevalidateButton
+              label="Homepage"
+              tags={["homepage", "homepage-media", "header-menu", "footer-menu", "service-list", "jmt-service-list"]}
+            />
+            <Button
+              onClick={handleSave}
+              disabled={saving || Boolean(loadError) || (!dirty && exists)}
+              className="ml-auto px-6 sm:ml-0"
+            >
+              {saving ? "Saving..." : exists ? "Save changes" : "Publish homepage"}
+            </Button>
+          </div>
+        </div>
+
+        {loadError && (
+          <div className="flex flex-col gap-3 rounded-lg border border-destructive/40 bg-destructive/10 p-4 text-sm text-destructive sm:flex-row sm:items-center sm:justify-between">
+            <p>
+              <strong>Could not load the saved homepage, so saving is disabled.</strong> {loadError}
+            </p>
+            <Button
+              variant="outline"
+              onClick={() => window.location.reload()}
+              className="shrink-0 border-destructive/40 bg-transparent text-destructive hover:bg-destructive/10 hover:text-destructive"
+            >
+              Retry
+            </Button>
+          </div>
+        )}
+
+        <h2 className="px-1 pt-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+          Page sections — same order as the website, top to bottom
+        </h2>
+
+        {content.sectionOrder.map((sectionKey) => {
+          const section = SECTIONS.find((s) => s.key === sectionKey);
+          if (!section) return null;
+          const { key, title, hint, icon, Editor } = section;
+          return (
+            <SectionCard
+              key={key}
+              icon={icon}
+              title={title}
+              hint={hint}
+              open={!!open[key]}
+              onToggle={() => toggle(key)}
+            >
+              <Editor value={content[key]} onChange={(value) => setSection(key, value)} />
+            </SectionCard>
+          );
+        })}
+
+        <h2 className="px-1 pt-4 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+          Site-wide settings
+        </h2>
+
+        <SectionCard
+          icon={Settings2}
+          title="Contact details"
+          hint="Phone, WhatsApp, email, hours and button labels (the navbar and footer have their own pages)"
+          open={!!open.site}
+          onToggle={() => toggle("site")}
+        >
+          <SiteEditor value={content.site} onChange={(site) => setSection("site", site)} />
+        </SectionCard>
+
+        <SectionCard
+          icon={FileText}
+          title="SEO (hidden)"
+          hint="Not shown on the page — browser tab title, Google results and link previews only"
+          open={!!open.seo}
+          onToggle={() => toggle("seo")}
+        >
+          <p className="text-xs text-warning/80">
+            These texts do not appear on the website itself. To change the text under the main headline,
+            edit <strong>Hero → Subtitle</strong>.
+          </p>
+          <SeoScriptsNote path="/" />
+          <TextField
+            label="Meta title"
+            value={state.metaTitle}
+            hint={`${state.metaTitle.length} characters — about 50–60 is ideal`}
+            onChange={(metaTitle) => setState((prev) => ({ ...prev, metaTitle }))}
+          />
+          <TextField
+            label="Meta description"
+            multiline
+            value={state.metaDescription}
+            hint={`${state.metaDescription.length} characters — about 150–160 is ideal`}
+            onChange={(metaDescription) => setState((prev) => ({ ...prev, metaDescription }))}
+          />
+        </SectionCard>
+
+        <div className="flex justify-end pb-10">
+          <Button
+            onClick={handleSave}
+            disabled={saving || Boolean(loadError) || (!dirty && exists)}
+            className="px-8"
+          >
+            {saving ? "Saving..." : exists ? "Save changes" : "Publish homepage"}
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+}

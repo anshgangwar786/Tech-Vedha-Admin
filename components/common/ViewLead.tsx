@@ -1,0 +1,116 @@
+"use client";
+
+import { Lead } from "@/app/types/lead";
+import { SERVICES_REQUESTED_LABEL } from "@/utils/leadForm";
+
+interface ViewLeadProps {
+  lead: Lead;
+}
+
+export default function ViewLead({ lead }: ViewLeadProps) {
+  // Roles ticked on a service page — shown as chips, not in the generic list.
+  const { [SERVICES_REQUESTED_LABEL]: servicesValue, ...otherDetails } = lead.formData ?? {};
+  const services = String(servicesValue ?? "")
+    .split(",")
+    .map((s) => s.trim())
+    .filter(Boolean);
+
+  return (
+    <div className="space-y-6 p-4 mt-4">
+      <div className="flex flex-col items-center text-center space-y-3">
+        {/* <Avatar className="h-20 w-20">
+          <AvatarFallback>
+            {lead.name
+              .split(" ")
+              .map((n) => n[0])
+              .join("")
+              .toUpperCase()}
+          </AvatarFallback>
+        </Avatar> */}
+
+        <div>
+          <h2 className="text-xl font-bold text-foreground">{lead.name}</h2>
+          <p className="text-sm text-muted-foreground break-all">{lead.email}</p>
+        </div>
+      </div>
+
+      <div className="space-y-4">
+        <Item label="Phone" value={lead.phoneNo} />
+        <Item label="Submitted From" value={lead.leadSource || "-"} />
+
+        <Item label="Status" value={lead.status} badge={true} />
+
+        <Item
+          label="Created At"
+          value={new Date(lead.createdAt).toLocaleString()}
+        />
+      </div>
+
+      {/* Form-specific fields — whatever {"Field Label": value} pairs the
+          submitting form sent; new forms show up here automatically. */}
+      {services.length > 0 && (
+        <div>
+          <h3 className="text-sm font-semibold text-brand-link uppercase tracking-wide mb-2">
+            Services Requested ({services.length})
+          </h3>
+          <ul className="flex flex-wrap gap-2">
+            {services.map((service) => (
+              <li
+                key={service}
+                className="px-3 py-1 text-xs font-medium rounded-full border border-brand/30 bg-brand/10 text-brand-link"
+              >
+                {service}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {Object.keys(otherDetails).length > 0 && (
+        <div>
+          <h3 className="text-sm font-semibold text-brand-link uppercase tracking-wide mb-2">
+            Form Details
+          </h3>
+          <div className="space-y-1">
+            {Object.entries(otherDetails).map(([label, value]) =>
+              String(value ?? "").length > 60 ? (
+                <div key={label} className="flex flex-col gap-1.5 border-b border-border py-2">
+                  <span className="text-muted-foreground text-sm">{label}</span>
+                  <p className="text-foreground text-sm leading-relaxed whitespace-pre-wrap">
+                    {String(value)}
+                  </p>
+                </div>
+              ) : (
+                <Item key={label} label={label} value={String(value ?? "-")} />
+              )
+            )}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function Item({
+  label,
+  value,
+  badge = false,
+}: {
+  label: string;
+  value: string;
+  badge?: boolean;
+}) {
+  return (
+    <div className="flex justify-between gap-4 border-b border-border py-2">
+      <span className="text-muted-foreground text-sm shrink-0">{label}</span>
+
+      {badge ? (
+        <span className="px-3 py-1 text-xs rounded-full border bg-muted text-foreground-light capitalize">
+          {value}
+        </span>
+      ) : (
+        <span className="text-foreground font-medium min-w-0 text-right break-words">{value}</span>
+      )}
+    </div>
+  );
+}
