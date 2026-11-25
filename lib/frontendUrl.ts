@@ -7,8 +7,12 @@
 //   2. Deployed admin → the deployed website. Local dev → http://localhost:3002.
 
 
-/** Fallback when NEXT_PUBLIC_FRONTEND_URL / FRONTEND_URL are not set on a deployed admin: set them instead. */
-export const DEPLOYED_FRONTEND_URL = "";
+/**
+ * Fallback on a deployed admin when FRONTEND_URL is unset or points at localhost.
+ * Never "": an empty origin turns "Preview" / "View live" into links on the admin itself.
+ * When the site moves to its own domain (Hostinger), set FRONTEND_URL there; this stays a fallback.
+ */
+export const DEPLOYED_FRONTEND_URL = "https://tech-vedha-frontend.vercel.app";
 const LOCAL_FRONTEND_URL = "http://localhost:3002";
 
 /** Trims whitespace, surrounding quotes and trailing slashes from an env value. */
@@ -20,7 +24,9 @@ export const isLocalUrl = (url: string) => /^https?:\/\/(localhost|127\.0\.0\.1|
 /** True when this admin is running somewhere other than a developer's machine. */
 export function isDeployed(): boolean {
   if (typeof window !== "undefined") return !isLocalUrl(window.location.origin);
-  return Boolean(process.env.VERCEL) || process.env.NODE_ENV === "production";
+  // Not NODE_ENV: a local `npm run build && npm start` is "production" too but must keep localhost.
+  // Elsewhere (Hostinger) FRONTEND_URL is set to the real domain, so no guess is needed.
+  return Boolean(process.env.VERCEL);
 }
 
 /** Configured URL if usable here, otherwise the right default for this environment. */

@@ -5,11 +5,16 @@ import type { NextConfig } from "next";
 // (Project → Settings → Environment Variables). NEXT_PUBLIC_FRONTEND_URL and
 // PRODUCTION_URL default to it; set them only to point somewhere different.
 const envValue = (name: string) => (process.env[name] ?? "").trim().replace(/^['"]|['"]$/g, "").trim();
+// On Vercel a localhost value (pasted from a local .env) counts as unset, so it can't be baked in.
+const isLocalhost = (v: string) => /localhost|127\.0\.0\.1|0\.0\.0\.0/.test(v);
+const unusable = (name: string) => !envValue(name) || (Boolean(process.env.VERCEL) && isLocalhost(envValue(name)));
 const FRONTEND_DEFAULTS = Object.fromEntries(
   ["NEXT_PUBLIC_FRONTEND_URL", "PRODUCTION_URL"]
-    .filter((name) => !envValue(name) && envValue("FRONTEND_URL"))
+    .filter((name) => unusable(name) && envValue("FRONTEND_URL") && !unusable("FRONTEND_URL"))
     .map((name) => [name, envValue("FRONTEND_URL")]),
 );
+// Also overwrite process.env so Next's own NEXT_PUBLIC_* inlining sees the corrected value.
+Object.assign(process.env, FRONTEND_DEFAULTS);
 
 // Check a Vercel *production* build's settings. Previews/local unaffected.
 //  • Secrets the admin cannot run without → fail the build.
