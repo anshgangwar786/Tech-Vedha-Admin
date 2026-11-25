@@ -1,10 +1,21 @@
 import type { NextConfig } from "next";
 
+// The website's URL. FRONTEND_URL is the only one you need to set: locally it is
+// http://localhost:3002 (.env), on Vercel the website's https://….vercel.app URL
+// (Project → Settings → Environment Variables). NEXT_PUBLIC_FRONTEND_URL and
+// PRODUCTION_URL default to it; set them only to point somewhere different.
+const envValue = (name: string) => (process.env[name] ?? "").trim().replace(/^['"]|['"]$/g, "").trim();
+const FRONTEND_DEFAULTS = Object.fromEntries(
+  ["NEXT_PUBLIC_FRONTEND_URL", "PRODUCTION_URL"]
+    .filter((name) => !envValue(name) && envValue("FRONTEND_URL"))
+    .map((name) => [name, envValue("FRONTEND_URL")]),
+);
+
 // Check a Vercel *production* build's settings. Previews/local unaffected.
 //  • Secrets the admin cannot run without → fail the build.
-//  • Frontend URLs → only warn. The code falls back to http://localhost:3002,
-//    so a missing value just breaks "View live" links and cache refreshes
-//    (NEXT_PUBLIC_* values are inlined at build time — rebuild after setting).
+//  • Frontend URL → only warn. Without it "View live" / "Preview" links and
+//    cache refreshes do nothing on the deployed admin
+//    (NEXT_PUBLIC_* values are inlined at build time — redeploy after setting).
 if (process.env.VERCEL_ENV === "production") {
   const isBad = (name: string, allowLocalhost = false) => {
     const value = process.env[name] ?? "";
@@ -18,11 +29,10 @@ if (process.env.VERCEL_ENV === "production") {
     throw new Error(`[next.config] Production build is missing or has localhost values for: ${missingSecrets.join(", ")}`);
   }
 
-  const badUrls = ["FRONTEND_URL", "NEXT_PUBLIC_FRONTEND_URL"].filter((name) => isBad(name));
-  if (badUrls.length > 0) {
+  if (isBad("FRONTEND_URL")) {
     console.warn(
-      `[next.config] WARNING: ${badUrls.join(", ")} missing or set to localhost. ` +
-        `"View live" links and frontend cache refreshes will not work until they point at the live frontend URL.`,
+      `[next.config] WARNING: FRONTEND_URL missing or set to localhost. "View live" links and frontend ` +
+        `cache refreshes will not work until it points at the website's Vercel URL.`,
     );
   }
 }
@@ -51,6 +61,7 @@ const nextConfig: NextConfig = {
   experimental: {
     cpus: 2,
   },
+  env: FRONTEND_DEFAULTS,
   poweredByHeader: false,
   images: {
     unoptimized: true,

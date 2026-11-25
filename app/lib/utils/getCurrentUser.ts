@@ -5,6 +5,7 @@ import { errorFields } from "@/app/lib/utils/errorFields";
 import { resolveUserAccess, userAccessSelect } from "@/app/lib/server/rbac";
 import type { Permission } from "@/app/lib/constants/permissions";
 import { tokenMatchesPassword } from "@/app/lib/utils/session";
+import { isCrossSiteWrite } from "@/app/lib/utils/csrf";
 
 export interface CurrentUser {
   id: string;
@@ -19,6 +20,13 @@ export interface CurrentUser {
 }
 
 export const getCurrentUser = async (req: NextRequest): Promise<CurrentUser | NextResponse> => {
+  if (isCrossSiteWrite(req)) {
+    return NextResponse.json(
+      { success: false, message: "Cross-site request blocked." },
+      { status: 403 }
+    );
+  }
+
   try {
     const token = req.cookies.get("authToken")?.value;
     if (!token) {
@@ -29,7 +37,7 @@ export const getCurrentUser = async (req: NextRequest): Promise<CurrentUser | Ne
     }
 
     // Verify JWT token
-    const decoded = jwt.verify(token as string, process.env.JWT_SECRET!) as {
+    const decoded = jwt.verify(token as string, process.env.JWT_SECRET!, { algorithms: ["HS256"] }) as {
       id: string;
       username: string;
       role: string;

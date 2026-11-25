@@ -24,7 +24,7 @@ export default function proxy(req: NextRequest) {
   }
 
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET!) as {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET!, { algorithms: ["HS256"] }) as {
       id: string;
       username: string;
       role: string;

@@ -1,6 +1,8 @@
 import prisma from "@/app/lib/config/db";
 import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcrypt";
+import { randomBytes } from "node:crypto";
+import { isCrossSiteWrite } from "@/app/lib/utils/csrf";
 import { issueSession } from "@/app/lib/utils/session";
 import { requestIp } from "@/app/lib/utils/leadThrottle";
 import {
@@ -11,7 +13,16 @@ import {
   type LoginAttempt,
 } from "@/app/lib/utils/loginThrottle";
 
+// Compared against when the account doesn't exist, so an unknown email or
+// username takes as long to reject as a wrong password (no timing oracle).
+let dummyHash: Promise<string> | null = null;
+const getDummyHash = () => (dummyHash ??= bcrypt.hash(randomBytes(16).toString("hex"), 10));
+
 export async function POST(req: NextRequest) {
+  // Another site must not be able to sign a visitor in (login CSRF).
+  if (isCrossSiteWrite(req)) {
+    return NextResponse.json({ message: "Cross-site request blocked." }, { status: 403 });
+  }
   let attempt: LoginAttempt | null = null;
   try {
     const { email, username, password } = await req.json();
@@ -48,7 +59,7 @@ export async function POST(req: NextRequest) {
 
     // Same response for unknown account and wrong password, so the login form
     // can't be used to discover which emails/usernames exist.
-    const isMatch = user ? await bcrypt.compare(password, user.password) : false;
+    const isMatch = await bcrypt.compare(password, user ? user.password : await getDummyHash());
     if (!user || !isMatch) {
       return NextResponse.json(
         { message: "Invalid credentials" },

@@ -3,10 +3,14 @@ import { NextRequest, NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
 import { issueSession, tokenMatchesPassword, tokenSessionStart } from "@/app/lib/utils/session";
 import { SESSION_MAX_AGE_MS } from "@/app/lib/constants/session";
+import { isCrossSiteWrite } from "@/app/lib/utils/csrf";
 
 // Extends the current admin session (sliding idle timeout). Called by
 // components/common/SessionTimeout.tsx while the user is active.
 export async function POST(req: NextRequest) {
+  if (isCrossSiteWrite(req)) {
+    return NextResponse.json({ message: "Cross-site request blocked." }, { status: 403 });
+  }
   const token = req.cookies.get("authToken")?.value;
   if (!token) {
     return NextResponse.json({ message: "Session expired" }, { status: 401 });
@@ -14,7 +18,7 @@ export async function POST(req: NextRequest) {
 
   let decoded: { id: string; sessionStart?: number; iat?: number; pwv?: string };
   try {
-    decoded = jwt.verify(token, process.env.JWT_SECRET!) as typeof decoded;
+    decoded = jwt.verify(token, process.env.JWT_SECRET!, { algorithms: ["HS256"] }) as typeof decoded;
   } catch {
     return NextResponse.json({ message: "Session expired" }, { status: 401 });
   }

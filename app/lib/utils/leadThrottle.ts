@@ -20,6 +20,10 @@ const IDENTITY_MAX = 3;
 const hitsByIp = new Map<string, number[]>();
 
 export function requestIp(req: NextRequest): string {
+  // On Vercel this header is set by the platform and can't be spoofed by the
+  // client (the leftmost X-Forwarded-For value can be, behind some proxies).
+  const vercel = req.headers.get("x-vercel-forwarded-for")?.split(",")[0]?.trim();
+  if (vercel) return vercel;
   return req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || req.headers.get("x-real-ip") || "unknown";
 }
 

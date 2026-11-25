@@ -36,7 +36,8 @@ const originOf = (v: string | null | undefined) => normalizeSecret(v).replace(/\
  */
 export const productionUrl = () => {
   const url = originOf(process.env.PRODUCTION_URL);
-  if (!url) return isDeployed() ? "" : "http://localhost:3001";
+  // Unset → same site as FRONTEND_URL (notified once, see notifyFrontends).
+  if (!url) return jmtFrontendUrl();
   return isDeployed() && isLocalUrl(url) ? "" : url;
 };
 

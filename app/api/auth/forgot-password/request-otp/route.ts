@@ -3,6 +3,7 @@ import prisma from "@/app/lib/config/db";
 import { NextRequest, NextResponse } from "next/server";
 import { sendOTP } from "@/app/lib/config/email";
 import { errorFields } from "@/app/lib/utils/errorFields";
+import { hashOtp, resetOtpAttempts } from "@/app/lib/utils/otpGuard";
 
 export async function POST(req: NextRequest) {
     try {
@@ -85,11 +86,15 @@ export async function POST(req: NextRequest) {
         await prisma.otp.create({
             data: {
                 email: email.toLowerCase(),
-                otp: otpCode,
+                // Stored as an HMAC: reading the table doesn't reveal the code.
+                otp: hashOtp(email.toLowerCase(), otpCode),
                 expiresAt,
                 verified: false,
             },
         })
+
+        // A new code gets a fresh set of guesses (verify-otp → otpGuard.ts).
+        resetOtpAttempts(email.toLowerCase());
 
         // sending OTP to email
         try {
@@ -101,7 +106,7 @@ export async function POST(req: NextRequest) {
             await prisma.otp.deleteMany({
                 where: {
                     email: email.toLowerCase(),
-                    otp: otpCode,
+                    otp: hashOtp(email.toLowerCase(), otpCode),
                 },
             });
 

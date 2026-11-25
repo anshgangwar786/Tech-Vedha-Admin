@@ -120,7 +120,7 @@ export const SITE_PAGES = {
       tagline: "Shown on share images and in structured data.",
       description: "Default search result description for the site.",
       email: "Shown in the header menu, footer, contact page and forms.",
-      phone: "International format, e.g. +91 98765 43210. While it is the placeholder number, the Contact page shows “number to add”.",
+      phone: "International format, e.g. +91 98765 43210. Shown in the header menu, footer and contact page, and used for call links.",
       whatsappNumber: "Digits only with country code, e.g. 919876543210. Empty = same as the phone.",
       navLinks: "Footer links.",
       headerLinks: "Header and mobile menu links (beside Services).",

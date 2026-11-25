@@ -2,13 +2,12 @@ import prisma from "@/app/lib/config/db";
 import { NextRequest, NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
 import { errorFields } from "@/app/lib/utils/errorFields";
+import { hashOtp, reserveOtpAttempt, resetOtpAttempts } from "@/app/lib/utils/otpGuard";
 
-// Brute-force guard: a 6-digit code has only 900k values and lives 10 minutes.
-// After MAX_FAILED_ATTEMPTS wrong guesses for an email, every pending code for
-// it is burned and the user must request a new one. In-memory is enough for a
-// single Node instance; move to a DB column if this ever runs multi-instance.
-const MAX_FAILED_ATTEMPTS = 5;
-const failedAttempts = new Map<string, number>();
+// Brute-force guard (app/lib/utils/otpGuard.ts): each guess is counted BEFORE
+// it is checked, so parallel requests can't test more than MAX_OTP_ATTEMPTS
+// codes. When the limit is reached every pending code for the email is burned
+// and the user must request a new one.
 
 export async function POST(req: NextRequest) {
     try {
@@ -37,31 +36,37 @@ export async function POST(req: NextRequest) {
         }
 
 
-        // find valid otp
+        const key = email.toLowerCase();
+
+        // Reserve this guess before any await (see otpGuard.ts).
+        const attempt = reserveOtpAttempt(key);
+        const tooMany = () => NextResponse.json(
+            {
+                success: false,
+                message: "Too many incorrect attempts. Please request a new OTP.",
+            },
+            { status: 429 }
+        );
+        if (!attempt.allowed) {
+            await prisma.otp.deleteMany({ where: { email: key, verified: false } });
+            return tooMany();
+        }
+
+        // find valid otp (stored as an HMAC, never in plain text)
         const otpRecord = await prisma.otp.findFirst({
             where: {
-                email: email.toLowerCase(),
-                otp,
+                email: key,
+                otp: hashOtp(key, String(otp)),
                 verified: false,
                 expiresAt: { gt: new Date() },
             },
         })
 
         if (!otpRecord) {
-            const key = email.toLowerCase();
-            const failures = (failedAttempts.get(key) ?? 0) + 1;
-            if (failures >= MAX_FAILED_ATTEMPTS) {
-                failedAttempts.delete(key);
+            if (attempt.last) {
                 await prisma.otp.deleteMany({ where: { email: key, verified: false } });
-                return NextResponse.json(
-                    {
-                        success: false,
-                        message: "Too many incorrect attempts. Please request a new OTP.",
-                    },
-                    { status: 429 }
-                );
+                return tooMany();
             }
-            failedAttempts.set(key, failures);
             return NextResponse.json(
                 {
                     success: false,
@@ -71,19 +76,28 @@ export async function POST(req: NextRequest) {
             );
         }
 
-        failedAttempts.delete(String(email).toLowerCase());
-
         // Mark OTP as verified and extend its expiry to match the reset token,
         // so reset-password gets the full 15 minutes instead of whatever was
-        // left of the original 10-minute OTP window.
+        // left of the original 10-minute OTP window. Only an unverified code
+        // can be claimed, so two parallel correct requests can't both use it.
         const RESET_WINDOW_MINUTES = 15;
-        await prisma.otp.update({
-            where: { id: otpRecord.id },
+        const claimed = await prisma.otp.updateMany({
+            where: { id: otpRecord.id, verified: false },
             data: {
                 verified: true,
                 expiresAt: new Date(Date.now() + RESET_WINDOW_MINUTES * 60 * 1000),
             },
         });
+        if (claimed.count === 0) {
+            return NextResponse.json(
+                {
+                    success: false,
+                    message: "Invalid or expired OTP",
+                },
+                { status: 400 }
+            );
+        }
+        resetOtpAttempts(key);
 
         // Generate reset token (valid for 15 minutes)
         const resetToken = jwt.sign({
@@ -92,7 +106,7 @@ export async function POST(req: NextRequest) {
             type: "password_reset",
         },
             process.env.JWT_SECRET!,
-            { expiresIn: "15m" }
+            { expiresIn: "15m", audience: "password-reset", algorithm: "HS256" }
         )
 
         // Set reset token in HTTP-only cookie

@@ -45,7 +45,10 @@ export async function POST(req: NextRequest) {
         // verfy and decode jwt token
         let decoded: jwt.JwtPayload;
         try {
-            decoded = jwt.verify(resetToken, process.env.JWT_SECRET!) as jwt.JwtPayload
+            decoded = jwt.verify(resetToken, process.env.JWT_SECRET!, {
+                algorithms: ["HS256"],
+                audience: "password-reset",
+            }) as jwt.JwtPayload
         } catch {
             return NextResponse.json(
                 {

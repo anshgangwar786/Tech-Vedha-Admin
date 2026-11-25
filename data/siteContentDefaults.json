@@ -946,31 +946,31 @@
       "linkHref": "/#services"
     },
     "company": {
-      "city": "India · city to add",
-      "address": "Office address to add",
-      "addressShort": "Address to add",
-      "hours": "Working hours to add",
-      "mapsQuery": "Tech Vedha India",
+      "city": "New Delhi, India",
+      "address": "2nd Floor, Sample Tower, Connaught Place, New Delhi 110001",
+      "addressShort": "Connaught Place, New Delhi",
+      "hours": "Mon–Sat · 10:00 AM – 7:00 PM IST",
+      "mapsQuery": "Connaught Place, New Delhi",
       "registration": [
         {
           "label": "Registered name",
-          "value": null
+          "value": "Tech Vedha Private Limited"
         },
         {
           "label": "GSTIN",
-          "value": null
+          "value": "07AAAAA0000A0Z0"
         },
         {
           "label": "UDYAM / MSME",
-          "value": null
+          "value": "UDYAM-DL-00-0000000"
         },
         {
           "label": "CIN",
-          "value": null
+          "value": "U00000DL0000PTC000000"
         },
         {
           "label": "Certifications",
-          "value": null
+          "value": "Shared on request"
         }
       ]
     },
