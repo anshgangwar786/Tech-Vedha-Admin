@@ -584,13 +584,13 @@ export default function ForgotPasswordPage() {
               >
                 {showConfirmPassword ? <EyeOff size={16} /> : <Eye size={16} />}
               </button>
-            </div>
-
-            {newPassword &&
-              confirmPassword &&
-              newPassword !== confirmPassword && (
-                <p className="text-xs text-destructive">Passwords do not match</p>
+              {/* Sits in the gap above the button, so the card doesn't grow when it appears. */}
+              {newPassword && confirmPassword && newPassword !== confirmPassword && (
+                <p role="alert" className="absolute top-full left-0 mt-1 text-xs leading-4 text-destructive">
+                  Passwords do not match
+                </p>
               )}
+            </div>
 
             <button
               type="submit"

@@ -7,7 +7,11 @@ const SMTP_PASSWORD = process.env.SMTP_PASSWORD;
 const SMTP_FROM = process.env.SMTP_FROM || SMTP_USER;
 
 // requireTLS aborts if STARTTLS can't be negotiated (no plaintext fallback).
+// pool reuses the SMTP connection on a warm instance instead of a new TLS
+// handshake + login per email.
 const transporter = nodemailer.createTransport({
+  pool: true,
+  maxConnections: 2,
   host: process.env.SMTP_HOST || "smtp.gmail.com",
   port: parseInt(process.env.SMTP_PORT || "587"),
   secure: process.env.SMTP_SECURE === "true",

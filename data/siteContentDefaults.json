@@ -29,272 +29,514 @@
         "label": "Contact",
         "href": "/contact"
       }
-    ]
+    ],
+    "header": {
+      "ctaLabel": "Start a project",
+      "servicesLabel": "Services",
+      "servicesNote": "Why manage {count} vendors? One partner designs, builds, secures and markets it.",
+      "servicesLinkLabel": "See how it fits together",
+      "servicesLinkHref": "/#why",
+      "whatsappLabel": "WhatsApp",
+      "emailLabel": "Email"
+    },
+    "footer": {
+      "text": "Your trusted partner for complete IT solutions.",
+      "servicesTitle": "Services",
+      "companyTitle": "Company",
+      "contactTitle": "Contact"
+    },
+    "whatsappButtonLabel": "Chat on WhatsApp",
+    "enquirySent": {
+      "title": "Enquiry sent",
+      "text": "Thank you. One person from our team will reply with next steps, and a written plan follows the discovery call.",
+      "homeLabel": "Back to home",
+      "closeLabel": "Close"
+    },
+    "notFound": {
+      "eyebrow": "Error 404",
+      "titleLead": "This page isn't",
+      "titleAccent": "on the blueprint.",
+      "intro": "The link may be old or mistyped. Head back home, or tell us what you were looking for.",
+      "primaryCta": {
+        "label": "Start a project",
+        "href": "/contact"
+      },
+      "secondaryCta": {
+        "label": "Back to home",
+        "href": "/"
+      }
+    },
+    "sitemapPage": {
+      "eyebrow": "Every page, one place",
+      "title": "Sitemap",
+      "pagesTitle": "Pages",
+      "servicesTitle": "Services",
+      "homeTitle": "On the homepage",
+      "comingSoon": "Full page coming soon.",
+      "pages": [
+        {
+          "path": "/",
+          "title": "Home",
+          "description": "One IT partner for marketing, apps, CAD and software — how the four services fit together."
+        },
+        {
+          "path": "/about",
+          "title": "About",
+          "description": "Why Tech Vedha exists, who we work with and how we work."
+        },
+        {
+          "path": "/contact",
+          "title": "Contact",
+          "description": "Send an enquiry, email us or chat on WhatsApp."
+        }
+      ],
+      "homeSections": [
+        {
+          "href": "/#services",
+          "title": "Services"
+        },
+        {
+          "href": "/#why",
+          "title": "Why Tech Vedha"
+        },
+        {
+          "href": "/#security",
+          "title": "Security"
+        },
+        {
+          "href": "/#process",
+          "title": "How we work"
+        },
+        {
+          "href": "/#work",
+          "title": "Client stories"
+        },
+        {
+          "href": "/#faq",
+          "title": "FAQ"
+        },
+        {
+          "href": "/#contact",
+          "title": "Start a project"
+        }
+      ]
+    }
   },
   "home": {
-    "securityLayers": [
-      {
-        "number": "01",
-        "title": "Data protection",
-        "summary": "Your records stay encrypted, backed up and private.",
-        "points": [
-          "Encrypted at rest and in transit",
-          "Verified backups",
-          "Role-based access"
-        ]
+    "hero": {
+      "eyebrow": "IT solutions · India and abroad",
+      "titleLead": "Build for",
+      "titleAccent": "Tomorrow.",
+      "intro": "Design, software, apps, security and marketing — one partner instead of four vendors.",
+      "primaryCta": {
+        "label": "Start a project",
+        "href": "/#contact"
       },
-      {
-        "number": "02",
-        "title": "Network security",
-        "summary": "Only the right traffic reaches your systems.",
-        "points": [
-          "Managed firewall",
-          "Admin access over VPN",
-          "Unused ports closed"
-        ]
+      "secondaryCta": {
+        "label": "Explore services",
+        "href": "/#services"
       },
-      {
-        "number": "03",
-        "title": "Threat detection",
-        "summary": "Suspicious activity is spotted and stopped early.",
-        "points": [
-          "Continuous monitoring",
-          "Instant alerts",
-          "Scheduled malware scans"
-        ]
+      "strip": "Digital Marketing · App Development · CAD Design · Software and Security",
+      "ringText": "TECH VEDHA • BUILD FOR TOMORROW • "
+    },
+    "blueprint": {
+      "eyebrow": "The digital blueprint",
+      "title": [
+        "Drawn as a blueprint.",
+        "Built as one."
+      ],
+      "intro": "{count} wings, assembled from the foundation up, so every part fits the next.",
+      "tagline": "ONE STRUCTURE · ONE TEAM"
+    },
+    "services": {
+      "title": [
+        "{count} wings.",
+        "One blueprint."
+      ],
+      "intro": "{count} services engineered as a single, connected system — so nothing gets lost between vendors.",
+      "exploreLabel": "Explore"
+    },
+    "why": {
+      "eyebrow": "Why Tech Vedha",
+      "heading": "All of it, from one partner.",
+      "text": "We design your space, build its software, launch its app, secure its data and market it — across India and abroad.",
+      "primaryCta": {
+        "label": "Start a project",
+        "href": "/#contact"
       },
-      {
-        "number": "04",
-        "title": "Compliance and risk",
-        "summary": "Policies and audit trails keep you review-ready.",
-        "points": [
-          "Access policies",
-          "Audit trail on every change",
-          "Regular risk reviews"
-        ]
+      "secondaryCta": {
+        "label": "How we work",
+        "href": "/#process"
+      },
+      "promises": [
+        "One team",
+        "One timeline",
+        "One invoice",
+        "One point of contact"
+      ]
+    },
+    "security": {
+      "eyebrow": "Security",
+      "title": [
+        "Security in",
+        "every layer."
+      ],
+      "intro": "Every build ships with protection designed in, not bolted on — four layers, working together.",
+      "layers": [
+        {
+          "number": "01",
+          "title": "Data protection",
+          "summary": "Your records stay encrypted, backed up and private.",
+          "points": [
+            "Encrypted at rest and in transit",
+            "Verified backups",
+            "Role-based access"
+          ]
+        },
+        {
+          "number": "02",
+          "title": "Network security",
+          "summary": "Only the right traffic reaches your systems.",
+          "points": [
+            "Managed firewall",
+            "Admin access over VPN",
+            "Unused ports closed"
+          ]
+        },
+        {
+          "number": "03",
+          "title": "Threat detection",
+          "summary": "Suspicious activity is spotted and stopped early.",
+          "points": [
+            "Continuous monitoring",
+            "Instant alerts",
+            "Scheduled malware scans"
+          ]
+        },
+        {
+          "number": "04",
+          "title": "Compliance and risk",
+          "summary": "Policies and audit trails keep you review-ready.",
+          "points": [
+            "Access policies",
+            "Audit trail on every change",
+            "Regular risk reviews"
+          ]
+        }
+      ]
+    },
+    "process": {
+      "eyebrow": "Process",
+      "title": [
+        "From idea to launch,",
+        "and beyond."
+      ],
+      "intro": "Six clear steps, with something you can review at every one.",
+      "exampleLabel": "Example project · Showroom app",
+      "nextLabel": "Next",
+      "restartLabel": "Start over",
+      "stepCounter": "Step {n} of {total}",
+      "steps": [
+        {
+          "id": "discover",
+          "number": "01",
+          "title": "Discover",
+          "summary": "We learn your goals, your customers and what the project must do.",
+          "deliverables": [
+            "Project brief",
+            "Scope",
+            "Timeline"
+          ]
+        },
+        {
+          "id": "design",
+          "number": "02",
+          "title": "Design",
+          "summary": "Plans, screens and architecture you review before anything is built.",
+          "deliverables": [
+            "Wireframes",
+            "UI design",
+            "Architecture"
+          ]
+        },
+        {
+          "id": "build",
+          "number": "03",
+          "title": "Build",
+          "summary": "Clean, reviewed code and a secure setup from day one.",
+          "deliverables": [
+            "Development",
+            "Code review",
+            "Secure setup"
+          ]
+        },
+        {
+          "id": "test",
+          "number": "04",
+          "title": "Test",
+          "summary": "Rigorous QA across devices and real-world use before launch.",
+          "deliverables": [
+            "Device testing",
+            "Performance",
+            "Security checks"
+          ]
+        },
+        {
+          "id": "launch",
+          "number": "05",
+          "title": "Launch",
+          "summary": "Deployment, store release and go-live, handled end to end.",
+          "deliverables": [
+            "Deployment",
+            "Play Store",
+            "App Store"
+          ]
+        },
+        {
+          "id": "support",
+          "number": "06",
+          "title": "Support",
+          "summary": "Ongoing updates, fixes and care after launch.",
+          "deliverables": [
+            "Updates",
+            "Monitoring",
+            "Support"
+          ]
+        }
+      ],
+      "banner": {
+        "heading": "Ready for step one?",
+        "text": "Tell us about your project and we'll start with a discovery call.",
+        "primaryCta": {
+          "label": "Start a project",
+          "href": "/#contact"
+        }
       }
-    ],
-    "processSteps": [
-      {
-        "id": "discover",
-        "number": "01",
-        "title": "Discover",
-        "summary": "We learn your goals, your customers and what the project must do.",
-        "deliverables": [
-          "Project brief",
-          "Scope",
-          "Timeline"
+    },
+    "pillars": {
+      "eyebrow": "Why Tech Vedha",
+      "title": [
+        "Built on four",
+        "pillars of trust."
+      ],
+      "intro": "Four promises behind every project.",
+      "clientCentric": {
+        "brief": "We need billing for our [three stores], with [staff logins] and [live stock].",
+        "briefCredit": "— your brief",
+        "title": "Client-centric",
+        "text": "Built around how your business works — no templates.",
+        "exampleLabel": "Example brief",
+        "features": [
+          "GST billing",
+          "Multi-store setup",
+          "Role-based logins",
+          "Real-time stock sync"
         ]
       },
-      {
-        "id": "design",
-        "number": "02",
-        "title": "Design",
-        "summary": "Plans, screens and architecture you review before anything is built.",
-        "deliverables": [
-          "Wireframes",
-          "UI design",
-          "Architecture"
-        ]
-      },
-      {
-        "id": "build",
-        "number": "03",
-        "title": "Build",
-        "summary": "Clean, reviewed code and a secure setup from day one.",
-        "deliverables": [
-          "Development",
+      "quality": {
+        "gates": [
           "Code review",
-          "Secure setup"
-        ]
-      },
-      {
-        "id": "test",
-        "number": "04",
-        "title": "Test",
-        "summary": "Rigorous QA across devices and real-world use before launch.",
-        "deliverables": [
+          "Automated tests",
           "Device testing",
           "Performance",
-          "Security checks"
-        ]
+          "Security scan",
+          "Accessibility"
+        ],
+        "badge": "Ready to launch",
+        "title": "Quality and reliability",
+        "text": "Every release passes six gates before it ships."
       },
-      {
-        "id": "launch",
-        "number": "05",
-        "title": "Launch",
-        "summary": "Deployment, store release and go-live, handled end to end.",
-        "deliverables": [
-          "Deployment",
-          "Play Store",
-          "App Store"
-        ]
+      "scalable": {
+        "stages": [
+          "1 store",
+          "City",
+          "India",
+          "Abroad"
+        ],
+        "title": "Scalable",
+        "text": "Grows from one store to many countries."
       },
-      {
-        "id": "support",
-        "number": "06",
-        "title": "Support",
-        "summary": "Ongoing updates, fixes and care after launch.",
-        "deliverables": [
-          "Updates",
-          "Monitoring",
-          "Support"
-        ]
+      "secure": {
+        "title": "Secure and compliant",
+        "text": "Your data is protected in every layer."
       }
-    ],
-    "qualityGates": [
-      "Code review",
-      "Automated tests",
-      "Device testing",
-      "Performance",
-      "Security scan",
-      "Accessibility"
-    ],
-    "stories": [
-      {
-        "id": "instagram-ads",
-        "column": 0,
-        "kind": "quote",
-        "category": "Marketing",
-        "quote": "Our Instagram ads finally reach people near the store, and enquiries now come straight into WhatsApp. We reply from one place instead of juggling DMs, calls and forms.",
-        "role": "Owner",
-        "company": "Home décor store",
-        "avatar": "/home/avatars/homedecor.jpg"
-      },
-      {
-        "id": "app-launch",
-        "column": 0,
-        "kind": "photo",
-        "category": "Apps",
-        "quote": "Our Android and iOS apps went live together, and updates still keep coming.",
-        "role": "Founder",
-        "company": "Grocery delivery startup",
-        "photo": "/home/stories/app-launch.jpg",
-        "photoAlt": "Founder of a grocery delivery startup in their warehouse"
-      },
-      {
-        "id": "four-to-one",
-        "column": 0,
-        "kind": "stat",
-        "category": "Apps",
-        "stat": "4 → 1",
-        "statLabel": "vendors to manage",
-        "quote": "Design, app, software and marketing — all handled by one team with one invoice.",
-        "role": "Owner",
-        "company": "Multi-brand showroom",
-        "avatar": "/home/avatars/showroom.jpg"
-      },
-      {
-        "id": "3d-showroom",
-        "column": 1,
-        "kind": "photo",
-        "category": "CAD",
-        "quote": "The 3D views let us walk the showroom before a single partition went up.",
-        "role": "Proprietor",
-        "company": "Furniture showroom",
-        "photo": "/home/stories/3d-showroom.jpg",
-        "photoAlt": "Furniture showroom owner holding a tablet with a 3D floor plan"
-      },
-      {
-        "id": "floor-plans",
-        "column": 1,
-        "kind": "featured",
-        "category": "CAD",
-        "quote": "We came for floor plans and stayed for everything else. The same team drew our villas in 2D and 3D, prepared the BOQ, built the booking app and ran the launch campaign. One WhatsApp group replaced four vendors and endless follow-ups.",
-        "role": "Director",
-        "company": "Residential builder",
-        "avatar": "/home/avatars/builder.jpg"
-      },
-      {
-        "id": "clinic-app",
-        "column": 1,
-        "kind": "quote",
-        "category": "Apps",
-        "quote": "Patients book appointments in the app and get WhatsApp reminders. The team tested it on every phone our patients use before launch.",
-        "role": "Clinic administrator",
-        "company": "Healthcare clinic",
-        "avatar": "/home/avatars/clinic.jpg"
-      },
-      {
-        "id": "three-stores",
-        "column": 2,
-        "kind": "stat",
-        "category": "Software",
-        "stat": "3 stores",
-        "statLabel": "on one billing system",
-        "quote": "Billing, stock and staff logins run on one system now — no more end-of-day spreadsheets.",
-        "role": "Managing partner",
-        "company": "Electronics retail chain",
-        "avatar": "/home/avatars/retail.jpg"
-      },
-      {
-        "id": "subscription",
-        "column": 2,
-        "kind": "quote",
-        "category": "Software",
-        "quote": "We chose the subscription model because our processes keep changing. Every new requirement gets added without a new contract, and the security checks run in the background.",
-        "role": "Operations head",
-        "company": "Manufacturing unit",
-        "avatar": "/home/avatars/manufacturing.jpg"
-      },
-      {
-        "id": "cad-drawings",
-        "column": 2,
-        "kind": "quote",
-        "category": "CAD",
-        "quote": "They turn our sketches into accurate CAD drawings quickly, and the bill of quantities matches the drawings line for line, which makes contractor quotes far easier.",
-        "role": "Architect",
-        "company": "Interior design studio",
-        "avatar": "/home/avatars/studio.jpg"
-      },
-      {
-        "id": "youtube-seo",
-        "column": 2,
-        "kind": "photo",
-        "category": "Marketing",
-        "quote": "Our YouTube shorts and Google ranking now bring new customers in every week.",
-        "role": "Owner",
-        "company": "Clothing boutique",
-        "photo": "/home/stories/youtube-seo.jpg",
-        "photoAlt": "Clothing boutique owner smiling in their store"
+    },
+    "stories": {
+      "eyebrow": "Client stories",
+      "title": [
+        "In our clients'",
+        "own words."
+      ],
+      "showMore": "Show more stories",
+      "note": "Sample copy for review — replace with approved client stories, names and photos before launch.",
+      "items": [
+        {
+          "id": "instagram-ads",
+          "column": 0,
+          "kind": "quote",
+          "category": "Marketing",
+          "quote": "Our Instagram ads finally reach people near the store, and enquiries now come straight into WhatsApp. We reply from one place instead of juggling DMs, calls and forms.",
+          "role": "Owner",
+          "company": "Home décor store",
+          "avatar": "/home/avatars/homedecor.jpg"
+        },
+        {
+          "id": "app-launch",
+          "column": 0,
+          "kind": "photo",
+          "category": "Apps",
+          "quote": "Our Android and iOS apps went live together, and updates still keep coming.",
+          "role": "Founder",
+          "company": "Grocery delivery startup",
+          "photo": "/home/stories/app-launch.jpg",
+          "photoAlt": "Founder of a grocery delivery startup in their warehouse"
+        },
+        {
+          "id": "four-to-one",
+          "column": 0,
+          "kind": "stat",
+          "category": "Apps",
+          "stat": "4 → 1",
+          "statLabel": "vendors to manage",
+          "quote": "Design, app, software and marketing — all handled by one team with one invoice.",
+          "role": "Owner",
+          "company": "Multi-brand showroom",
+          "avatar": "/home/avatars/showroom.jpg"
+        },
+        {
+          "id": "3d-showroom",
+          "column": 1,
+          "kind": "photo",
+          "category": "CAD",
+          "quote": "The 3D views let us walk the showroom before a single partition went up.",
+          "role": "Proprietor",
+          "company": "Furniture showroom",
+          "photo": "/home/stories/3d-showroom.jpg",
+          "photoAlt": "Furniture showroom owner holding a tablet with a 3D floor plan"
+        },
+        {
+          "id": "floor-plans",
+          "column": 1,
+          "kind": "featured",
+          "category": "CAD",
+          "quote": "We came for floor plans and stayed for everything else. The same team drew our villas in 2D and 3D, prepared the BOQ, built the booking app and ran the launch campaign. One WhatsApp group replaced four vendors and endless follow-ups.",
+          "role": "Director",
+          "company": "Residential builder",
+          "avatar": "/home/avatars/builder.jpg"
+        },
+        {
+          "id": "clinic-app",
+          "column": 1,
+          "kind": "quote",
+          "category": "Apps",
+          "quote": "Patients book appointments in the app and get WhatsApp reminders. The team tested it on every phone our patients use before launch.",
+          "role": "Clinic administrator",
+          "company": "Healthcare clinic",
+          "avatar": "/home/avatars/clinic.jpg"
+        },
+        {
+          "id": "three-stores",
+          "column": 2,
+          "kind": "stat",
+          "category": "Software",
+          "stat": "3 stores",
+          "statLabel": "on one billing system",
+          "quote": "Billing, stock and staff logins run on one system now — no more end-of-day spreadsheets.",
+          "role": "Managing partner",
+          "company": "Electronics retail chain",
+          "avatar": "/home/avatars/retail.jpg"
+        },
+        {
+          "id": "subscription",
+          "column": 2,
+          "kind": "quote",
+          "category": "Software",
+          "quote": "We chose the subscription model because our processes keep changing. Every new requirement gets added without a new contract, and the security checks run in the background.",
+          "role": "Operations head",
+          "company": "Manufacturing unit",
+          "avatar": "/home/avatars/manufacturing.jpg"
+        },
+        {
+          "id": "cad-drawings",
+          "column": 2,
+          "kind": "quote",
+          "category": "CAD",
+          "quote": "They turn our sketches into accurate CAD drawings quickly, and the bill of quantities matches the drawings line for line, which makes contractor quotes far easier.",
+          "role": "Architect",
+          "company": "Interior design studio",
+          "avatar": "/home/avatars/studio.jpg"
+        },
+        {
+          "id": "youtube-seo",
+          "column": 2,
+          "kind": "photo",
+          "category": "Marketing",
+          "quote": "Our YouTube shorts and Google ranking now bring new customers in every week.",
+          "role": "Owner",
+          "company": "Clothing boutique",
+          "photo": "/home/stories/youtube-seo.jpg",
+          "photoAlt": "Clothing boutique owner smiling in their store"
+        }
+      ]
+    },
+    "faq": {
+      "eyebrow": "FAQ",
+      "title": [
+        "Questions,",
+        "answered."
+      ],
+      "helpTitle": "Still unsure?",
+      "helpText": "Chat with us on WhatsApp →",
+      "items": [
+        {
+          "question": "Can I hire you for just one service?",
+          "answer": "Yes. Each service is available on its own. Many clients start with one and add others as they grow."
+        },
+        {
+          "question": "Do you work with clients outside India?",
+          "answer": "Yes. We work with clients across India and abroad, with meetings and delivery handled remotely."
+        },
+        {
+          "question": "Subscription or one-time software: which suits me?",
+          "answer": "Subscription suits software whose requirements keep evolving and need ongoing support. One-time purchase suits fixed operational needs where you want complete ownership. We recommend one after understanding your requirements."
+        },
+        {
+          "question": "How long does a mobile app take to build?",
+          "answer": "It depends on scope: features, platforms and integrations. After a discovery call we share a timeline for your specific app."
+        },
+        {
+          "question": "What does a CAD project include?",
+          "answer": "Accurate 2D and 3D drawings, smart space planning and a bill of quantities (BOQ), for residential, retail, commercial and industrial projects."
+        },
+        {
+          "question": "Which marketing channels do you manage?",
+          "answer": "SEO, Meta (Facebook and Instagram) ads, YouTube, email and WhatsApp marketing."
+        },
+        {
+          "question": "How do you keep my data secure?",
+          "answer": "Security is built into every layer: data protection, network security, threat detection and prevention, and compliance and risk management."
+        }
+      ]
+    },
+    "contact": {
+      "eyebrow": "Let's talk",
+      "heading": "Let's build your success together.",
+      "intro": "Tell us what you need. We'll reply with a plan.",
+      "emailLabel": "Email",
+      "whatsappLabel": "WhatsApp",
+      "whatsappValue": "Chat with us",
+      "form": {
+        "nameLabel": "Name",
+        "phoneLabel": "Phone / WhatsApp",
+        "phonePlaceholder": "+91 98765 43210",
+        "emailLabel": "Email",
+        "serviceLabel": "Service",
+        "servicePlaceholder": "Select a service",
+        "messageLabel": "Message",
+        "messagePlaceholder": "A few lines about your project",
+        "submitLabel": "Send enquiry"
       }
-    ],
-    "faqs": [
-      {
-        "question": "Can I hire you for just one service?",
-        "answer": "Yes. Each service is available on its own. Many clients start with one and add others as they grow."
-      },
-      {
-        "question": "Do you work with clients outside India?",
-        "answer": "Yes. We work with clients across India and abroad, with meetings and delivery handled remotely."
-      },
-      {
-        "question": "Subscription or one-time software: which suits me?",
-        "answer": "Subscription suits software whose requirements keep evolving and need ongoing support. One-time purchase suits fixed operational needs where you want complete ownership. We recommend one after understanding your requirements."
-      },
-      {
-        "question": "How long does a mobile app take to build?",
-        "answer": "It depends on scope: features, platforms and integrations. After a discovery call we share a timeline for your specific app."
-      },
-      {
-        "question": "What does a CAD project include?",
-        "answer": "Accurate 2D and 3D drawings, smart space planning and a bill of quantities (BOQ), for residential, retail, commercial and industrial projects."
-      },
-      {
-        "question": "Which marketing channels do you manage?",
-        "answer": "SEO, Meta (Facebook and Instagram) ads, YouTube, email and WhatsApp marketing."
-      },
-      {
-        "question": "How do you keep my data secure?",
-        "answer": "Security is built into every layer: data protection, network security, threat detection and prevention, and compliance and risk management."
-      }
-    ],
-    "promises": [
-      "One team",
-      "One timeline",
-      "One invoice",
-      "One point of contact"
-    ]
+    }
   },
   "about": {
     "seo": {
@@ -307,6 +549,22 @@
         "CAD, software, apps and marketing",
         "IT services for retail and showrooms"
       ]
+    },
+    "hero": {
+      "eyebrow": "About Tech Vedha",
+      "titleLead": "One partner.",
+      "titleAccent": "Built for tomorrow.",
+      "intro": "Tech Vedha is an IT company that plans your space, builds its software and apps, secures its data and markets it — with one team, for businesses in India and abroad.",
+      "primaryCta": {
+        "label": "Start a project",
+        "href": "/#contact"
+      },
+      "secondaryCta": {
+        "label": "How it connects",
+        "href": "#how-it-connects"
+      },
+      "panelLabel": "What we do · {count} wings",
+      "panelBadge": "One team"
     },
     "wingTags": {
       "marketing": [
@@ -347,6 +605,17 @@
         "value": "Android and iOS"
       }
     ],
+    "whyWeExist": {
+      "eyebrow": "Why we exist",
+      "title": [
+        "Four vendors. Four timelines.",
+        "One headache."
+      ],
+      "intro": "Most businesses juggle a designer, a developer, an app agency and a marketer. We started Tech Vedha to replace all four with one team.",
+      "topicHeader": "What it takes",
+      "vendorsHeader": "Four separate vendors",
+      "usHeader": "Tech Vedha"
+    },
     "vendorComparison": [
       {
         "topic": "Who you call",
@@ -394,6 +663,14 @@
         "us": "One team owns the fix"
       }
     ],
+    "whoWeWorkWith": {
+      "eyebrow": "Who we work with",
+      "title": [
+        "Built for businesses",
+        "with a space to run."
+      ],
+      "intro": "From a single home to an industrial site — and the shops, showrooms and teams in between."
+    },
     "audiences": [
       {
         "title": "Retail and showrooms",
@@ -435,6 +712,24 @@
         ]
       }
     ],
+    "howItConnects": {
+      "eyebrow": "How everything connects",
+      "title": [
+        "One loop.",
+        "Every wing."
+      ],
+      "intro": "Each service feeds the next. Pick a step to see what it covers.",
+      "coversLabel": "What it covers",
+      "exampleLabel": "Example: a new showroom",
+      "exampleShortLabel": "Example",
+      "examplePanelLabel": "Example · New showroom",
+      "centerLabel": [
+        "Client",
+        "success"
+      ],
+      "stepTab": "Step {n}",
+      "stepCounter": "Step {n} of {total}"
+    },
     "loopSteps": [
       {
         "service": "cad",
@@ -522,6 +817,14 @@
       }
     ],
     "loopExampleDetail": "What this step would produce for one example project: a new retail showroom.",
+    "howWeWork": {
+      "eyebrow": "How we work",
+      "title": [
+        "Four things we",
+        "always do."
+      ],
+      "intro": "However big the project, and whichever wing it starts in."
+    },
     "principles": [
       {
         "title": "One point of contact",
@@ -540,6 +843,16 @@
         "detail": "Updates, fixes and support from the same team that built it."
       }
     ],
+    "missionVision": {
+      "eyebrow": "Mission and vision",
+      "title": [
+        "What we’re here",
+        "to do."
+      ],
+      "intro": "One purpose and one direction behind every project, in every wing.",
+      "missionLabel": "Mission",
+      "visionLabel": "Vision"
+    },
     "mission": {
       "statement": "Give businesses one trusted partner for complete IT solutions.",
       "detail": "Space, software, apps, security and marketing — planned and delivered by the same team."
@@ -564,6 +877,73 @@
         "digital marketing agency contact",
         "CAD design and planning enquiry"
       ]
+    },
+    "hero": {
+      "eyebrow": "Contact Tech Vedha · For businesses in India and abroad",
+      "titleLead": "Tell us what you’re building.",
+      "titleAccent": "We’ll plan it with you.",
+      "intro": "Send your project details once. One person from our team replies with next steps, and a written plan follows the discovery call."
+    },
+    "brandCard": {
+      "title": "One partner. Built for tomorrow.",
+      "text": "Space, software, apps, security and marketing — for businesses in India and abroad.",
+      "regionLabel": "India and abroad"
+    },
+    "form": {
+      "title": "Send an enquiry",
+      "requiredNote": "Fields marked * are required.",
+      "step1": "What you need",
+      "servicesLabel": "What do you need?",
+      "otherServiceLabel": "Others",
+      "otherServicePlaceholder": "Tell us the service you need",
+      "step2": "About you",
+      "nameLabel": "Your name",
+      "namePlaceholder": "Full name",
+      "companyLabel": "Company",
+      "companyPlaceholder": "Business or brand name",
+      "phoneLabel": "Phone / WhatsApp",
+      "phonePlaceholder": "98765 43210",
+      "emailLabel": "Email",
+      "emailPlaceholder": "you@company.com",
+      "cityLabel": "City / country",
+      "cityPlaceholder": "Where is the business?",
+      "step3": "Timing and details",
+      "timeframeLabel": "When do you want to start?",
+      "timeframePlaceholder": "Select a timeframe",
+      "messageLabel": "Tell us about the project (optional)",
+      "messagePlaceholder": "Goals, current setup, anything we should know…",
+      "submitLabel": "Send enquiry",
+      "whatsappLabel": "Prefer WhatsApp? Send these details there",
+      "whatsappShortLabel": "Send on WhatsApp instead",
+      "note": "One person from our team replies with next steps. No spam, no sales calls."
+    },
+    "channelsSection": {
+      "eyebrow": "Other ways to reach us",
+      "title": "Pick the channel",
+      "highlight": "that suits you.",
+      "intro": "Every channel reaches the same Tech Vedha team — and the same person who will run your project."
+    },
+    "nextStepsSection": {
+      "eyebrow": "After you enquire",
+      "title": "What happens next",
+      "stepLabel": "Step {n}"
+    },
+    "companySection": {
+      "eyebrow": "Office and company details",
+      "title": "Find us, and everything",
+      "highlight": "procurement needs.",
+      "intro": "Vendor registration paperwork is shared on request.",
+      "mapPinTitle": "Tech Vedha office",
+      "directionsLabel": "Get directions",
+      "officeLabel": "Our office",
+      "whatsappLink": "Prefer WhatsApp? Message us anytime",
+      "procurementTitle": "For procurement teams",
+      "missingValue": "To add"
+    },
+    "exploreBand": {
+      "text": "Already know which service you need?",
+      "linkLabel": "Explore services",
+      "linkHref": "/#services"
     },
     "company": {
       "city": "India · city to add",
@@ -815,7 +1195,8 @@
           }
         ]
       }
-    ]
+    ],
+    "added": []
   },
   "service-apps": {
     "id": "apps",
@@ -840,6 +1221,18 @@
         "Android",
         "iOS"
       ]
+    },
+    "labels": {
+      "coverage": "What we cover",
+      "coverageItemCta": "View details",
+      "coverageHelpTitle": "Not sure where to start?",
+      "coverageHelpCta": "Talk to us",
+      "whyUs": "Why Tech Vedha",
+      "deliverables": "What you get",
+      "deliverablesCta": "Explore",
+      "useCases": "Who it's for",
+      "process": "How it works",
+      "toolsWord": "tools"
     },
     "coverage": {
       "title": [
@@ -1288,6 +1681,18 @@
         "Search",
         "Social"
       ]
+    },
+    "labels": {
+      "coverage": "What we cover",
+      "coverageItemCta": "View details",
+      "coverageHelpTitle": "Not sure where to start?",
+      "coverageHelpCta": "Talk to us",
+      "whyUs": "Why Tech Vedha",
+      "deliverables": "What you get",
+      "deliverablesCta": "Explore",
+      "useCases": "Who it's for",
+      "process": "How it works",
+      "toolsWord": "tools"
     },
     "coverage": {
       "title": [

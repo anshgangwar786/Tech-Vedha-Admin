@@ -128,12 +128,13 @@ save   admin: PUT /api/site-pages/<key>  (content.edit)
 reset  admin: DELETE /api/site-pages/<key> → row removed → same revalidate → web shows bundled copy
 ```
 
-Locked paths (kept from the bundled copy, hidden in the editor; lists containing them keep their length):
+Locked paths (kept from the bundled copy, hidden in the editor; lists containing them keep their length —
+enforced by mergeContent on both sides, not only by the editor):
 
 | Key | Locked |
 |---|---|
-| `site` | none |
-| `home` | `processSteps[].id`, `stories[].id`, `stories[].kind` |
+| `site` | `sitemapPage.pages[].path`, `sitemapPage.homeSections[].href` |
+| `home` | `process.steps[].id`, `stories.items[].id`, `stories.items[].kind` |
 | `about` | `audiences[].icon`, `loopSteps[].service` |
 | `contact` | `quickContacts[].icon`, `channels[].icon` |
 | `services` | `items[].id`, `items[].slug` |
@@ -258,10 +259,10 @@ Preview opens the page with the unsaved change. A test enquiry appears in Leads 
 
 ## 8. Known limits
 
-- **A few assets use the bundled brand copy, not Site & Menus**: `manifest.webmanifest` (name, description),
-  the homepage share image (`app/opengraph-image.tsx`) and the alt text of all share images read web
-  `lib/site.ts`. Changing the brand name or tagline in the admin does not change them until `lib/site.ts`
-  is updated and the site rebuilt. (The per-service share images do use the live service content.)
+- **Share-image alt text uses the bundled brand copy**: the manifest, favicon monogram and share images read
+  Site & menus live, but the share images' `alt` text is fixed at build time from web `lib/site.ts`.
+- **Every visible word is an admin field**, except screen-reader-only labels, the drawn mock-ups inside
+  illustrations (service scenes, process and security visuals) and the tool logos on service pages.
 - **Previews and the per-IP lead limit are in memory**: on serverless or multi-instance hosting they are per
   instance. The per-email/phone limit is in MySQL and always applies.
 - **The preview tab does not refresh itself**: reload it to see edits made after opening it.

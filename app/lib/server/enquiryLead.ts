@@ -8,7 +8,7 @@
 // Name, email and phone go in their columns; everything else in `formData` as
 // {"Label": value} pairs, which the Leads dashboard shows as-is.
 
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest, NextResponse, after } from "next/server";
 import type { Prisma } from "@prisma/client";
 import prisma from "@/app/lib/config/db";
 import { sendLeadNotification } from "@/app/lib/config/email";
@@ -26,7 +26,6 @@ export const ENQUIRY_LEAD_SOURCES: Record<EnquiryKind, string> = {
 const CLIENT_IP_HEADER = "x-site-client-ip";
 /** Spam trap: hidden field that people never fill in. Must match HONEYPOT_FIELD in Tech-Vedha-frontend/components/ui/Honeypot.tsx. */
 const HONEYPOT_FIELD = "tv_hp_ref";
-const NOTIFY_TIMEOUT_MS = 8000;
 
 export interface EnquiryReply {
   ok: boolean;
@@ -134,8 +133,9 @@ export async function handleEnquiry(req: NextRequest, kind: EnquiryKind) {
       },
     });
 
-    // Wait briefly so serverless hosts don't cut the email off, but never let a slow mail server delay the visitor.
-    await Promise.race([
+    // Email the admin after the response is sent: the visitor never waits on SMTP, and after() keeps
+    // serverless hosts alive until the send finishes (sendLeadNotification never throws).
+    after(() =>
       sendLeadNotification({
         name: lead.name,
         email: lead.email,
@@ -144,8 +144,7 @@ export async function handleEnquiry(req: NextRequest, kind: EnquiryKind) {
         formData,
         createdAt: lead.createdAt,
       }),
-      new Promise((resolve) => setTimeout(resolve, NOTIFY_TIMEOUT_MS)),
-    ]);
+    );
 
     return reply({ ok: true, message: "Thanks — your enquiry is in. We'll reply with next steps." });
   } catch (err) {

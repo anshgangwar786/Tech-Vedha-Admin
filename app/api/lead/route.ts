@@ -4,7 +4,7 @@ import { LeadStatus, Prisma } from "@prisma/client";
 import { sendLeadNotification } from "@/app/lib/config/email";
 import { withMongoId } from "@/app/lib/utils/serialize";
 import { getCorsHeaders } from "@/app/lib/utils/corsHeader";
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest, NextResponse, after } from "next/server";
 import { requirePermission } from "@/app/lib/utils/authorization";
 import { PERMISSIONS } from "@/app/lib/constants/permissions";
 import { JOIN_LEAD_SOURCE } from "@/utils/joinForm";
@@ -81,9 +81,9 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    // Notify the admin. Awaited (with a cap) so serverless hosts don't cut it
-    // off mid-send, but a slow/failed email never delays or fails the visitor.
-    await Promise.race([
+    // Notify the admin after the response is sent; after() keeps serverless
+    // hosts alive until it finishes, so a slow mail server never delays anyone.
+    after(() =>
       sendLeadNotification({
         name: lead.name,
         email: lead.email,
@@ -92,8 +92,7 @@ export async function POST(req: NextRequest) {
         formData: lead.formData as Record<string, string> | null,
         createdAt: lead.createdAt,
       }),
-      new Promise((resolve) => setTimeout(resolve, 8000)),
-    ]);
+    );
 
     return NextResponse.json(
       {

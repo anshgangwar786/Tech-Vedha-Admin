@@ -81,6 +81,16 @@ const LABELS: Record<string, string> = {
   whatsapp: "WhatsApp line",
   reassurance: "Reassurance line",
   honeypot: "Spam-trap label (screen readers)",
+  titleLead: "Heading (first line)",
+  titleAccent: "Heading (second line, highlighted)",
+  highlight: "Highlighted words",
+  href: "Link (page address)",
+  ctaLabel: "“Start a project” button text",
+  submitLabel: "Send button",
+  note: "Small note",
+  stepCounter: "Step counter",
+  stepLabel: "Step label",
+  stepTab: "Step label on the ring",
 };
 
 const ITEM_LABEL_KEYS = ["title", "name", "label", "text", "when", "value", "tag"];
@@ -146,6 +156,12 @@ const isResponsivePair = (v: unknown): v is PlainObject =>
 
 const multiline = (key: string, def: unknown) =>
   ["text", "intro", "subtitle", "description", "address"].includes(key) || (typeof def === "string" && def.length > 90);
+
+const IMAGE_KEYS = new Set(["avatar", "photo", "image", "logo", "thumbnail", "cover", "picture"]);
+const IMAGE_FILE = /^(\/(?!\/)|https:\/\/)\S*\.(jpe?g|png|webp|gif|avif|svg)(\?\S*)?$/i;
+
+/** A string field that holds an image path or URL: an image key name, or an image file as its default. */
+const isImagePathField = (key: string, def: string) => IMAGE_KEYS.has(key) || IMAGE_FILE.test(def);
 
 /** Reads the natural size of an image URL (keeps next/image's aspect ratio right after a swap). */
 function measureImage(src: string): Promise<{ width: number; height: number } | null> {
@@ -243,6 +259,21 @@ function Node({ ctx, path, name, value, def }: NodeProps): ReactNode {
           )}
         </div>
       </Field>
+    );
+  }
+
+  // A plain image path (story avatars and photos…): same picker as image objects, without alt/focus.
+  if (typeof def === "string" && isImagePathField(name, def)) {
+    const current = typeof value === "string" ? value : def;
+    return (
+      <ImageField
+        label={label}
+        hint={hint}
+        srcOnly
+        value={{ src: current === def ? "" : current, alt: "", focus: "center" }}
+        defaultSrc={def || undefined}
+        onChange={(next) => set(next.src || def)}
+      />
     );
   }
 
@@ -361,8 +392,10 @@ function ListNode({ ctx, path, name, value, def }: NodeProps & { def: unknown[] 
     next.splice(to, 0, item);
     set(next);
   };
-  const template = def[0];
+  // Lists that start empty (e.g. "Added services") take their item shape from the page's templates.
+  const template = def.length ? def[0] : ctx.page.templates?.[patternOf(path)];
   const simple = typeof template === "string";
+  const addLabel = ctx.page.addLabels?.[patternOf(path)] ?? `Add ${simple ? "line" : "item"}`;
 
   const controls = (i: number) => (
     <div className="flex shrink-0 items-center gap-1">
@@ -429,7 +462,7 @@ function ListNode({ ctx, path, name, value, def }: NodeProps & { def: unknown[] 
       {!fixed && template !== undefined && (
         <div className="flex items-center gap-3">
           <AddButton
-            label={`Add ${simple ? "line" : "item"}`}
+            label={addLabel}
             disabled={items.length >= MAX_LIST_LENGTH}
             onClick={() => set([...items, blankLike(template)])}
           />

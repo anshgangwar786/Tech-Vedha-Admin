@@ -2,16 +2,44 @@
 
 import { NextResponse } from "next/server";
 import prisma from "@/app/lib/config/db";
-import { mergeContent } from "@/lib/sitePages/mergeContent";
-import { SITE_PAGES, isSitePageKey, type SitePageKey } from "@/app/lib/content/site-pages";
+import { mergeContent, upgradeLegacyHome } from "@/lib/sitePages/mergeContent";
+import { addedServiceSlugs } from "@/lib/sitePages/serviceSlugs";
+import { getSitePageDefinition, isSitePageKey, type SitePageKey } from "@/app/lib/content/site-pages";
 import { jmtSitePageTags, revalidateFrontendTags } from "@/app/lib/utils/revalidateFrontend";
 
 export { isSitePageKey };
 
 /** Saved document merged over the bundled copy (unknown keys dropped, bad values reverted). */
 export function normalizeSitePage(key: SitePageKey, raw: unknown) {
-  const page = SITE_PAGES[key];
-  return mergeContent(raw, page.defaults, "locked" in page ? page.locked : []);
+  const page = getSitePageDefinition(key);
+  // Homepage documents saved before it was grouped by section keep their lists.
+  if (key === "home") raw = upgradeLegacyHome(raw);
+  return mergeContent(raw, page.defaults, page.locked ?? [], page.templates ?? {});
+}
+
+/**
+ * The services added in the Service catalogue that have their own page ("Page" on), with the slug the website uses.
+ * Empty when nothing is saved or the database can't be read.
+ */
+export async function liveAddedServicePages(): Promise<{ slug: string; title: string }[]> {
+  try {
+    const row = await prisma.jmtSitePage.findUnique({ where: { key: "services" } });
+    const content = normalizeSitePage("services", row?.content ?? null) as {
+      items: { id: string; slug: string }[];
+      added: { title: string; slug: string; page: boolean }[];
+    };
+    const slugs = addedServiceSlugs(
+      content.items.flatMap((item) => [item.id, item.slug]),
+      content.added,
+    );
+    return content.added.flatMap((item, i) => {
+      const slug = slugs[i];
+      return slug && item.page ? [{ slug, title: item.title.trim() }] : [];
+    });
+  } catch (error) {
+    console.error("[site-pages] reading the added services failed:", error);
+    return [];
+  }
 }
 
 /**

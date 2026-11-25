@@ -66,6 +66,8 @@ import { ThemeToggle } from "./ThemeToggle";
 
 import { logout } from "@/lib/apiCallingAuth";
 import { SERVICE_PAGE_KEYS, SITE_PAGES } from "@/app/lib/content/site-pages";
+import { addedServicePageKey } from "@/lib/sitePages/serviceSlugs";
+import { useAddedServices, type AddedServiceLink } from "@/hooks/useAddedServices";
 
 // Navigation — the admin site map. Each item (and sub-item) is shown only to
 // users holding its `permission`; the same page → permission rules gate the
@@ -197,6 +199,29 @@ const navigationItems: NavGroup[] = [
   },
 ];
 
+/** Adds the pages of the services added in the Service catalogue under Services, after the built-in pages. */
+const withAddedServicePages = (groups: NavGroup[], added: AddedServiceLink[]): NavGroup[] =>
+  added.length === 0
+    ? groups
+    : groups.map((group) => ({
+        ...group,
+        items: group.items.map((item) =>
+          item.url === "/dashboard/site-pages/services" && item.submenuItems
+            ? {
+                ...item,
+                submenuItems: [
+                  ...item.submenuItems,
+                  ...added.map((service) => ({
+                    title: service.title,
+                    url: `/dashboard/site-pages/${addedServicePageKey(service.slug)}`,
+                    icon: FileText,
+                  })),
+                ],
+              }
+            : item,
+        ),
+      }));
+
 /** Keeps only the items (and sub-items) the user may open; drops empty groups. */
 const filterNavigationByPermission = (
   groups: NavGroup[],
@@ -232,6 +257,8 @@ export function AppSidebar() {
   } = useSidebar();
   const isPinned = pinnedState === "expanded";
   const { user: userData, loading, can } = usePermissions();
+  const { services: addedServices } = useAddedServices(!!userData && can(PERMISSIONS.CONTENT_EDIT));
+  const navigation = useMemo(() => withAddedServicePages(navigationItems, addedServices), [addedServices]);
   const [openSubmenus, setOpenSubmenus] = useState<Record<string, boolean>>({
     posts: false,
   });
@@ -244,7 +271,7 @@ export function AppSidebar() {
   // Auto-open submenu if current path matches - use useMemo to prevent unnecessary re-renders
   const shouldOpenSubmenus = useMemo(() => {
     const openStates: Record<string, boolean> = {};
-    navigationItems.forEach((group) => {
+    navigation.forEach((group) => {
       group.items.forEach((item) => {
         if (item.hasSubmenu && item.submenuItems) {
           const hasActive = item.submenuItems.some(
@@ -257,7 +284,7 @@ export function AppSidebar() {
       });
     });
     return openStates;
-  }, [pathname]);
+  }, [pathname, navigation]);
 
   // Update submenu states only when pathname changes - merge to preserve manually opened menus
   useEffect(() => {
@@ -375,7 +402,7 @@ export function AppSidebar() {
       </SidebarHeader>
 
       <SidebarContent className="px-2 py-3">
-        {filterNavigationByPermission(navigationItems, can, !!userData).map(
+        {filterNavigationByPermission(navigation, can, !!userData).map(
           (group) => (
             <SidebarGroup key={group.title} className="px-0 py-1">
               <SidebarGroupLabel className="h-7 px-2.5 text-[11px] font-medium uppercase tracking-wider text-muted-foreground">

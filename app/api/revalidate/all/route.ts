@@ -31,11 +31,13 @@ const asStringArray = (v: unknown): string[] =>
   Array.isArray(v) ? v.filter((x): x is string => typeof x === "string") : [];
 
 async function allTags(): Promise<string[]> {
-  const [posts, services, packages, jmtServices] = await Promise.all([
+  const [posts, services, packages, jmtServices, addedServicePages] = await Promise.all([
     prisma.post.findMany({ select: { slug: true } }),
     prisma.servicePage.findMany({ select: { slug: true } }),
     prisma.packageBlock.findMany({ select: { targetPages: true } }),
     prisma.jmtServicePage.findMany({ select: { slug: true } }),
+    // Pages of services added in the Service catalogue ("service-<slug>"), saved or not.
+    prisma.jmtSitePage.findMany({ where: { key: { startsWith: "service-" } }, select: { key: true } }),
   ]);
 
   const tags = new Set<string>([
@@ -44,7 +46,7 @@ async function allTags(): Promise<string[]> {
     ...services.flatMap((s) => serviceTags(s.slug)),
     ...packageTags(packages.flatMap((p) => asStringArray(p.targetPages))),
     ...jmtServiceTags(...jmtServices.map((s) => s.slug)),
-    ...jmtSitePageTags(...SITE_PAGE_KEYS),
+    ...jmtSitePageTags(...SITE_PAGE_KEYS, ...addedServicePages.map((page) => page.key)),
   ]);
 
   // A slug with characters the frontends reject would fail its whole chunk.

@@ -13,7 +13,9 @@
 //   • lists take the saved length (items can be added and removed), each item
 //     merged over the default item at the same index (or the first one);
 //   • `locked` paths always keep the default (e.g. form options that the
-//     server validates against a fixed list).
+//     server validates against a fixed list);
+//   • a list whose default is empty takes its item shape from `templates`
+//     (keyed by path pattern), so it can start empty and still be added to.
 //
 // prepareDefaults() first makes optional fields explicit, so the editor can
 // show them: every Copy ({ text, short? }) gets `short`, every section header
@@ -126,17 +128,33 @@ export function patternOf(path: (string | number)[]): string {
   return out;
 }
 
+/** Item shape of lists whose default is empty, keyed by path pattern (e.g. "added"). */
+export type ListTemplates = Readonly<Record<string, unknown>>;
+
 /**
  * `raw` (the saved document) merged over `defaults`. `defaults` should come
  * from prepareDefaults(). `locked` lists dotted paths (with "[]" for list
- * items) that always keep their default.
+ * items) that always keep their default. `templates` gives the item shape of
+ * lists that are empty by default.
  */
-export function mergeContent<T>(raw: unknown, defaults: T, locked: readonly string[] = []): T {
+export function mergeContent<T>(
+  raw: unknown,
+  defaults: T,
+  locked: readonly string[] = [],
+  templates: ListTemplates = {},
+): T {
   const lockedSet = new Set(locked);
-  return merge(raw, defaults, [], lockedSet, undefined) as T;
+  return merge(raw, defaults, [], lockedSet, undefined, templates) as T;
 }
 
-function merge(raw: unknown, def: unknown, path: (string | number)[], locked: Set<string>, key: string | undefined): unknown {
+function merge(
+  raw: unknown,
+  def: unknown,
+  path: (string | number)[],
+  locked: Set<string>,
+  key: string | undefined,
+  templates: ListTemplates,
+): unknown {
   if (locked.has(patternOf(path))) return def;
 
   if (def === null) {
@@ -153,17 +171,24 @@ function merge(raw: unknown, def: unknown, path: (string | number)[], locked: Se
 
   if (Array.isArray(def)) {
     if (!Array.isArray(raw)) return def;
-    if (def.length === 0) return def; // no schema for the items
+    const template = def.length ? def[0] : templates[patternOf(path)];
+    if (template === undefined) return def; // no schema for the items
+    // A list whose items hold locked values (ids, icons, links) keeps the default length: each saved item is
+    // merged over the default at the same position, and missing ones keep the default.
+    const itemPrefix = `${patternOf(path)}[]`;
+    if (def.length && [...locked].some((p) => p === itemPrefix || p.startsWith(`${itemPrefix}.`))) {
+      return def.map((item, i) => merge(raw[i], item, [...path, i], locked, undefined, templates));
+    }
     return raw
       .slice(0, MAX_LIST_LENGTH)
-      .map((item, i) => merge(item, def[i] ?? def[0], [...path, i], locked, undefined));
+      .map((item, i) => merge(item, def[i] ?? template, [...path, i], locked, undefined, templates));
   }
 
   if (isPlainObject(def)) {
     if (!isPlainObject(raw)) return def;
     const out: PlainObject = {};
     for (const [k, v] of Object.entries(def)) {
-      out[k] = k in raw ? merge(raw[k], v, [...path, k], locked, k) : v;
+      out[k] = k in raw ? merge(raw[k], v, [...path, k], locked, k, templates) : v;
     }
     // An image with an unusable URL falls back to the default image.
     if (isImageValue(def) && (typeof out.src !== "string" || !isSafeUrl(out.src))) return def;
@@ -171,4 +196,39 @@ function merge(raw: unknown, def: unknown, path: (string | number)[], locked: Se
   }
 
   return def;
+}
+
+/**
+ * The homepage used to be saved as six flat lists; it is now grouped by page section. A document saved in the
+ * old shape has its lists moved into their sections (a section already in the new shape wins), so nothing saved
+ * before the change is lost. Any other document is returned unchanged.
+ */
+export function upgradeLegacyHome(raw: unknown): unknown {
+  if (!isPlainObject(raw)) return raw;
+  const moves: [legacy: string, section: string, key: string][] = [
+    ["securityLayers", "security", "layers"],
+    ["processSteps", "process", "steps"],
+    ["stories", "stories", "items"],
+    ["faqs", "faq", "items"],
+    ["promises", "why", "promises"],
+  ];
+  const out: PlainObject = { ...raw };
+  let changed = false;
+  for (const [legacy, section, key] of moves) {
+    if (!Array.isArray(raw[legacy])) continue;
+    const target = isPlainObject(out[section]) ? { ...(out[section] as PlainObject) } : {};
+    if (!(key in target)) target[key] = raw[legacy];
+    out[section] = target;
+    if (legacy !== section) delete out[legacy];
+    changed = true;
+  }
+  if (Array.isArray(raw.qualityGates)) {
+    const pillars = isPlainObject(out.pillars) ? { ...(out.pillars as PlainObject) } : {};
+    const quality = isPlainObject(pillars.quality) ? { ...(pillars.quality as PlainObject) } : {};
+    if (!("gates" in quality)) quality.gates = raw.qualityGates;
+    out.pillars = { ...pillars, quality };
+    delete out.qualityGates;
+    changed = true;
+  }
+  return changed ? out : raw;
 }

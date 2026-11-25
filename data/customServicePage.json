@@ -1,0 +1,210 @@
+{
+  "defaults": {
+    "seo": {
+      "title": "",
+      "description": "",
+      "keywords": []
+    },
+    "hero": {
+      "title": "",
+      "highlight": "",
+      "intro": "",
+      "platforms": []
+    },
+    "labels": {
+      "coverage": "What we cover",
+      "coverageItemCta": "View details",
+      "coverageHelpTitle": "Not sure where to start?",
+      "coverageHelpCta": "Talk to us",
+      "whyUs": "Why Tech Vedha",
+      "deliverables": "What you get",
+      "deliverablesCta": "Explore",
+      "useCases": "Who it's for",
+      "process": "How it works",
+      "toolsWord": "tools"
+    },
+    "coverage": {
+      "title": [
+        "Everything it covers,",
+        "under one roof."
+      ],
+      "intro": "Hire us for one part, or for all of them together.",
+      "items": [],
+      "helpText": "Tell us what you need. We'll suggest where to start."
+    },
+    "whyUs": {
+      "title": [
+        "One team, from the first",
+        "plan to every update."
+      ],
+      "icon": "sparkles",
+      "points": [
+        {
+          "title": "One point of contact",
+          "detail": "One person runs your project and answers your questions, start to finish."
+        },
+        {
+          "title": "Plan before we build",
+          "detail": "Scope, timeline and cost agreed in writing before any work starts."
+        },
+        {
+          "title": "Security from day one",
+          "detail": "Access, data and backups are protected from the very first day."
+        },
+        {
+          "title": "We stay after launch",
+          "detail": "Updates, fixes and support continue once the work is live."
+        }
+      ]
+    },
+    "deliverables": {
+      "title": [
+        "Real things you can",
+        "review and keep."
+      ],
+      "intro": "Every project ends with deliverables you own and can review at each step.",
+      "cards": [],
+      "ownership": {
+        "title": "You own everything",
+        "detail": "Handed over at the end, in your name.",
+        "items": []
+      }
+    },
+    "useCases": {
+      "title": [
+        "Who it's",
+        "built for."
+      ],
+      "intro": "",
+      "items": []
+    },
+    "process": {
+      "title": [
+        "How it",
+        "gets done."
+      ],
+      "intro": "",
+      "ctaDetail": "Tell us what you need and we'll start with a discovery call.",
+      "tracks": []
+    },
+    "techStack": {
+      "eyebrow": "Tech stack",
+      "title": "Proven tools.",
+      "highlight": "Zero lock-in.",
+      "intro": "",
+      "highlights": [],
+      "groups": []
+    },
+    "faq": {
+      "title": "Questions, answered.",
+      "items": [
+        {
+          "question": "How long does a project take?",
+          "answer": "It depends on the scope. After the discovery call you get a written plan with a timeline, before any work starts."
+        },
+        {
+          "question": "Can you work with what we already have?",
+          "answer": "Yes. We start by reviewing your current setup, then plan the changes with you."
+        },
+        {
+          "question": "Do you work with businesses outside India?",
+          "answer": "Yes. We work with businesses across India and abroad."
+        }
+      ]
+    }
+  },
+  "templates": {
+    "seo.keywords": "",
+    "hero.platforms": "",
+    "coverage.items": {
+      "title": "",
+      "detail": "",
+      "icon": "sparkles"
+    },
+    "deliverables.cards": {
+      "title": "",
+      "detail": "",
+      "checklist": [
+        ""
+      ]
+    },
+    "deliverables.ownership.items": "",
+    "useCases.items": {
+      "title": "",
+      "detail": "",
+      "icon": "store"
+    },
+    "process.tracks": {
+      "label": "",
+      "steps": [
+        {
+          "title": "",
+          "summary": "",
+          "deliverables": [
+            ""
+          ]
+        }
+      ]
+    },
+    "techStack.highlights": "",
+    "techStack.groups": {
+      "title": "",
+      "tagline": "",
+      "tools": [
+        ""
+      ]
+    }
+  },
+  "icons": [
+    "sparkles",
+    "check",
+    "layers",
+    "rocket",
+    "target",
+    "lightbulb",
+    "zap",
+    "workflow",
+    "settings",
+    "wrench",
+    "code",
+    "bot",
+    "cpu",
+    "server",
+    "cloud",
+    "database",
+    "monitor",
+    "smartphone",
+    "globe",
+    "shield",
+    "shield-check",
+    "lock",
+    "chart-column",
+    "chart-line",
+    "trending-up",
+    "megaphone",
+    "search",
+    "mail",
+    "message",
+    "video",
+    "camera",
+    "palette",
+    "pen-tool",
+    "ruler",
+    "file-text",
+    "users",
+    "handshake",
+    "headphones",
+    "briefcase",
+    "store",
+    "shopping-cart",
+    "wallet",
+    "package",
+    "truck",
+    "building",
+    "house",
+    "factory",
+    "graduation-cap",
+    "heart-pulse",
+    "clock"
+  ]
+}

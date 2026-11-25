@@ -13,7 +13,8 @@ import { jmtSitePageTags } from "@/app/lib/utils/cacheTags";
 import { ExternalLink, Eye, RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ContentEditor from "@/components/site-page-editor/ContentEditor";
-import { SITE_PAGES, isSitePageKey } from "@/app/lib/content/site-pages";
+import { addedServiceSlugOf, getSitePageDefinition, isSitePageKey } from "@/app/lib/content/site-pages";
+import { refreshAddedServices, useAddedServices } from "@/hooks/useAddedServices";
 import type { PlainObject } from "@/lib/sitePages/mergeContent";
 import { liveSiteUrl, useDraftPreview } from "@/hooks/useDraftPreview";
 
@@ -28,7 +29,14 @@ interface ServerDoc {
 export default function SitePageEditor() {
   const params = useParams<{ key: string }>();
   const key = params.key;
-  const page = isSitePageKey(key) ? SITE_PAGES[key] : null;
+  // Pages of services added in the Service catalogue ("service-<slug>") take their name and status from it.
+  const addedSlug = isSitePageKey(key) ? addedServiceSlugOf(key) : null;
+  const { services: addedServices, loaded: addedLoaded } = useAddedServices(addedSlug !== null);
+  const addedService = addedSlug ? addedServices.find((service) => service.slug === addedSlug) : undefined;
+  const page = useMemo(
+    () => (isSitePageKey(key) ? getSitePageDefinition(key, addedService?.title) : null),
+    [key, addedService?.title],
+  );
 
   const [content, setContent] = useState<PlainObject | null>(null);
   const [saved, setSaved] = useState("");
@@ -98,6 +106,8 @@ export default function SitePageEditor() {
       const data: ServerDoc = await res.json();
       if (!res.ok || !data.success) throw new Error(data.message || "Request failed");
       apply(data);
+      // The sidebar lists the added services' pages: show new names and pages at once.
+      if (key === "services") refreshAddedServices();
       toast.success(done, { id: toastId, closeButton: true });
     } catch (error) {
       toast.error((error as Error).message || "Request failed", { id: toastId, closeButton: true });
@@ -191,6 +201,40 @@ export default function SitePageEditor() {
             <Button variant="outline" onClick={() => window.location.reload()} className="shrink-0">
               Retry
             </Button>
+          </div>
+        )}
+
+        {addedSlug !== null && addedLoaded && (
+          <div
+            className={
+              addedService?.page
+                ? "rounded-lg border border-success/40 bg-success/10 p-4 text-sm text-foreground"
+                : "rounded-lg border border-warning/40 bg-warning/10 p-4 text-sm text-foreground"
+            }
+          >
+            {!addedService ? (
+              <p>
+                <strong>No service in the Service catalogue uses /services/{addedSlug}.</strong> This text is kept, but
+                it isn&apos;t shown anywhere. Check the service&apos;s slug in the{" "}
+                <Link href="/dashboard/site-pages/services" className="underline">
+                  Service catalogue
+                </Link>
+                .
+              </p>
+            ) : addedService.page ? (
+              <p>
+                <strong>Live</strong> at {page.path}. Every Services link on the website points here.
+              </p>
+            ) : (
+              <p>
+                <strong>Not live yet.</strong> Write the page, check it with Preview, then switch on “Page” for{" "}
+                {addedService.title} in the{" "}
+                <Link href="/dashboard/site-pages/services" className="underline">
+                  Service catalogue
+                </Link>
+                . Until then its Services links go to its card on the homepage.
+              </p>
+            )}
           </div>
         )}
 

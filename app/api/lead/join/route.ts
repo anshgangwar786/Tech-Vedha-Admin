@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest, NextResponse, after } from "next/server";
 import type { Prisma } from "@prisma/client";
 import prisma from "@/app/lib/config/db";
 import { hasSharedSecret, identityOverLimit } from "@/app/lib/utils/leadThrottle";
@@ -41,8 +41,6 @@ import { DOCUMENTS_KEY, type ApplicationDocument } from "@/app/lib/utils/applica
 // HOSTINGER_APPLICATIONS_PATH (not web-served); the lead's formData keeps
 // their list under "Documents" and admins open them through
 // GET /api/applications/[id]/documents/[key].
-
-const NOTIFY_TIMEOUT_MS = 8000;
 
 /** Header jmt-frontend uses to pass on the visitor's IP (POST rejects requests without the secret). */
 const CLIENT_IP_HEADER = "x-jmt-client-ip";
@@ -208,9 +206,9 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    // Wait briefly so serverless hosts don't cut the email off, but never let
-    // a slow mail server delay the applicant.
-    await Promise.race([
+    // Email the admin after the response is sent; after() keeps serverless
+    // hosts alive until it finishes, so the applicant never waits on SMTP.
+    after(() =>
       sendLeadNotification({
         name: lead.name,
         email: "Not provided",
@@ -222,8 +220,7 @@ export async function POST(req: NextRequest) {
         },
         createdAt: lead.createdAt,
       }),
-      new Promise((resolve) => setTimeout(resolve, NOTIFY_TIMEOUT_MS)),
-    ]);
+    );
 
     return reply(successState());
   } catch (error) {

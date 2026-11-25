@@ -6,6 +6,7 @@ import { NextResponse } from "next/server";
 import type { JmtSeo } from "@prisma/client";
 import prisma from "@/app/lib/config/db";
 import { SITE_PAGES, SITE_PAGE_KEYS } from "@/app/lib/content/site-pages";
+import { liveAddedServicePages } from "@/app/lib/server/jmtSitePages";
 import {
   GLOBAL_SCOPE,
   builtInSchemaTypes,
@@ -76,10 +77,13 @@ export interface SeoPageEntry {
  * whose page no longer exists ("orphaned"), so nothing disappears silently.
  */
 export async function seoPageList(rows: JmtSeo[]): Promise<SeoPageEntry[]> {
-  const services = await prisma.jmtServicePage.findMany({
-    select: { slug: true, title: true, status: true },
-    orderBy: { title: "asc" },
-  });
+  const [services, addedServicePages] = await Promise.all([
+    prisma.jmtServicePage.findMany({
+      select: { slug: true, title: true, status: true },
+      orderBy: { title: "asc" },
+    }),
+    liveAddedServicePages(),
+  ]);
   const byScope = new Map(rows.map((row) => [row.scope, row]));
   const entry = (scope: string, label: string, kind: SeoPageEntry["kind"], draft?: boolean): SeoPageEntry => {
     const row = byScope.get(scope) ?? null;
@@ -100,6 +104,8 @@ export async function seoPageList(rows: JmtSeo[]): Promise<SeoPageEntry[]> {
     ...SITE_PAGE_KEYS.filter((key) => SITE_PAGES[key].path !== "/" && !SITE_PAGES[key].path.includes("#")).map((key) =>
       entry(SITE_PAGES[key].path, SITE_PAGES[key].title, "page"),
     ),
+    // Pages of services added in the Service catalogue, once switched on.
+    ...addedServicePages.map((page) => entry(`/services/${page.slug}`, `${page.title} page`, "page")),
     entry("/site-map", "Sitemap", "page"),
     ...services.map((s) => entry(servicePagePath(s.slug), s.title, "service", s.status !== "published")),
   ];
