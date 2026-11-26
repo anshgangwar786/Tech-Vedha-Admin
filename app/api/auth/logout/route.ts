@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { SESSION_END_COOKIE } from "@/app/lib/constants/session";
 
 export async function POST() {
   const response = NextResponse.json({ message: "Logged Out Successfully" });
@@ -11,12 +12,14 @@ export async function POST() {
     secure,
     sameSite: "strict",
   });
-  response.cookies.set("loggedIn", "", {
-    expires: new Date(0),
-    path: "/",
-    secure,
-    sameSite: "strict",
-  });
+  for (const name of ["loggedIn", SESSION_END_COOKIE]) {
+    response.cookies.set(name, "", {
+      expires: new Date(0),
+      path: "/",
+      secure,
+      sameSite: "strict",
+    });
+  }
 
   return response
 }

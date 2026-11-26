@@ -12,10 +12,14 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import {
-  SESSION_IDLE_TIMEOUT_MS,
+  SESSION_MAX_AGE_MS,
   SESSION_REFRESH_INTERVAL_MS,
   SESSION_WARNING_MS,
+  readSessionEnd,
+  sessionDeadline,
 } from "@/app/lib/constants/session";
+
+const MAX_AGE_HOURS = Math.round(SESSION_MAX_AGE_MS / (60 * 60 * 1000));
 
 // Shared across tabs via localStorage, so activity in one tab keeps the others alive.
 const ACTIVITY_KEY = "tv-admin:lastActivity";
@@ -39,8 +43,9 @@ function writeLastActivity(t: number) {
 }
 
 /**
- * Signs the admin out after SESSION_IDLE_TIMEOUT_MS of inactivity, with a warning
- * dialog SESSION_WARNING_MS beforehand. While the user is active the server
+ * Signs the admin out after SESSION_IDLE_TIMEOUT_MS of inactivity, or when the session
+ * reaches SESSION_MAX_AGE_MS (read from the session-end cookie), whichever comes first,
+ * with a warning dialog SESSION_WARNING_MS beforehand. While the user is active the server
  * session is extended via /api/auth/refresh (at most once per SESSION_REFRESH_INTERVAL_MS).
  */
 export default function SessionTimeout() {
@@ -50,6 +55,9 @@ export default function SessionTimeout() {
   const endedRef = useRef(false);
   const [warningOpen, setWarningOpen] = useState(false);
   const [secondsLeft, setSecondsLeft] = useState(0);
+  const [warningReason, setWarningReason] = useState<"idle" | "max-age">("idle");
+  // The max-age warning can't be postponed; once dismissed it stays closed until sign-out.
+  const capWarningDismissed = useRef(false);
   const warningOpenRef = useRef(false);
   useEffect(() => {
     warningOpenRef.current = warningOpen;
@@ -105,13 +113,15 @@ export default function SessionTimeout() {
       if (endedRef.current) return;
       const last = Math.max(lastActivity.current, readLastActivity());
       lastActivity.current = last;
-      const remaining = last + SESSION_IDLE_TIMEOUT_MS - Date.now();
+      const deadline = sessionDeadline(last, readSessionEnd(document.cookie));
+      const remaining = deadline.at - Date.now();
       if (remaining <= 0) {
         setWarningOpen(false);
         endSession();
       } else if (remaining <= SESSION_WARNING_MS) {
         setSecondsLeft(Math.ceil(remaining / 1000));
-        setWarningOpen(true);
+        setWarningReason(deadline.reason);
+        setWarningOpen(deadline.reason === "idle" || !capWarningDismissed.current);
       } else {
         setWarningOpen(false); // e.g. another tab extended the session
       }
@@ -130,21 +140,37 @@ export default function SessionTimeout() {
     setWarningOpen(false);
   };
 
+  const dismissCapWarning = () => {
+    capWarningDismissed.current = true;
+    setWarningOpen(false);
+  };
+
+  const countdown = <span className="font-semibold text-foreground tabular-nums">{secondsLeft}s</span>;
+  const isCap = warningReason === "max-age";
+
   return (
-    <Dialog open={warningOpen} onOpenChange={(open) => !open && staySignedIn()}>
+    <Dialog open={warningOpen} onOpenChange={(open) => !open && (isCap ? dismissCapWarning() : staySignedIn())}>
       <DialogContent showCloseButton={false} className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle>Still there?</DialogTitle>
+          <DialogTitle>{isCap ? "Session ending" : "Still there?"}</DialogTitle>
           <DialogDescription>
-            You&apos;ve been inactive for a while. For security you&apos;ll be signed out in{" "}
-            <span className="font-semibold text-foreground tabular-nums">{secondsLeft}s</span>.
+            {isCap ? (
+              <>
+                For security, a session lasts at most {MAX_AGE_HOURS} hours. You&apos;ll be signed out in {countdown}.
+                Save your work, then sign in again.
+              </>
+            ) : (
+              <>
+                You&apos;ve been inactive for a while. For security you&apos;ll be signed out in {countdown}.
+              </>
+            )}
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>
           <Button variant="outline" onClick={() => { setWarningOpen(false); endSession(); }}>
-            Log out
+            {isCap ? "Sign in again" : "Log out"}
           </Button>
-          <Button onClick={staySignedIn}>Stay signed in</Button>
+          {isCap ? <Button onClick={dismissCapWarning}>OK</Button> : <Button onClick={staySignedIn}>Stay signed in</Button>}
         </DialogFooter>
       </DialogContent>
     </Dialog>

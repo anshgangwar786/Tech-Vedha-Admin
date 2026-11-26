@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import jwt from "jsonwebtoken";
+import { SESSION_END_COOKIE } from "@/app/lib/constants/session";
 
 export default function proxy(req: NextRequest) {
   const token = req.cookies.get("authToken")?.value;
@@ -37,6 +38,7 @@ export default function proxy(req: NextRequest) {
       const res = NextResponse.redirect(new URL("/login", req.url));
       res.cookies.delete("authToken");
       res.cookies.delete("loggedIn");
+      res.cookies.delete(SESSION_END_COOKIE);
       return res;
     }
 

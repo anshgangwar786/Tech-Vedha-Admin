@@ -1,7 +1,12 @@
 import { createHash } from "node:crypto";
 import jwt from "jsonwebtoken";
 import type { NextResponse } from "next/server";
-import { SESSION_MAX_AGE_MS, SESSION_TOKEN_TTL_MS } from "@/app/lib/constants/session";
+import {
+  SESSION_END_COOKIE,
+  SESSION_GRACE_MS,
+  SESSION_MAX_AGE_MS,
+  SESSION_TOKEN_TTL_MS,
+} from "@/app/lib/constants/session";
 
 export interface SessionUser {
   id: string;
@@ -37,8 +42,10 @@ export function tokenSessionStart(decoded: { sessionStart?: unknown; iat?: numbe
  */
 export function issueSession(response: NextResponse, user: SessionUser, sessionStart: number): number {
   const now = Date.now();
-  // Never extend past the absolute cap.
-  const ttlMs = Math.min(SESSION_TOKEN_TTL_MS, sessionStart + SESSION_MAX_AGE_MS - now);
+  const sessionEndsAt = sessionStart + SESSION_MAX_AGE_MS;
+  // Never extend past the absolute cap (plus the grace that lets the client sign out first;
+  // /api/auth/refresh refuses to extend a session once SESSION_MAX_AGE_MS has passed).
+  const ttlMs = Math.min(SESSION_TOKEN_TTL_MS, sessionEndsAt + SESSION_GRACE_MS - now);
   const ttlSeconds = Math.max(1, Math.floor(ttlMs / 1000));
 
   const token = jwt.sign(
@@ -57,6 +64,13 @@ export function issueSession(response: NextResponse, user: SessionUser, sessionS
   });
   // UI hint only (components/common/Header.tsx reads it), so not httpOnly.
   response.cookies.set("loggedIn", "true", {
+    secure,
+    sameSite: "strict",
+    maxAge: ttlSeconds,
+    path: "/",
+  });
+  // UI hint for components/common/SessionTimeout.tsx: when the absolute cap is reached.
+  response.cookies.set(SESSION_END_COOKIE, String(sessionEndsAt), {
     secure,
     sameSite: "strict",
     maxAge: ttlSeconds,
