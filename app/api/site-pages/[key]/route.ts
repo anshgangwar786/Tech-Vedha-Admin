@@ -12,6 +12,10 @@ import {
   revalidateSitePage,
   staleClientResponse,
 } from "@/app/lib/server/jmtSitePages";
+import { pushContactSettings, withContactSettings } from "@/app/lib/server/contactSettingsSync";
+
+/** The Contact page shows the live email / phone / WhatsApp settings in its rows; other pages as saved. */
+const forEditor = (key: string, content: unknown) => (key === "contact" ? withContactSettings(content) : content);
 
 // One JMT site page (About, Contact, Join our crew) — dashboard read / save /
 // reset. The page always exists on the website: without a saved document it
@@ -35,7 +39,7 @@ export async function GET(req: NextRequest, { params }: Context) {
       success: true,
       exists: Boolean(row),
       updatedAt: row?.updatedAt ?? null,
-      content: normalizeSitePage(key, row?.content ?? null),
+      content: await forEditor(key, normalizeSitePage(key, row?.content ?? null)),
     });
   } catch (error) {
     return errorResponse(`Loading the "${key}" page`, error);
@@ -71,13 +75,16 @@ export async function PUT(req: NextRequest, { params }: Context) {
       update: { content },
     });
     syncSavedSitePage(key, row.content);
+    // Email, phone or WhatsApp number changed on the Contact page: save it to Site & Menus too, so every
+    // mailto / tel / WhatsApp link on the website uses it.
+    const settingsChanged = key === "contact" ? await pushContactSettings(row.content) : [];
     await revalidateSitePage(key);
     return NextResponse.json({
       success: true,
-      message: "Page saved",
+      message: settingsChanged.length ? "Page saved · contact details updated in Site & Menus" : "Page saved",
       exists: true,
       updatedAt: row.updatedAt,
-      content: normalizeSitePage(key, row.content),
+      content: await forEditor(key, normalizeSitePage(key, row.content)),
     });
   } catch (error) {
     return errorResponse(`Saving the "${key}" page`, error);
@@ -109,7 +116,7 @@ export async function DELETE(req: NextRequest, { params }: Context) {
       message: "Page reset to the default copy",
       exists: false,
       updatedAt: null,
-      content: normalizeSitePage(key, null),
+      content: await forEditor(key, normalizeSitePage(key, null)),
     });
   } catch (error) {
     return errorResponse(`Resetting the "${key}" page`, error);

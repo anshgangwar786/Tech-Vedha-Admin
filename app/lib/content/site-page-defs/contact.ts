@@ -26,7 +26,7 @@ const ICON_NAMES: Record<string, string> = {
 };
 
 const SETTINGS_ICON_NOTE =
-  "Rows with the Envelope, Speech bubble or Phone icon always show your email, WhatsApp or phone number from Site & Menus and link to it.";
+  "Rows with the Envelope, Speech bubble or Phone icon show your email, WhatsApp or phone number and link to it (email app, WhatsApp chat, call). Changing the email or number here also changes it in Site & Menus, so the whole website uses it.";
 
 export const CONTACT_PAGE = {
   title: "Contact",
@@ -171,7 +171,7 @@ export const CONTACT_PAGE = {
     "hero.a11y": A11Y_HINT,
 
     "brandCard.quickContacts": `One row per way to reach you. Add, delete or reorder rows. ${SETTINGS_ICON_NOTE}`,
-    "brandCard.quickContacts[].value": "For Email and Phone rows this is filled in automatically; for others, type what the row should say.",
+    "brandCard.quickContacts[].value": "Envelope row: your email. Phone row: your phone number. Speech-bubble row: a WhatsApp number, or text such as “Chat with our team” (then it opens the WhatsApp number from Site & Menus). Changed email or numbers are saved to Site & Menus too.",
     "brandCard.quickContacts[].link": "Only for rows with another icon: where a click on the row goes. Leave empty for no link.",
     "brandCard.phonePlaceholder": "Only shown if no phone number is set in Site & Menus.",
     "brandCard.promises": "Small tags under the contact rows. Add or delete as you like.",
@@ -186,7 +186,7 @@ export const CONTACT_PAGE = {
     "form.note": "While the form is sending, short messages appear in its place.",
 
     "channels.cards": `Add, delete or reorder cards. Three sit side by side; more wrap onto a new row. ${SETTINGS_ICON_NOTE}`,
-    "channels.cards[].value": "For Envelope and Phone cards this is filled in automatically. Leave empty to show nothing.",
+    "channels.cards[].value": "Envelope card: your email. Phone card: your phone number. Speech-bubble card: a WhatsApp number (or empty). Changed email or numbers are saved to Site & Menus too, so every link on the website uses them.",
     "channels.cards[].link":
       "Only for cards with another icon: where a click on the card goes. Leave empty and the card has no link.",
     "channels.cards[].tag": "Leave the tag text empty to hide the tag.",

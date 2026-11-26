@@ -22,6 +22,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { usePermissions } from "@/components/common/PermissionsProvider";
 import { cn } from "@/lib/utils";
+import { PERMISSIONS } from "@/app/lib/constants/permissions";
+import ContactSettingsCard from "@/app/dashboard/_lib/ContactSettingsCard";
 
 type Status = "new" | "contacted" | "converted" | "lost";
 type StatusCounts = Record<Status, number>;
@@ -154,7 +156,7 @@ function whatsappLink(phone: string) {
 }
 
 export default function Dashboard() {
-  const { user } = usePermissions();
+  const { user, can } = usePermissions();
   const [data, setData] = useState<DashboardData | null>(null);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
@@ -237,7 +239,7 @@ export default function Dashboard() {
           </p>
         )}
 
-        {!hasAnySection && (
+        {!hasAnySection && !can(PERMISSIONS.CONTENT_EDIT) && (
           <Card>
             <CardContent className="py-8 text-center text-sm text-muted-foreground">
               Your role doesn&apos;t include any dashboard sections yet. Ask an administrator for access.
@@ -246,6 +248,8 @@ export default function Dashboard() {
         )}
 
         {hasAnySection && <AttentionPanel data={data} />}
+
+        {can(PERMISSIONS.CONTENT_EDIT) && <ContactSettingsCard />}
 
         {activity && hasPipeline && (
           <div className="grid grid-cols-1 gap-5 xl:grid-cols-3">
