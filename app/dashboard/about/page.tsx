@@ -204,7 +204,7 @@ export default function AboutDashboardPage() {
   const [content, setInternalContent] = useState<AboutPageContent>(defaultAboutContent());
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
-  const [open, setOpen] = useState<Record<string, boolean>>({ seo: true, hero: true });
+  const [open, setOpen] = useState<Record<string, boolean>>({});
 
   const toggle = (k: string) => setOpen((p) => ({ ...p, [k]: !p[k] }));
   const set = <K extends keyof AboutPageContent>(key: K, value: AboutPageContent[K]) =>

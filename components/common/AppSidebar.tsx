@@ -21,6 +21,8 @@ import {
   ShieldCheck,
   SearchCode,
   Settings2,
+  PanelTop,
+  PanelBottom,
   type LucideIcon,
 } from "lucide-react";
 import {
@@ -106,10 +108,21 @@ const navigationItems: NavGroup[] = [
     // legacy page editors still exist by URL but are not used by this website.
     items: [
       {
-        title: "Site & Menus",
+        title: "Site Settings",
         url: "/dashboard/site-pages/site",
         icon: Settings2,
         permission: PERMISSIONS.CONTENT_EDIT,
+      },
+      {
+        title: "Menus",
+        url: "/dashboard/menus/header",
+        icon: List,
+        permission: PERMISSIONS.CONTENT_EDIT,
+        hasSubmenu: true,
+        submenuItems: [
+          { title: "Header Menu", url: "/dashboard/menus/header", icon: PanelTop },
+          { title: "Footer Menu", url: "/dashboard/menus/footer", icon: PanelBottom },
+        ],
       },
       {
         title: "Homepage",

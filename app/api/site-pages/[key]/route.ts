@@ -13,6 +13,8 @@ import {
   staleClientResponse,
 } from "@/app/lib/server/jmtSitePages";
 import { pushContactSettings, withContactSettings } from "@/app/lib/server/contactSettingsSync";
+import { getSitePageDefinition } from "@/app/lib/content/site-pages";
+import { findFormatProblems } from "@/lib/sitePages/contactFormats";
 
 /** The Contact page shows the live email / phone / WhatsApp settings in its rows; other pages as saved. */
 const forEditor = (key: string, content: unknown) => (key === "contact" ? withContactSettings(content) : content);
@@ -62,6 +64,14 @@ export async function PUT(req: NextRequest, { params }: Context) {
     }
     // Never trust the client shape: unknown keys dropped, bad values and unsafe image URLs reverted.
     const content = normalizeSitePage(key, body.content) as Prisma.InputJsonValue;
+    // Email / phone / WhatsApp fields must be usable as mailto: / tel: / wa.me links (same check as the editor).
+    const [problem] = findFormatProblems(getSitePageDefinition(key).formats, content);
+    if (problem) {
+      return NextResponse.json(
+        { success: false, message: `${problem.message} (${problem.path.join(" → ")})` },
+        { status: 400 },
+      );
+    }
     // Publishing a new service page (or taking a live one offline / renaming it) needs the publish permission.
     if (key === "services" && !hasPermission(auth, PERMISSIONS.PAGES_PUBLISH)) {
       const current = await prisma.jmtSitePage.findUnique({ where: { key }, select: { content: true } });

@@ -8,13 +8,14 @@ import type { Prisma } from "@prisma/client";
 import prisma from "@/app/lib/config/db";
 import { syncSavedSitePage } from "@/app/lib/server/previewStore";
 import { normalizeSitePage, revalidateSitePage } from "@/app/lib/server/jmtSitePages";
+import { emailError, phoneError } from "@/lib/sitePages/contactFormats";
 
 type Row = { icon?: unknown; value?: unknown };
 type Settings = { email: string; phone: string; whatsappNumber: string };
 type Doc = Record<string, unknown>;
 
 const digitsOnly = (value: string) => value.replace(/\D/g, "");
-const isEmail = (value: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+const isEmail = (value: string) => emailError(value) === null;
 /** A phone number as people type it: digits with optional +, spaces, dashes, dots or brackets. */
 export const isPhoneNumber = (value: string) => /^\+?[\d\s().-]+$/.test(value) && digitsOnly(value).length >= 7;
 
@@ -94,11 +95,9 @@ export function validateContactSettings(body: unknown): { settings: Settings } |
   const email = text(doc.email);
   const phone = text(doc.phone);
   const whatsapp = text(doc.whatsappNumber);
-  if (!isEmail(email)) return { error: "Enter a valid email address, e.g. info@techvedha.tech" };
-  if (!isPhoneNumber(phone)) return { error: "Enter a valid phone number with country code, e.g. +91 98765 43210" };
-  if (whatsapp && !isPhoneNumber(whatsapp)) {
-    return { error: "Enter a valid WhatsApp number with country code, or leave it empty to use the phone number" };
-  }
+  // Same rules as the site page editors (lib/sitePages/contactFormats.ts).
+  const error = emailError(email) ?? phoneError(phone) ?? (whatsapp ? phoneError(whatsapp, "WhatsApp number") : null);
+  if (error) return { error };
   return { settings: { email, phone, whatsappNumber: digitsOnly(whatsapp) } };
 }
 

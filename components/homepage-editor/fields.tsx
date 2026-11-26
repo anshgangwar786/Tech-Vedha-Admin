@@ -19,11 +19,27 @@ const labelCls = "text-sm font-medium text-foreground";
 const hintCls = "text-xs text-muted-foreground";
 const addBtnCls = "text-foreground-light hover:text-foreground";
 
-export function Field({ label, hint, children }: { label: string; hint?: string; children: ReactNode }) {
+export function Field({
+  label,
+  hint,
+  error,
+  children,
+}: {
+  label: string;
+  hint?: string;
+  /** Shown in red under the field (e.g. an invalid email). */
+  error?: string | null;
+  children: ReactNode;
+}) {
   return (
     <div className="space-y-1.5">
       <label className={`block ${labelCls}`}>{label}</label>
       {children}
+      {error && (
+        <p role="alert" className="text-xs font-medium text-destructive">
+          {error}
+        </p>
+      )}
       {hint && <p className={hintCls}>{hint}</p>}
     </div>
   );
@@ -37,28 +53,36 @@ export function TextField({
   placeholder,
   multiline,
   rows = 3,
+  error,
+  type,
 }: {
   label: string;
   value: string;
   onChange: (value: string) => void;
   hint?: string;
+  error?: string | null;
+  /** Input type (e.g. "email", "tel") for the right phone keyboard; single-line fields only. */
+  type?: string;
   placeholder?: string;
   multiline?: boolean;
   rows?: number;
 }) {
   return (
-    <Field label={label} hint={hint}>
+    <Field label={label} hint={hint} error={error}>
       {multiline ? (
         <textarea
           rows={rows}
-          className={textareaCls}
+          aria-invalid={error ? true : undefined}
+          className={`${textareaCls} ${error ? "border-destructive focus-visible:ring-destructive/40" : ""}`}
           value={value}
           placeholder={placeholder}
           onChange={(e) => onChange(e.target.value)}
         />
       ) : (
         <input
-          className={inputCls}
+          type={type}
+          aria-invalid={error ? true : undefined}
+          className={`${inputCls} ${error ? "border-destructive focus-visible:ring-destructive/40" : ""}`}
           value={value}
           placeholder={placeholder}
           onChange={(e) => onChange(e.target.value)}

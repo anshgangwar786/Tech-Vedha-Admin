@@ -9,7 +9,7 @@
 // field to the bundled copy in jmt-frontend/data (and its copy here) makes it
 // editable with no change to this file.
 
-import type { ReactNode } from "react";
+import type { ElementType, ReactNode } from "react";
 import { ArrowDown, ArrowUp, FileText, RotateCcw, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ImageField from "@/components/common/ImageField";
@@ -38,6 +38,7 @@ import type { SitePageDefinition } from "@/app/lib/content/site-pages";
 import SeoScriptsNote from "@/components/seo-editor/SeoScriptsNote";
 import { drawingPreviewFor } from "@/app/lib/content/drawing-previews";
 import { countWord, friendlyText, type FriendlyText } from "./placeholders";
+import { formatError } from "@/lib/sitePages/contactFormats";
 
 type Path = (string | number)[];
 
@@ -419,12 +420,24 @@ function Node({ ctx, path, name, value, def }: NodeProps): ReactNode {
 
   if (typeof def === "string" || def === null) {
     const friendly = friendlyFor(ctx, path, def, value);
+    // Email / phone / WhatsApp fields (page `formats`): checked as you type; Save is blocked while one is wrong.
+    const format = ctx.page.formats?.[patternOf(path)];
+    const icon = format === "contact-row" ? getIn(ctx.root, [...path.slice(0, -1), "icon"]) : undefined;
+    const error = format ? formatError(format, typeof value === "string" ? value : "", icon) : null;
+    const inputType =
+      format === "email" || (format === "contact-row" && icon === "mail")
+        ? "email"
+        : format === "phone" || format === "whatsapp" || (format === "contact-row" && icon === "phone")
+          ? "tel"
+          : undefined;
     return (
       <TextField
         label={label}
         hint={joinHints(hint, friendly.note)}
+        error={error}
+        type={inputType}
         value={friendly.toView(typeof value === "string" ? value : "")}
-        multiline={multiline(name, def)}
+        multiline={!format && multiline(name, def)}
         onChange={(text) => set(friendly.fromView(text))}
       />
     );
@@ -652,6 +665,21 @@ function ListNode({ ctx, path, name, value, def }: NodeProps & { def: unknown[] 
 
 // ── Page ─────────────────────────────────────────────────────────────────────
 
+/** One card of the editor: a top-level section, or only some of its fields. */
+export interface EditorCard {
+  /** Card id (open/closed state). */
+  id: string;
+  /** Top-level key of the content. */
+  key: string;
+  /** Only these fields of that section (an object), in this order. Default: all of them. */
+  fields?: readonly string[];
+  /** Other top-level values (e.g. "tagline") shown at the top of this card, before its fields. */
+  before?: readonly string[];
+  title: string;
+  hint?: string;
+  icon?: ElementType;
+}
+
 export default function ContentEditor({
   page,
   content,
@@ -660,7 +688,13 @@ export default function ContentEditor({
   onToggle,
   imagesOnly = false,
   can = () => true,
+  only,
+  cards: givenCards,
 }: {
+  /** Show only these top-level sections, in this order. */
+  only?: readonly string[];
+  /** Show these cards instead of one card per section (open state keyed by card id). */
+  cards?: readonly EditorCard[];
   /** Whether the signed-in user holds a permission (see `requires` in the page definition). */
   can?: (permission: string) => boolean;
   /** Show only the page's images (the "Images" tab), section by section in page order. */
@@ -680,13 +714,28 @@ export default function ContentEditor({
     can,
   };
   const listed = Object.keys(page.sections).filter((k) => k in page.defaults);
-  const allKeys = [...listed, ...Object.keys(page.defaults).filter((k) => !listed.includes(k))].filter(
-    // A locked top-level value (e.g. a service page's id) has nothing to edit: no empty card for it.
-    (k) => !isLocked(ctx, [k]),
-  );
-  const keys = imagesOnly ? allKeys.filter((key) => containsImage(ctx, [key], key, page.defaults[key])) : allKeys;
+  const ordered = only
+    ? only.filter((k) => k in page.defaults)
+    : [...listed, ...Object.keys(page.defaults).filter((k) => !listed.includes(k))];
+  // A locked top-level value (e.g. a service page's id) has nothing to edit: no empty card for it.
+  const allCards: EditorCard[] = (
+    givenCards ??
+    ordered.map((key) => ({ id: key, key, ...(page.sections[key] ?? { title: humanize(key) }) }))
+  ).filter((card) => card.key in page.defaults && !isLocked(ctx, [card.key]));
+  const cardKeys = (card: EditorCard) => {
+    const def = page.defaults[card.key];
+    return isPlainObject(def) ? (card.fields ?? Object.keys(def)).filter((k) => k in def) : [];
+  };
+  const cards = imagesOnly
+    ? allCards.filter((card) => {
+        const def = page.defaults[card.key];
+        return card.fields && isPlainObject(def)
+          ? cardKeys(card).some((k) => containsImage(ctx, [card.key, k], k, def[k]))
+          : containsImage(ctx, [card.key], card.key, def);
+      })
+    : allCards;
 
-  if (imagesOnly && keys.length === 0) {
+  if (imagesOnly && cards.length === 0) {
     return (
       <p className="rounded-lg border border-dashed border-border p-6 text-center text-sm text-muted-foreground">
         This page has no images. Every other part of it is under “Page content”.
@@ -696,8 +745,9 @@ export default function ContentEditor({
 
   return (
     <>
-      {keys.map((key) => {
-        const section = page.sections[key] ?? { title: humanize(key) };
+      {cards.map((card) => {
+        const { key } = card;
+        const section = card;
         const def = page.defaults[key];
         const value = content[key];
         const fields = isPlainObject(def) && !isImageValue(def) && !isCopyValue(def) && !isAccentHeading(def)
@@ -705,7 +755,7 @@ export default function ContentEditor({
               <Fields
                 ctx={ctx}
                 path={[key]}
-                keys={Object.keys(def)}
+                keys={cardKeys(card)}
                 def={def}
                 render={(k) => (
                   <Node key={k} ctx={ctx} path={[key, k]} name={k} value={isPlainObject(value) ? value[k] : undefined} def={def[k]} />
@@ -715,12 +765,12 @@ export default function ContentEditor({
           : <Node ctx={ctx} path={[key]} name={key} value={value} def={def} />;
         return (
           <SectionCard
-            key={key}
-            icon={FileText}
+            key={card.id}
+            icon={card.icon ?? FileText}
             title={section.title}
             hint={section.hint}
-            open={!!open[key]}
-            onToggle={() => onToggle(key)}
+            open={!!open[card.id]}
+            onToggle={() => onToggle(card.id)}
           >
             {!imagesOnly && (key === "meta" || key === "seo") && (
               <>
@@ -730,6 +780,9 @@ export default function ContentEditor({
                 <SeoScriptsNote path={page.path} />
               </>
             )}
+            {card.before?.map((k) => (
+              <Node key={k} ctx={ctx} path={[k]} name={k} value={content[k]} def={page.defaults[k]} />
+            ))}
             {fields}
             <div className={imagesOnly ? "hidden" : "flex justify-end pt-2"}>
               <Button
@@ -739,7 +792,21 @@ export default function ContentEditor({
                 className="text-muted-foreground hover:text-foreground"
                 onClick={() => {
                   if (window.confirm(`Reset “${section.title}” to the default copy? (Not saved until you click Save.)`)) {
-                    ctx.onChange([key], structuredClone(def));
+                    // Only this card's fields (the rest of the section belongs to other cards), plus its `before` values.
+                    onChange((prev) => {
+                      let next = (card.before ?? []).reduce<PlainObject>(
+                        (acc, k) => setIn(acc, [k], structuredClone(page.defaults[k])) as PlainObject,
+                        prev,
+                      );
+                      next =
+                        card.fields && isPlainObject(def)
+                          ? cardKeys(card).reduce<PlainObject>(
+                              (acc, k) => setIn(acc, [key, k], structuredClone(def[k])) as PlainObject,
+                              next,
+                            )
+                          : (setIn(next, [key], structuredClone(def)) as PlainObject);
+                      return next;
+                    });
                   }
                 }}
               >

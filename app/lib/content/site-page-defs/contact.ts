@@ -54,6 +54,7 @@ export const CONTACT_PAGE = {
   },
   locked: [],
   templates: TEMPLATES.contact,
+  formats: { "brandCard.quickContacts[].value": "contact-row", "channels.cards[].value": "contact-row" },
   options: {
     "brandCard.quickContacts[].icon": ICONS,
     "channels.cards[].icon": ICONS,

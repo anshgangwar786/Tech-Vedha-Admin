@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { formatError } from "@/lib/sitePages/contactFormats";
 
 type Settings = { email: string; phone: string; whatsappNumber: string };
 const EMPTY: Settings = { email: "", phone: "", whatsappNumber: "" };
@@ -40,6 +41,17 @@ export default function ContactSettingsCard() {
     };
   }, []);
 
+  // Same rules as the API (lib/sitePages/contactFormats.ts); shown once loaded.
+  const errors: Record<keyof Settings, string | null> =
+    saved === null
+      ? { email: null, phone: null, whatsappNumber: null }
+      : {
+          email: formatError("email", form.email),
+          phone: formatError("phone", form.phone),
+          whatsappNumber: formatError("whatsapp", form.whatsappNumber),
+        };
+  const invalid = Object.values(errors).some(Boolean);
+
   const changed =
     saved !== null &&
     (form.email.trim() !== saved.email ||
@@ -48,6 +60,7 @@ export default function ContactSettingsCard() {
 
   const submit = async (event: FormEvent) => {
     event.preventDefault();
+    if (invalid) return;
     setSaving(true);
     setError("");
     try {
@@ -75,8 +88,17 @@ export default function ContactSettingsCard() {
     id: `contact-${key}`,
     value: form[key],
     disabled: saved === null || saving,
+    "aria-invalid": errors[key] ? true : undefined,
+    "aria-describedby": errors[key] ? `contact-${key}-error` : undefined,
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => setForm((prev) => ({ ...prev, [key]: e.target.value })),
   });
+
+  const fieldError = (key: keyof Settings) =>
+    errors[key] && (
+      <p id={`contact-${key}-error`} className="text-xs font-medium text-destructive">
+        {errors[key]}
+      </p>
+    );
 
   const whatsappInEffect = digitsOnly(form.whatsappNumber || form.phone);
 
@@ -95,18 +117,21 @@ export default function ContactSettingsCard() {
               <Mail className="size-3.5 text-muted-foreground" /> Email
             </Label>
             <Input type="email" placeholder="info@techvedha.tech" autoComplete="off" {...field("email")} />
+            {fieldError("email")}
           </div>
           <div className="space-y-1.5">
             <Label htmlFor="contact-phone" className="flex items-center gap-1.5">
               <Phone className="size-3.5 text-muted-foreground" /> Phone
             </Label>
             <Input type="tel" placeholder="+91 98765 43210" autoComplete="off" {...field("phone")} />
+            {fieldError("phone")}
           </div>
           <div className="space-y-1.5">
             <Label htmlFor="contact-whatsappNumber" className="flex items-center gap-1.5">
               <MessageCircle className="size-3.5 text-muted-foreground" /> WhatsApp
             </Label>
             <Input type="tel" placeholder="Same as phone" autoComplete="off" {...field("whatsappNumber")} />
+            {fieldError("whatsappNumber")}
           </div>
           <div className="flex flex-col gap-3 md:col-span-3 sm:flex-row sm:items-center sm:justify-between">
             <p className="text-[13px] text-muted-foreground" role={error ? "alert" : undefined}>
@@ -119,7 +144,7 @@ export default function ContactSettingsCard() {
                 </>
               )}
             </p>
-            <Button type="submit" size="sm" disabled={!changed || saving} className="shrink-0">
+            <Button type="submit" size="sm" disabled={!changed || saving || invalid} className="shrink-0">
               {saving ? <Loader2 className="mr-1.5 size-3.5 animate-spin" /> : <Save className="mr-1.5 size-3.5" />}
               Save everywhere
             </Button>

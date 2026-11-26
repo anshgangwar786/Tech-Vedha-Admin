@@ -106,7 +106,7 @@ export default function JmtServiceEditorPage() {
   const [isLive, setIsLive] = useState(false);
   const [loadError, setLoadError] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
-  const [open, setOpen] = useState<Record<string, boolean>>({ settings: true });
+  const [open, setOpen] = useState<Record<string, boolean>>({});
   // Version of the saved page these edits start from.
   const [pageUpdatedAt, setPageUpdatedAt] = useState("");
   const [baseUpdatedAt, setBaseUpdatedAt] = useState("");

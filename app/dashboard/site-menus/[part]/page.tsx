@@ -135,7 +135,7 @@ function SiteMenuEditor({ part }: { part: Part }) {
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
-  const [open, setOpen] = useState<Record<string, boolean>>({ [config.sections[1].key]: true });
+  const [open, setOpen] = useState<Record<string, boolean>>({});
   const options = useLinkOptions();
 
   // After a failed load nothing was loaded, so nothing can be unsaved.

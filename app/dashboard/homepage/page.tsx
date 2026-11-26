@@ -97,7 +97,7 @@ export default function HomepageDashboardPage() {
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
-  const [open, setOpen] = useState<Record<string, boolean>>({ hero: true });
+  const [open, setOpen] = useState<Record<string, boolean>>({});
   const liveUrl = liveSiteUrl();
 
   // After a failed load nothing was loaded, so nothing can be unsaved.

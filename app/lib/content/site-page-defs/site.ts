@@ -12,8 +12,10 @@ const LINK = "Where it goes: a page such as /about, a part of the homepage such 
 const EMPTY_LINK = "A link without both a text and a “where it goes” is not shown, so you can save a half-finished one.";
 
 export const SITE_PAGE = {
-  title: "Site & menus",
-  description: "Your business name and contact details, logo, top menu, “Start a project” pop-up, bottom of every page, error page and sitemap page",
+  title: "Site settings",
+  // The logo, header, pop-up and footer sections are edited under Menus (components/site-page-editor/siteMenuParts.ts).
+  description: "Your business name and contact details, Google settings, WhatsApp button text, error page and sitemap page",
+  // (The slogan is edited in Footer Menu → Brand.)
   path: "/",
   defaults: DEFAULTS.site,
   sections: {
@@ -38,7 +40,7 @@ export const SITE_PAGE = {
       title: "Text of the standard WhatsApp button",
       hint: "Used for the second button next to “Start a project” wherever a page doesn't set its own text",
     },
-    footer: { title: "Bottom of every page (footer)", hint: "Slogan line, link columns, email and the copyright line" },
+    footer: { title: "Bottom of every page (footer)", hint: "Slogan line, link columns, email, call and WhatsApp links and the copyright line" },
     notFound: { title: "“Page not found” page", hint: "What visitors see when they open a broken or old link" },
     sitemapPage: {
       title: "Sitemap page (/site-map)",
@@ -75,6 +77,7 @@ export const SITE_PAGE = {
     "sitemapPage.homeSections": "Add link",
   },
   labels: {
+    tagline: "Slogan",
     "seo.defaultTitle": "Default title in Google and browser tabs",
     "seo.titleTemplate": "How page titles are written",
     "logo.dark": "Logo for the dark look",
@@ -102,7 +105,9 @@ export const SITE_PAGE = {
     "footer.serviceLinks": "Links in the first column",
     "footer.companyTitle": "Title of the second link column",
     "footer.companyLinks": "Links in the second column",
-    "footer.contactTitle": "Title of the email column",
+    "footer.contactTitle": "Title of the contact column",
+    "footer.callLabel": "Text of the call link",
+    "footer.whatsappLabel": "Text of the WhatsApp link",
     "footer.copyright": "Copyright line",
     "footer.legalLinks": "Small links in the bottom row (Privacy, Terms…)",
     "notFound.metaTitle": "Title in the browser tab",
@@ -119,10 +124,12 @@ export const SITE_PAGE = {
     "sitemapPage.homeTitle": "Title above the homepage links",
     "sitemapPage.homeSections": "Links to parts of the homepage",
   },
+  formats: { email: "email", phone: "phone", whatsappNumber: "whatsapp" },
   advanced: ["seo.titleTemplate", "header.ctaHref", "sitemapPage.breadcrumb.label"],
   hints: {
     name: "Used in browser tabs, Google results, the logo text on share images and the copyright line.",
-    tagline: "Example: Build for Tomorrow",
+    tagline:
+      "Shown in capitals under the logo at the bottom of every page, and on the picture shown when a link is shared. Example: Build for Tomorrow",
     description: "One or two sentences. Google may show it under your website's name.",
     email: "Example: info@yourcompany.com",
     phone: "Write it with the country code, e.g. +91 98765 43210. The “Call” buttons dial this number.",
@@ -162,6 +169,10 @@ export const SITE_PAGE = {
     "footer.serviceLinks[].href": LINK,
     "footer.companyLinks": `Add, delete or reorder links. If you delete them all, the column disappears. ${EMPTY_LINK}`,
     "footer.companyLinks[].href": LINK,
+    "footer.callLabel":
+      "Opens the phone dialer with the phone number from Site settings. Leave empty to show the phone number itself.",
+    "footer.whatsappLabel":
+      "Opens a WhatsApp chat with the WhatsApp number from Site settings (or the phone number). Leave empty to hide the link.",
     "footer.copyright": "{year} becomes the current year and {name} your business name, e.g. © 2026 Tech Vedha.",
     "footer.legalLinks": "Add these once the pages exist (e.g. Privacy policy → /privacy). Empty = no bottom-row links.",
     "footer.legalLinks[].href": LINK,

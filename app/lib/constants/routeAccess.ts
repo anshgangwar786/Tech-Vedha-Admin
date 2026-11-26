@@ -14,6 +14,7 @@ export const ROUTE_ACCESS: readonly RouteRule[] = [
   // Website content
   ["/dashboard/homepage", P.CONTENT_EDIT],
   ["/dashboard/site-pages/[key]", P.CONTENT_EDIT],
+  ["/dashboard/menus/[part]", P.CONTENT_EDIT],
   ["/dashboard/site-menus/[part]", P.CONTENT_EDIT],
   ["/dashboard/terms-policy", P.CONTENT_EDIT],
   // Legacy main-website editors (kept reachable by URL)

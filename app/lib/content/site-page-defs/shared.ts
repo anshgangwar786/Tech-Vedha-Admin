@@ -1,6 +1,7 @@
 // Shared types and helpers of the page definitions (one file per page in this folder).
 
 import type { ListTemplates, PlainObject } from "@/lib/sitePages/mergeContent";
+import type { ContactFormat } from "@/lib/sitePages/contactFormats";
 
 export interface SitePageSection {
   title: string;
@@ -22,6 +23,11 @@ export interface SitePageDefinition {
   options?: Record<string, readonly string[]>;
   /** Paths that always keep the bundled value (not shown in the editor). Must match the frontend. */
   locked?: readonly string[];
+  /**
+   * Email / phone / WhatsApp fields, keyed by path pattern: checked as you type and on save (editor and API),
+   * see lib/sitePages/contactFormats.ts.
+   */
+  formats?: Record<string, ContactFormat>;
   /** Field hints, keyed by path pattern. */
   hints?: Record<string, string>;
   /**
