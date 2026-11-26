@@ -484,13 +484,16 @@ function Node({ ctx, path, name, value, def }: NodeProps): ReactNode {
         drawingSrc={drawingPreviewFor(ctx.page.path, path, (field) => getIn(ctx.root, [...path.slice(0, -1), field]))}
         onChange={async (next) => {
           const src = next.src || String(def.src);
-          // No picture = the built-in drawing, which has nothing to swap in dark mode.
-          const darkSrc = next.src || def.src ? (next.darkSrc ?? "") : "";
+          const darkSrc = next.darkSrc ?? "";
           const base = { ...img, src, alt: next.alt, focus: next.focus, darkSrc };
-          if (src === img.src) return set(base);
-          if (src === def.src) return set({ ...base, width: def.width, height: def.height });
+          // The pixel size comes from the light picture, or from the dark one when it is the only picture.
+          const sized = src || darkSrc;
+          const before = String(img.src || img.darkSrc || "");
+          if (sized === before) return set(base);
+          if (sized === def.src) return set({ ...base, width: def.width, height: def.height });
           set(base);
-          const size = await measureImage(src);
+          if (!sized) return;
+          const size = await measureImage(sized);
           if (size) ctx.onChange(path, { ...base, ...size });
         }}
       />

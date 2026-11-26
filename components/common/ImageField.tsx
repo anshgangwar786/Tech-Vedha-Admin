@@ -7,7 +7,7 @@
 // Fields whose empty state is a drawing coded on the website show a snapshot of it (`drawingSrc`).
 
 import { useRef, useState } from "react";
-import { ImageIcon, Images, Loader2, Moon, RotateCcw, Upload } from "lucide-react";
+import { ImageIcon, Images, Loader2, Moon, RotateCcw, Sun, Upload } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import MediaPickerDialog from "@/components/common/MediaPickerDialog";
@@ -58,9 +58,12 @@ export default function ImageField({
   const [uploading, setUploading] = useState(false);
   const fileRef = useRef<HTMLInputElement>(null);
 
+  const darkSrc = darkMode ? (value.darkSrc ?? "").trim() : "";
+  // Light mode with no light picture shows the dark-mode one (when set), like the website does.
+  const usingDark = !value.src && !defaultSrc && Boolean(darkSrc) && isSafeImageSrc(darkSrc);
   const usingDefault = !value.src && Boolean(defaultSrc);
-  const usingDrawing = !value.src && !defaultSrc && Boolean(drawingSrc);
-  const rawPreview = value.src || defaultSrc || "";
+  const usingDrawing = !value.src && !defaultSrc && !usingDark && Boolean(drawingSrc);
+  const rawPreview = value.src || defaultSrc || (usingDark ? darkSrc : "");
   const previewSrc = usingDrawing ? drawingSrc! : previewUrl(rawPreview);
   const urlInvalid = Boolean(value.src) && !isSafeImageSrc(value.src);
   // Remembers which address failed, so a new image is tried again.
@@ -78,6 +81,11 @@ export default function ImageField({
   return (
     <div className="space-y-2">
       <span className="block text-sm font-medium text-foreground">{label}</span>
+      {darkMode && (
+        <p className="text-xs text-muted-foreground">
+          Light mode shows the light image, dark mode the dark image. Set only one and it is used in both themes.
+        </p>
+      )}
       <div className="flex flex-col gap-4 rounded-lg border border-border bg-muted/40 p-3 sm:flex-row">
         <div className="relative flex h-32 w-full shrink-0 items-center justify-center overflow-hidden rounded-md bg-muted sm:w-48">
           {previewSrc && !urlInvalid && !previewFailed ? (
@@ -97,14 +105,23 @@ export default function ImageField({
               </span>
             </div>
           )}
-          {(usingDefault || usingDrawing) && !previewFailed && (
-            <span className="absolute left-1.5 top-1.5 rounded bg-black/70 px-1.5 py-0.5 text-[11px] text-white">
-              {usingDrawing ? "Built-in drawing" : "Default"}
+          {darkMode ? (
+            <span className="absolute left-1.5 top-1.5 flex items-center gap-1 rounded bg-black/70 px-1.5 py-0.5 text-[11px] text-white">
+              <Sun className="h-3 w-3" />
+              {usingDrawing ? "Light mode · built-in drawing" : usingDark ? "Light mode · uses dark image" : usingDefault ? "Light mode · default" : "Light mode"}
             </span>
+          ) : (
+            (usingDefault || usingDrawing) &&
+            !previewFailed && (
+              <span className="absolute left-1.5 top-1.5 rounded bg-black/70 px-1.5 py-0.5 text-[11px] text-white">
+                {usingDrawing ? "Built-in drawing" : "Default"}
+              </span>
+            )
           )}
         </div>
 
         <div className="min-w-0 flex-1 space-y-2">
+          {darkMode && <span className="block text-sm font-medium text-foreground">Light mode image</span>}
           <div className="flex flex-wrap gap-2">
             <Button type="button" variant="outline" size="sm" className={btnCls} onClick={() => setPickerOpen(true)}>
               <Images className="mr-1.5 h-4 w-4" /> Media Library
@@ -139,7 +156,9 @@ export default function ImageField({
             placeholder={
               defaultSrc
                 ? "Using the default image — or paste an image URL"
-                : drawingSrc
+                : darkMode
+                  ? "Empty = the dark image (or the drawing) in light mode too — or paste an image URL"
+                  : drawingSrc
                   ? "Using the built-in drawing — or paste an image URL"
                   : "https://… image URL"
             }
@@ -177,8 +196,10 @@ export default function ImageField({
       {darkMode && (
         <DarkImageRow
           darkSrc={value.darkSrc ?? ""}
-          hasImage={Boolean(value.src || defaultSrc)}
+          lightSrc={value.src || defaultSrc || ""}
+          drawingSrc={drawingSrc}
           alt={value.alt}
+          focus={value.focus}
           onChange={(darkSrc) => onChange({ ...value, darkSrc })}
         />
       )}
@@ -214,18 +235,22 @@ async function uploadImage(file: File | undefined, setUploading: (busy: boolean)
 }
 
 /**
- * Optional dark-mode version of the picture: the website shows it instead when a visitor uses the dark theme.
- * Only used together with the picture above (a card showing its built-in drawing has nothing to swap).
+ * Dark-mode picture: the website shows it when a visitor uses the dark theme (the light picture above in light mode).
+ * Empty = the light picture in dark mode too, or the built-in drawing when there is no picture at all.
  */
 function DarkImageRow({
   darkSrc,
-  hasImage,
+  lightSrc,
+  drawingSrc,
   alt,
+  focus,
   onChange,
 }: {
   darkSrc: string;
-  hasImage: boolean;
+  lightSrc: string;
+  drawingSrc?: string;
   alt: string;
+  focus: HomeImageValue["focus"];
   onChange: (darkSrc: string) => void;
 }) {
   const [pickerOpen, setPickerOpen] = useState(false);
@@ -233,27 +258,40 @@ function DarkImageRow({
   const [failedSrc, setFailedSrc] = useState("");
   const fileRef = useRef<HTMLInputElement>(null);
   const invalid = Boolean(darkSrc) && !isSafeImageSrc(darkSrc);
-  const preview = darkSrc && !invalid && failedSrc !== darkSrc ? previewUrl(darkSrc) : "";
+  // What dark mode shows: its own picture, else the light one, else the drawing.
+  const fallback = darkSrc ? "" : lightSrc && isSafeImageSrc(lightSrc) ? "light" : drawingSrc ? "drawing" : "";
+  const shown = darkSrc && !invalid ? previewUrl(darkSrc) : fallback === "light" ? previewUrl(lightSrc) : fallback === "drawing" ? drawingSrc! : "";
+  const failed = Boolean(shown) && failedSrc === shown;
 
   return (
-    <div className="flex flex-col gap-3 rounded-lg border border-dashed border-border bg-muted/20 p-3 sm:flex-row sm:items-start">
-      <div className="relative flex h-20 w-full shrink-0 items-center justify-center overflow-hidden rounded-md bg-zinc-900 sm:w-48">
-        {preview ? (
+    <div className="flex flex-col gap-4 rounded-lg border border-border bg-zinc-900/40 p-3 sm:flex-row">
+      <div className="relative flex h-32 w-full shrink-0 items-center justify-center overflow-hidden rounded-md bg-zinc-900 sm:w-48">
+        {shown && !failed ? (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={preview} alt={alt} className="h-full w-full object-cover" onError={() => setFailedSrc(darkSrc)} />
+          <img
+            src={shown}
+            alt={alt}
+            className={fallback === "drawing" ? "h-full w-full object-contain" : "h-full w-full object-cover"}
+            onError={() => setFailedSrc(shown)}
+            style={{ objectPosition: focus === "upper" ? "center 20%" : focus }}
+          />
         ) : (
-          <span className="px-2 text-center text-[11px] text-zinc-400">
-            {invalid ? "Invalid address" : failedSrc && failedSrc === darkSrc ? "Preview unavailable" : "Same picture in dark mode"}
-          </span>
+          <div className="flex flex-col items-center gap-1 px-2 text-center">
+            <ImageIcon className="h-8 w-8 text-zinc-500" />
+            <span className="text-[11px] text-zinc-400">
+              {failed ? "Preview unavailable" : invalid ? "Invalid address" : "No image yet — upload one"}
+            </span>
+          </div>
         )}
         <span className="absolute left-1.5 top-1.5 flex items-center gap-1 rounded bg-black/70 px-1.5 py-0.5 text-[11px] text-white">
-          <Moon className="h-3 w-3" /> Dark mode
+          <Moon className="h-3 w-3" />
+          {fallback === "light" ? "Dark mode · uses light image" : fallback === "drawing" ? "Dark mode · built-in drawing" : "Dark mode"}
         </span>
       </div>
       <div className="min-w-0 flex-1 space-y-2">
-        <span className="block text-sm font-medium text-foreground">Dark mode image (optional)</span>
+        <span className="block text-sm font-medium text-foreground">Dark mode image</span>
         <div className="flex flex-wrap gap-2">
-          <Button type="button" variant="outline" size="sm" disabled={!hasImage} onClick={() => setPickerOpen(true)}>
+          <Button type="button" variant="outline" size="sm" onClick={() => setPickerOpen(true)}>
             <Images className="mr-1.5 h-4 w-4" /> Media Library
           </Button>
           <input
@@ -268,13 +306,7 @@ function DarkImageRow({
               if (url) onChange(url);
             }}
           />
-          <Button
-            type="button"
-            variant="outline"
-            size="sm"
-            disabled={!hasImage || uploading}
-            onClick={() => fileRef.current?.click()}
-          >
+          <Button type="button" variant="outline" size="sm" disabled={uploading} onClick={() => fileRef.current?.click()}>
             {uploading ? <Loader2 className="mr-1.5 h-4 w-4 animate-spin" /> : <Upload className="mr-1.5 h-4 w-4" />}
             Upload
           </Button>
@@ -293,13 +325,12 @@ function DarkImageRow({
         <input
           className={inputCls}
           value={darkSrc}
-          disabled={!hasImage}
-          placeholder={hasImage ? "Empty = the picture above in both themes — or paste an image URL" : "Add the picture above first"}
+          placeholder="Empty = the light image (or the drawing) in dark mode too — or paste an image URL"
           onChange={(e) => onChange(e.target.value)}
         />
         {invalid && <p className="text-xs text-destructive">Use a full https:// URL or a path starting with “/”.</p>}
         <p className="text-xs text-muted-foreground">
-          Shown instead of the picture above when a visitor uses the dark theme. Use the same size and framing.
+          Shown when a visitor uses the dark theme. Use the same size and framing as the light image.
         </p>
       </div>
       <MediaPickerDialog open={pickerOpen} onOpenChange={setPickerOpen} onSelect={({ url }) => onChange(url)} />
