@@ -86,6 +86,8 @@ export interface HomeImageValue {
   src: string;
   alt: string;
   focus: ImageFocus;
+  /** Optional picture shown in dark mode instead (website pages only). Empty = the same picture in both themes. */
+  darkSrc?: string;
 }
 
 export interface HomeLinkValue {
