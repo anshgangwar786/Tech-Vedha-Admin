@@ -161,7 +161,7 @@
           "stat": "",
           "statLabel": "",
           "quote": "Our Instagram ads finally reach people near the store, and enquiries now come straight into WhatsApp. We reply from one place instead of juggling DMs, calls and forms.",
-          "avatar": "/home/avatars/homedecor.jpg",
+          "avatar": "https://navajowhite-octopus-630288.hostingersite.com/tech-vedha/media/1795581887731_84f95cc6_homedecor.jpg",
           "role": "Owner",
           "company": "Home décor store",
           "category": "Marketing"
@@ -169,7 +169,7 @@
         {
           "kind": "photo",
           "column": "left",
-          "photo": "/home/stories/app-launch.jpg",
+          "photo": "https://navajowhite-octopus-630288.hostingersite.com/tech-vedha/media/1795581898766_495d66cc_app-launch.jpg",
           "photoAlt": "Founder of a grocery delivery startup in their warehouse",
           "stat": "",
           "statLabel": "",
@@ -187,7 +187,7 @@
           "stat": "4 → 1",
           "statLabel": "vendors to manage",
           "quote": "Design, app, software and marketing — all handled by one team with one invoice.",
-          "avatar": "/home/avatars/showroom.jpg",
+          "avatar": "https://navajowhite-octopus-630288.hostingersite.com/tech-vedha/media/1795581892277_6fdc9f53_showroom.jpg",
           "role": "Owner",
           "company": "Multi-brand showroom",
           "category": "Apps"
@@ -195,7 +195,7 @@
         {
           "kind": "photo",
           "column": "middle",
-          "photo": "/home/stories/3d-showroom.jpg",
+          "photo": "https://navajowhite-octopus-630288.hostingersite.com/tech-vedha/media/1795581897295_1d505136_3d-showroom.jpg",
           "photoAlt": "Furniture showroom owner holding a tablet with a 3D floor plan",
           "stat": "",
           "statLabel": "",
@@ -213,7 +213,7 @@
           "stat": "",
           "statLabel": "",
           "quote": "We came for floor plans and stayed for everything else. The same team drew our villas in 2D and 3D, prepared the BOQ, built the booking app and ran the launch campaign. One WhatsApp group replaced four vendors and endless follow-ups.",
-          "avatar": "/home/avatars/builder.jpg",
+          "avatar": "https://navajowhite-octopus-630288.hostingersite.com/tech-vedha/media/1795581885140_5f9ed182_builder.jpg",
           "role": "Director",
           "company": "Residential builder",
           "category": "CAD"
@@ -226,7 +226,7 @@
           "stat": "",
           "statLabel": "",
           "quote": "Patients book appointments in the app and get WhatsApp reminders. The team tested it on every phone our patients use before launch.",
-          "avatar": "/home/avatars/clinic.jpg",
+          "avatar": "https://navajowhite-octopus-630288.hostingersite.com/tech-vedha/media/1795581886431_cf7053c9_clinic.jpg",
           "role": "Clinic administrator",
           "company": "Healthcare clinic",
           "category": "Apps"
@@ -239,7 +239,7 @@
           "stat": "3 stores",
           "statLabel": "on one billing system",
           "quote": "Billing, stock and staff logins run on one system now — no more end-of-day spreadsheets.",
-          "avatar": "/home/avatars/retail.jpg",
+          "avatar": "https://navajowhite-octopus-630288.hostingersite.com/tech-vedha/media/1795581890765_b5c282aa_retail.jpg",
           "role": "Managing partner",
           "company": "Electronics retail chain",
           "category": "Software"
@@ -252,7 +252,7 @@
           "stat": "",
           "statLabel": "",
           "quote": "We chose the subscription model because our processes keep changing. Every new requirement gets added without a new contract, and the security checks run in the background.",
-          "avatar": "/home/avatars/manufacturing.jpg",
+          "avatar": "https://navajowhite-octopus-630288.hostingersite.com/tech-vedha/media/1795581889217_3a5902c4_manufacturing.jpg",
           "role": "Operations head",
           "company": "Manufacturing unit",
           "category": "Software"
@@ -265,7 +265,7 @@
           "stat": "",
           "statLabel": "",
           "quote": "They turn our sketches into accurate CAD drawings quickly, and the bill of quantities matches the drawings line for line, which makes contractor quotes far easier.",
-          "avatar": "/home/avatars/studio.jpg",
+          "avatar": "https://navajowhite-octopus-630288.hostingersite.com/tech-vedha/media/1795581893526_7c81c9e3_studio.jpg",
           "role": "Architect",
           "company": "Interior design studio",
           "category": "CAD"
@@ -273,7 +273,7 @@
         {
           "kind": "photo",
           "column": "right",
-          "photo": "/home/stories/youtube-seo.jpg",
+          "photo": "https://navajowhite-octopus-630288.hostingersite.com/tech-vedha/media/1795581900120_f1b751ae_youtube-seo.jpg",
           "photoAlt": "Clothing boutique owner smiling in their store",
           "stat": "",
           "statLabel": "",
@@ -363,7 +363,7 @@
         },
         "sent": {
           "icon": {
-            "src": "/icons/success.svg",
+            "src": "https://navajowhite-octopus-630288.hostingersite.com/tech-vedha/media/1795581904173_48a8e561_success.svg",
             "alt": "",
             "width": 64,
             "height": 64

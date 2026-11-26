@@ -57,7 +57,7 @@ export interface SitePageDefinition {
 export const SEO: SitePageSection = { title: "SEO", hint: "Browser tab title, search result description and keywords" };
 
 export const IMAGE_HINT =
-  "Upload an image or pick one from the Media Library (uploads are saved there too). Pasted addresses must be a path on the website (e.g. /home/avatars/clinic.jpg) or a Media Library URL; others are ignored.";
+  "Click Upload to add a picture from your computer — it is stored in your Hostinger media folder and appears in the Media Library — or pick one you uploaded before with Media Library.";
 
 /** Shared label for the screen-reader-only texts of a section. */
 export const A11Y_HINT = "Read aloud by screen readers; not shown on screen.";
