@@ -58,3 +58,6 @@ service-account*.json
 
 # Uploads saved locally while testing the Media Library
 uploads/
+
+# Test coverage reports
+coverage/
