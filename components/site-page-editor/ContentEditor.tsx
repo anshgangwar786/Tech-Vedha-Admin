@@ -36,6 +36,7 @@ import {
 } from "@/lib/sitePages/mergeContent";
 import type { SitePageDefinition } from "@/app/lib/content/site-pages";
 import SeoScriptsNote from "@/components/seo-editor/SeoScriptsNote";
+import { drawingPreviewFor } from "@/app/lib/content/drawing-previews";
 import { countWord, friendlyText, type FriendlyText } from "./placeholders";
 
 type Path = (string | number)[];
@@ -477,6 +478,7 @@ function Node({ ctx, path, name, value, def }: NodeProps): ReactNode {
         hint={hint}
         value={imageValue}
         defaultSrc={String(def.src)}
+        drawingSrc={drawingPreviewFor(ctx.page.path, path, (field) => getIn(ctx.root, [...path.slice(0, -1), field]))}
         onChange={async (next) => {
           const src = next.src || String(def.src);
           const base = { ...img, src, alt: next.alt, focus: next.focus };

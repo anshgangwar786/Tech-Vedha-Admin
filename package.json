@@ -15,7 +15,8 @@
     "seed:roles": "tsx prisma/seed-roles.ts",
     "test:smtp": "node scripts/test-smtp.mjs",
     "sync:defaults": "tsx scripts/sync-frontend-defaults.ts",
-    "upload:frontend-media": "tsx scripts/upload-frontend-media.ts"
+    "upload:frontend-media": "tsx scripts/upload-frontend-media.ts",
+    "upload:drawing-previews": "tsx scripts/upload-drawing-previews.ts"
   },
   "engines": {
     "node": ">=20.9.0"

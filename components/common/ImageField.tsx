@@ -4,6 +4,7 @@
 // or paste a URL; plus alt text and crop focus. An empty `src` means "use the
 // default image" (shown greyed in the preview when `defaultSrc` is given).
 // Paths such as /home/avatars/clinic.jpg are files of the website, so the preview loads them from there.
+// Fields whose empty state is a drawing coded on the website show a snapshot of it (`drawingSrc`).
 
 import { useRef, useState } from "react";
 import { ImageIcon, Images, Loader2, RotateCcw, Upload } from "lucide-react";
@@ -31,16 +32,26 @@ interface ImageFieldProps {
   hint?: string;
   /** Hide the alt text and focus controls (for fields that store only the image path). */
   srcOnly?: boolean;
+  /**
+   * Snapshot of the drawing the website shows when the field is empty (full URL in the Hostinger media folder).
+   * Used when there is no `defaultSrc`.
+   */
+  drawingSrc?: string;
 }
 
-export default function ImageField({ label, value, onChange, defaultSrc, hint, srcOnly = false }: ImageFieldProps) {
+export default function ImageField({ label, value, onChange, defaultSrc, hint, srcOnly = false, drawingSrc }: ImageFieldProps) {
   const [pickerOpen, setPickerOpen] = useState(false);
   const [uploading, setUploading] = useState(false);
   const fileRef = useRef<HTMLInputElement>(null);
 
   const usingDefault = !value.src && Boolean(defaultSrc);
+  const usingDrawing = !value.src && !defaultSrc && Boolean(drawingSrc);
   const rawPreview = value.src || defaultSrc || "";
-  const previewSrc = rawPreview.startsWith("/") && !rawPreview.startsWith("//") ? `${FRONTEND_URL}${rawPreview}` : rawPreview;
+  const previewSrc = usingDrawing
+    ? drawingSrc!
+    : rawPreview.startsWith("/") && !rawPreview.startsWith("//")
+      ? `${FRONTEND_URL}${rawPreview}`
+      : rawPreview;
   const urlInvalid = Boolean(value.src) && !isSafeImageSrc(value.src);
   // Remembers which address failed, so a new image is tried again.
   const [failedSrc, setFailedSrc] = useState("");
@@ -78,7 +89,7 @@ export default function ImageField({ label, value, onChange, defaultSrc, hint, s
             <img
               src={previewSrc}
               alt={value.alt}
-              className="h-full w-full object-cover"
+              className={usingDrawing ? "h-full w-full object-contain" : "h-full w-full object-cover"}
               onError={() => setFailedSrc(previewSrc)}
               style={{ objectPosition: value.focus === "upper" ? "center 20%" : value.focus }}
             />
@@ -90,9 +101,9 @@ export default function ImageField({ label, value, onChange, defaultSrc, hint, s
               </span>
             </div>
           )}
-          {usingDefault && (
+          {(usingDefault || usingDrawing) && !previewFailed && (
             <span className="absolute left-1.5 top-1.5 rounded bg-black/70 px-1.5 py-0.5 text-[11px] text-white">
-              Default
+              {usingDrawing ? "Built-in drawing" : "Default"}
             </span>
           )}
         </div>
@@ -129,7 +140,13 @@ export default function ImageField({ label, value, onChange, defaultSrc, hint, s
           <input
             className={inputCls}
             value={value.src}
-            placeholder={defaultSrc ? "Using the default image — or paste an image URL" : "https://… image URL"}
+            placeholder={
+              defaultSrc
+                ? "Using the default image — or paste an image URL"
+                : drawingSrc
+                  ? "Using the built-in drawing — or paste an image URL"
+                  : "https://… image URL"
+            }
             onChange={(e) => onChange({ ...value, src: e.target.value })}
           />
           {urlInvalid && (
