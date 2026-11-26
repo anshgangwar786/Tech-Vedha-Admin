@@ -198,7 +198,10 @@ const EXTENSION_TYPES: Record<string, string> = {
 export function joinDocType(file: { name: string; type: string }): string | null {
   if (Object.hasOwn(JOIN_DOC_TYPES, file.type)) return file.type;
   const ext = file.name.split(".").pop()?.toLowerCase() ?? "";
-  return !file.type || file.type === "application/octet-stream" ? (EXTENSION_TYPES[ext] ?? null) : null;
+  // Own keys only: "x.constructor" or "x.__proto__" must not resolve to an inherited Object member,
+  // which matchesMagicBytes (hostingerFtp.ts) would then wave through.
+  if (!Object.hasOwn(EXTENSION_TYPES, ext)) return null;
+  return !file.type || file.type === "application/octet-stream" ? EXTENSION_TYPES[ext] : null;
 }
 
 /** The non-empty files sent in the "documents" field. */

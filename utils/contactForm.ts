@@ -7,7 +7,7 @@
 // free-text note, company and start date required, and no email field.
 // Pure functions with no server imports: safe on both client and server.
 
-import { HONEYPOT_FIELD, MAX_HEADCOUNT, validateIndianMobile } from "@/utils/leadForm";
+import { HONEYPOT_FIELD, MAX_HEADCOUNT, isWholeNumber, validateIndianMobile } from "@/utils/leadForm";
 
 export { HONEYPOT_FIELD, MAX_HEADCOUNT };
 
@@ -118,7 +118,7 @@ export function validateContact(values: ContactFormValues): Partial<Record<Conta
   const headcount = Number(values.headcount);
   if (!values.headcount) {
     errors.headcount = "Enter how many workers.";
-  } else if (!Number.isInteger(headcount) || headcount < 1 || headcount > MAX_HEADCOUNT) {
+  } else if (!isWholeNumber(values.headcount) || headcount < 1 || headcount > MAX_HEADCOUNT) {
     errors.headcount = `Enter 1 to ${MAX_HEADCOUNT}.`;
   }
 

@@ -215,6 +215,12 @@ export function validateLeadFields(
 export const isValidIndianMobile = (phone: string) => validateIndianMobile(phone) === null;
 export const isValidEmail = (email: string) => validateEmail(email) === null;
 
+/**
+ * Plain digits only. Number() alone also accepts forms such as "1e3" or "0x10", which
+ * would pass the range check and be stored exactly as typed.
+ */
+export const isWholeNumber = (value: string) => /^\d+$/.test(value);
+
 function isRealDate(value: string): boolean {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
   const date = new Date(`${value}T00:00:00Z`);
@@ -245,7 +251,7 @@ export function validateLead(values: LeadFormValues): Partial<Record<LeadField, 
   const headcount = Number(values.headcount);
   if (!values.headcount) {
     errors.headcount = "Enter how many workers.";
-  } else if (!Number.isInteger(headcount) || headcount < 1 || headcount > MAX_HEADCOUNT) {
+  } else if (!isWholeNumber(values.headcount) || headcount < 1 || headcount > MAX_HEADCOUNT) {
     errors.headcount = `Enter 1 to ${MAX_HEADCOUNT}.`;
   }
 
