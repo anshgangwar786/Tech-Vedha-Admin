@@ -6,6 +6,7 @@
 
 export const PERMISSIONS = {
   CONTENT_EDIT: "content.edit",
+  PAGES_PUBLISH: "pages.publish",
   POSTS_MANAGE: "posts.manage",
   SERVICES_MANAGE: "services.manage",
   PACKAGES_MANAGE: "packages.manage",
@@ -38,6 +39,7 @@ export interface PermissionInfo {
 
 export const PERMISSION_CATALOG: readonly PermissionInfo[] = [
   { key: PERMISSIONS.CONTENT_EDIT, group: "Website content", grantable: true, label: "Edit website pages", description: "Site & menus, Homepage, About, Contact, service catalogue and service pages" },
+  { key: PERMISSIONS.PAGES_PUBLISH, group: "Website content", grantable: true, label: "Publish new service pages", description: "Put a new service page live on the website, or take one offline. Without this, people can still build new pages as drafts and check them with Preview" },
   { key: PERMISSIONS.POSTS_MANAGE, group: "Website content", grantable: true, label: "Manage posts", description: "Main-website blog posts and categories", hidden: true },
   { key: PERMISSIONS.SERVICES_MANAGE, group: "Website content", grantable: true, label: "Manage services", description: "JMT service pages (not used by the Tech Vedha website)", hidden: true },
   { key: PERMISSIONS.PACKAGES_MANAGE, group: "Website content", grantable: true, label: "Manage packages", description: "Main-website package blocks", hidden: true },
@@ -109,8 +111,9 @@ export const SYSTEM_ROLES: readonly SystemRoleDef[] = [
   {
     key: SYSTEM_ROLE_KEYS.ADMIN,
     name: "Admin",
-    description: "Everything except managing roles.",
-    permissions: GRANTABLE_PERMISSIONS,
+    description: "Everything except managing roles and publishing new service pages.",
+    // Publishing new pages stays with the Super Admin unless they tick it for a role.
+    permissions: GRANTABLE_PERMISSIONS.filter((p) => p !== PERMISSIONS.PAGES_PUBLISH),
     legacyRole: "admin",
   },
   {

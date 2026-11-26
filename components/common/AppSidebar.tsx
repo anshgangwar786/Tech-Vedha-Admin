@@ -212,7 +212,8 @@ const withAddedServicePages = (groups: NavGroup[], added: AddedServiceLink[]): N
                 submenuItems: [
                   ...item.submenuItems,
                   ...added.map((service) => ({
-                    title: service.title,
+                    // Not on the website yet: shown as a draft until it is published.
+                    title: service.page ? service.title : `${service.title} · Draft`,
                     url: `/dashboard/site-pages/${addedServicePageKey(service.slug)}`,
                     icon: FileText,
                   })),

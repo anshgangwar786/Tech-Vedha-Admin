@@ -14,6 +14,7 @@ import {
   TextField,
 } from "@/components/homepage-editor/fields";
 import { patcher } from "@/components/homepage-editor/types";
+import { friendlyText } from "@/components/site-page-editor/placeholders";
 import type { HomeImage } from "@/types/homepage";
 import {
   SERVICE_SECTION_IDS,
@@ -268,6 +269,9 @@ export function RolesPart({ value, onChange }: PartProps<"roles">) {
   const allRoles = value.trades.flatMap((t) => t.roles);
   const togglePreselected = (id: string, on: boolean) =>
     patch({ preselected: on ? [...value.preselected, id] : value.preselected.filter((x) => x !== id) });
+  // "{n}" and "{list}" are shown as plain words, e.g. "[how many] roles selected: [chosen roles]".
+  const summaryFriendly = friendlyText("summary", ["{n} {list}", value.summary]);
+  const shortFriendly = friendlyText("summaryShort", ["{n} {list}", value.summaryShort]);
 
   return (
     <>
@@ -325,11 +329,16 @@ export function RolesPart({ value, onChange }: PartProps<"roles">) {
       <Grid>
         <TextField
           label="Summary"
-          hint="{n} = number of roles, {list} = their names"
-          value={value.summary}
-          onChange={(summary) => patch({ summary })}
+          hint={summaryFriendly.note}
+          value={summaryFriendly.toView(value.summary)}
+          onChange={(summary) => patch({ summary: summaryFriendly.fromView(summary) })}
         />
-        <TextField label="Summary (phones)" value={value.summaryShort} onChange={(summaryShort) => patch({ summaryShort })} />
+        <TextField
+          label="Summary (phones)"
+          hint={shortFriendly.note}
+          value={shortFriendly.toView(value.summaryShort)}
+          onChange={(summaryShort) => patch({ summaryShort: shortFriendly.fromView(summaryShort) })}
+        />
         <TextField label="Nothing selected" value={value.emptySummary} onChange={(emptySummary) => patch({ emptySummary })} />
         <TextField label="Continue button" value={value.continueCta} onChange={(continueCta) => patch({ continueCta })} />
         <TextField

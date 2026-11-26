@@ -68,3 +68,14 @@ export function readPreview(token: string): { draft: PreviewDraft; rev: number }
   }
   return { draft: entry.draft, rev: entry.rev };
 }
+
+/**
+ * After a site page is saved (or reset), every open preview of that page shows the saved version, so a browser left in
+ * preview mode never keeps showing content older than what's published. `content` null = reset to the bundled copy.
+ */
+export function syncSavedSitePage(key: SitePageKey, content: unknown) {
+  for (const [token, entry] of store) {
+    if (entry.draft.kind !== "site-page" || entry.draft.key !== key) continue;
+    store.set(token, { ...entry, draft: { ...entry.draft, content }, rev: entry.rev + 1 });
+  }
+}

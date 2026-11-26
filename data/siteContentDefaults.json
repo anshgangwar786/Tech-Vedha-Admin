@@ -6,53 +6,335 @@
     "email": "info@techvedha.tech",
     "phone": "+91 98765 43210",
     "whatsappNumber": "",
-    "navLinks": [
-      {
-        "label": "Work",
-        "href": "/#work"
+    "seo": {
+      "defaultTitle": "Tech Vedha — IT Solutions for Marketing, Apps, CAD and Software",
+      "titleTemplate": "{title} | {name}",
+      "keywords": [
+        "IT solutions",
+        "digital marketing agency",
+        "app development company",
+        "Android and iOS app development",
+        "CAD design and planning",
+        "BOQ",
+        "custom software",
+        "cybersecurity",
+        "India"
+      ]
+    },
+    "skipLink": "Skip to content",
+    "logo": {
+      "dark": {
+        "src": "/brand/logo-dark.png",
+        "alt": "",
+        "width": 2000,
+        "height": 202
       },
-      {
-        "label": "About",
-        "href": "/about"
+      "light": {
+        "src": "/brand/logo-light.png",
+        "alt": "",
+        "width": 2000,
+        "height": 202
       },
-      {
-        "label": "Contact",
-        "href": "/contact"
+      "a11y": {
+        "linkLabel": "{name} home"
       }
-    ],
-    "headerLinks": [
-      {
-        "label": "About",
-        "href": "/about"
-      },
-      {
-        "label": "Contact",
-        "href": "/contact"
-      }
-    ],
+    },
     "header": {
-      "ctaLabel": "Start a project",
       "servicesLabel": "Services",
-      "servicesNote": "Why manage {count} vendors? One partner designs, builds, secures and markets it.",
+      "menuServices": [
+        {
+          "number": "01",
+          "wing": "Foot traffic",
+          "title": "Digital Marketing",
+          "href": "/services/digital-marketing",
+          "offerings": [
+            {
+              "title": "SEO",
+              "detail": "Rank higher, grow organic traffic"
+            },
+            {
+              "title": "Meta Ads",
+              "detail": "Facebook and Instagram campaigns"
+            },
+            {
+              "title": "YouTube Marketing",
+              "detail": "Video and channel growth"
+            },
+            {
+              "title": "Email Marketing",
+              "detail": "Targeted global campaigns"
+            },
+            {
+              "title": "WhatsApp Marketing",
+              "detail": "Broadcasts and business messaging"
+            }
+          ]
+        },
+        {
+          "number": "02",
+          "wing": "Front doors",
+          "title": "App Development",
+          "href": "/services/app-development",
+          "offerings": [
+            {
+              "title": "Android Apps",
+              "detail": "Native, high-performance"
+            },
+            {
+              "title": "iOS Apps",
+              "detail": "Secure, intuitive"
+            },
+            {
+              "title": "UI/UX Design",
+              "detail": "Interfaces people enjoy"
+            },
+            {
+              "title": "Testing and Launch",
+              "detail": "QA to store release"
+            },
+            {
+              "title": "Ongoing Support",
+              "detail": "Updates and maintenance"
+            }
+          ]
+        },
+        {
+          "number": "03",
+          "wing": "Architecture",
+          "title": "CAD Design and Planning",
+          "href": "/#service-cad",
+          "offerings": [
+            {
+              "title": "Residential",
+              "detail": "Homes, villas, apartments"
+            },
+            {
+              "title": "Retail and Showrooms",
+              "detail": "Shop layout planning"
+            },
+            {
+              "title": "Commercial and Industrial",
+              "detail": "Large-scale planning"
+            },
+            {
+              "title": "2D and 3D Modelling",
+              "detail": "Accurate drawings"
+            },
+            {
+              "title": "BOQ",
+              "detail": "Bill of quantities"
+            }
+          ]
+        },
+        {
+          "number": "04",
+          "wing": "Foundation",
+          "title": "Software and Cybersecurity",
+          "href": "/#service-software",
+          "offerings": [
+            {
+              "title": "Subscription Software",
+              "detail": "Monthly or yearly, always supported"
+            },
+            {
+              "title": "One-time Software",
+              "detail": "Full ownership"
+            },
+            {
+              "title": "Threat Detection",
+              "detail": "Prevention and monitoring"
+            },
+            {
+              "title": "Network and Data Protection",
+              "detail": "Secure your assets"
+            },
+            {
+              "title": "Compliance and Risk",
+              "detail": "Stay audit-ready"
+            }
+          ]
+        }
+      ],
+      "servicesNote": "Why manage four vendors? One partner designs, builds, secures and markets it.",
       "servicesLinkLabel": "See how it fits together",
       "servicesLinkHref": "/#why",
       "whatsappLabel": "WhatsApp",
-      "emailLabel": "Email"
+      "links": [
+        {
+          "label": "About",
+          "href": "/about"
+        },
+        {
+          "label": "Contact",
+          "href": "/contact"
+        }
+      ],
+      "ctaLabel": "Start a project",
+      "ctaHref": "/contact",
+      "emailLabel": "Email",
+      "a11y": {
+        "mainNav": "Main",
+        "themeToggle": "Toggle light and dark theme",
+        "openMenu": "Open menu",
+        "closeMenu": "Close menu",
+        "mobileNav": "Mobile",
+        "emailLink": "Email {email}"
+      }
     },
+    "projectForm": {
+      "title": "Send an enquiry",
+      "requiredNote": "Fields marked * are required.",
+      "step1": "What you need",
+      "servicesLabel": "What do you need?",
+      "serviceOptions": [
+        "Digital Marketing",
+        "App Development",
+        "CAD Design and Planning",
+        "Software and Cybersecurity"
+      ],
+      "otherServiceLabel": "Others",
+      "otherServicePlaceholder": "Tell us the service you need",
+      "step2": "About you",
+      "nameLabel": "Your name",
+      "namePlaceholder": "Full name",
+      "companyLabel": "Company",
+      "companyPlaceholder": "Business or brand name",
+      "phoneLabel": "Phone / WhatsApp",
+      "phonePrefill": "+91 ",
+      "phonePlaceholder": "98765 43210",
+      "emailLabel": "Email",
+      "emailPlaceholder": "you@company.com",
+      "cityLabel": "City / country",
+      "cityPlaceholder": "Where is the business?",
+      "step3": "Timing and details",
+      "timeframeLabel": "When do you want to start?",
+      "timeframePlaceholder": "Select a timeframe",
+      "timeframes": [
+        "As soon as possible",
+        "Within a month",
+        "In 1–3 months",
+        "Later this year",
+        "Just exploring"
+      ],
+      "messageLabel": "Tell us about the project (optional)",
+      "messagePlaceholder": "Goals, current setup, anything we should know…",
+      "submitLabel": "Send enquiry",
+      "whatsappLabel": "Prefer WhatsApp? Send these details there",
+      "whatsappShortLabel": "Send on WhatsApp instead",
+      "note": "One person from our team replies with next steps. No spam, no sales calls.",
+      "status": {
+        "fixFields": "Please fix the highlighted fields.",
+        "sending": "Sending your enquiry…",
+        "sent": "Your enquiry is in. We’ll reply with next steps.",
+        "error": "Please check your details and try again.",
+        "emailOpened": "Your email app should open with your details. Send it and we’ll reply.",
+        "whatsappOpened": "WhatsApp opened in a new tab with your details filled in."
+      },
+      "summary": {
+        "emailSubject": "Project enquiry",
+        "serviceLabel": "Service",
+        "servicesLabel": "Services",
+        "otherPrefix": "Other",
+        "startLabel": "Start",
+        "whatsappTitle": "NEW PROJECT ENQUIRY",
+        "whatsappSubtitle": "Sent from the website contact form",
+        "whatsappServicesHeading": "Services needed",
+        "whatsappContactHeading": "Contact details",
+        "whatsappLocationLabel": "Location",
+        "whatsappTimelineHeading": "Timeline",
+        "whatsappDetailsHeading": "Project details"
+      },
+      "validation": {
+        "phoneRequired": "Mobile number is required.",
+        "phoneCharacters": "Use digits only.",
+        "phoneLength": "Must be 10 digits.",
+        "phoneStart": "Must start with 5, 6, 7, 8 or 9.",
+        "emailRequired": "Email is required.",
+        "emailTooLong": "Email is too long.",
+        "emailSpaces": "Remove the spaces.",
+        "emailOneAt": "Use one @, like name@company.com",
+        "emailNameMissing": "Add your name before the @.",
+        "emailDots": "Check the dots in your email.",
+        "emailDomain": "Check the part after the @.",
+        "nameRequired": "Name is required.",
+        "nameTooShort": "Enter at least 2 characters.",
+        "nameTooLong": "Name is too long.",
+        "nameNumbers": "Name can't contain numbers.",
+        "nameLetters": "Use letters only.",
+        "textRequired": "{field} is required.",
+        "textTooShort": "Enter at least 2 characters.",
+        "textTooLong": "Keep it under {max} characters.",
+        "serviceRequired": "Select at least one service.",
+        "otherServiceName": "The service you need",
+        "companyName": "Company",
+        "cityName": "City / country",
+        "timeframeRequired": "Pick when you'd like to start."
+      },
+      "sent": {
+        "icon": {
+          "src": "/icons/success.svg",
+          "alt": "",
+          "width": 64,
+          "height": 64
+        },
+        "title": "Enquiry sent",
+        "text": "Thank you. One person from our team will reply with next steps, and a written plan follows the discovery call.",
+        "homeLabel": "Back to home",
+        "homeHref": "/",
+        "closeLabel": "Close"
+      },
+      "a11y": {
+        "closeLabel": "Close form"
+      }
+    },
+    "whatsappButtonLabel": "Chat on WhatsApp",
     "footer": {
       "text": "Your trusted partner for complete IT solutions.",
       "servicesTitle": "Services",
+      "serviceLinks": [
+        {
+          "label": "Digital Marketing",
+          "href": "/services/digital-marketing"
+        },
+        {
+          "label": "App Development",
+          "href": "/services/app-development"
+        },
+        {
+          "label": "CAD Design and Planning",
+          "href": "/#service-cad"
+        },
+        {
+          "label": "Software and Cybersecurity",
+          "href": "/#service-software"
+        }
+      ],
       "companyTitle": "Company",
-      "contactTitle": "Contact"
-    },
-    "whatsappButtonLabel": "Chat on WhatsApp",
-    "enquirySent": {
-      "title": "Enquiry sent",
-      "text": "Thank you. One person from our team will reply with next steps, and a written plan follows the discovery call.",
-      "homeLabel": "Back to home",
-      "closeLabel": "Close"
+      "companyLinks": [
+        {
+          "label": "Work",
+          "href": "/#work"
+        },
+        {
+          "label": "About",
+          "href": "/about"
+        },
+        {
+          "label": "Contact",
+          "href": "/contact"
+        }
+      ],
+      "contactTitle": "Contact",
+      "copyright": "© {year} {name}",
+      "legalLinks": [],
+      "a11y": {
+        "servicesNav": "Services",
+        "companyNav": "Company",
+        "legalNav": "Legal"
+      }
     },
     "notFound": {
+      "metaTitle": "Page not found",
       "eyebrow": "Error 404",
       "titleLead": "This page isn't",
       "titleAccent": "on the blueprint.",
@@ -64,66 +346,154 @@
       "secondaryCta": {
         "label": "Back to home",
         "href": "/"
+      },
+      "links": [
+        {
+          "label": "Services",
+          "href": "/#services"
+        },
+        {
+          "label": "Why Tech Vedha",
+          "href": "/#why"
+        },
+        {
+          "label": "Security",
+          "href": "/#security"
+        },
+        {
+          "label": "How we work",
+          "href": "/#process"
+        },
+        {
+          "label": "Client stories",
+          "href": "/#work"
+        },
+        {
+          "label": "FAQ",
+          "href": "/#faq"
+        }
+      ],
+      "a11y": {
+        "linksLabel": "Popular sections"
       }
     },
     "sitemapPage": {
+      "seo": {
+        "title": "Sitemap — Tech Vedha",
+        "description": "Every page on the Tech Vedha website."
+      },
+      "breadcrumb": {
+        "home": "Home",
+        "current": "Sitemap",
+        "label": "Breadcrumb"
+      },
       "eyebrow": "Every page, one place",
       "title": "Sitemap",
       "pagesTitle": "Pages",
-      "servicesTitle": "Services",
-      "homeTitle": "On the homepage",
-      "comingSoon": "Full page coming soon.",
       "pages": [
         {
-          "path": "/",
           "title": "Home",
-          "description": "One IT partner for marketing, apps, CAD and software — how the four services fit together."
+          "description": "One IT partner for marketing, apps, CAD and software — how the four services fit together.",
+          "path": "/"
         },
         {
-          "path": "/about",
           "title": "About",
-          "description": "Why Tech Vedha exists, who we work with and how we work."
+          "description": "Why Tech Vedha exists, who we work with and how we work.",
+          "path": "/about"
         },
         {
-          "path": "/contact",
           "title": "Contact",
-          "description": "Send an enquiry, email us or chat on WhatsApp."
+          "description": "Send an enquiry, email us or chat on WhatsApp.",
+          "path": "/contact"
         }
       ],
+      "servicesTitle": "Services",
+      "services": [
+        {
+          "title": "Digital Marketing",
+          "description": "SEO, Meta, YouTube, email and WhatsApp campaigns that bring customers in.",
+          "href": "/services/digital-marketing"
+        },
+        {
+          "title": "App Development",
+          "description": "Android and iOS apps, designed, tested, launched and supported.",
+          "href": "/services/app-development"
+        },
+        {
+          "title": "CAD Design and Planning",
+          "description": "2D/3D plans and BOQ for homes, retail spaces and industry. Full page coming soon.",
+          "href": "/#service-cad"
+        },
+        {
+          "title": "Software and Cybersecurity",
+          "description": "Custom software on subscription or one-time, protected end to end. Full page coming soon.",
+          "href": "/#service-software"
+        }
+      ],
+      "homeTitle": "On the homepage",
       "homeSections": [
         {
-          "href": "/#services",
-          "title": "Services"
+          "title": "Services",
+          "href": "/#services"
         },
         {
-          "href": "/#why",
-          "title": "Why Tech Vedha"
+          "title": "Why Tech Vedha",
+          "href": "/#why"
         },
         {
-          "href": "/#security",
-          "title": "Security"
+          "title": "Security",
+          "href": "/#security"
         },
         {
-          "href": "/#process",
-          "title": "How we work"
+          "title": "How we work",
+          "href": "/#process"
         },
         {
-          "href": "/#work",
-          "title": "Client stories"
+          "title": "Client stories",
+          "href": "/#work"
         },
         {
-          "href": "/#faq",
-          "title": "FAQ"
+          "title": "FAQ",
+          "href": "/#faq"
         },
         {
-          "href": "/#contact",
-          "title": "Start a project"
+          "title": "Start a project",
+          "href": "/#contact"
         }
       ]
     }
   },
   "home": {
+    "seo": {
+      "title": "Tech Vedha — IT Solutions for Marketing, Apps, CAD and Software",
+      "description": "Tech Vedha is one IT partner for digital marketing, Android and iOS app development, CAD design and planning, custom software and cybersecurity — across India and abroad.",
+      "keywords": [
+        "IT solutions",
+        "digital marketing agency",
+        "app development company",
+        "Android and iOS app development",
+        "CAD design and planning",
+        "BOQ",
+        "custom software",
+        "cybersecurity",
+        "India"
+      ]
+    },
     "hero": {
+      "background": {
+        "dark": {
+          "src": "/home/wave-dark.svg",
+          "alt": "",
+          "width": 1831,
+          "height": 1183
+        },
+        "light": {
+          "src": "/home/wave-light.svg",
+          "alt": "",
+          "width": 1831,
+          "height": 1183
+        }
+      },
       "eyebrow": "IT solutions · India and abroad",
       "titleLead": "Build for",
       "titleAccent": "Tomorrow.",
@@ -145,19 +515,109 @@
         "Drawn as a blueprint.",
         "Built as one."
       ],
-      "intro": "{count} wings, assembled from the foundation up, so every part fits the next.",
-      "tagline": "ONE STRUCTURE · ONE TEAM"
+      "intro": "Four wings, assembled from the foundation up, so every part fits the next.",
+      "tagline": "ONE STRUCTURE · ONE TEAM",
+      "slabs": [
+        {
+          "number": "01",
+          "wing": "Foot traffic",
+          "title": "Digital Marketing"
+        },
+        {
+          "number": "02",
+          "wing": "Front doors",
+          "title": "App Development"
+        },
+        {
+          "number": "03",
+          "wing": "Architecture",
+          "title": "CAD Design and Planning"
+        },
+        {
+          "number": "04",
+          "wing": "Foundation",
+          "title": "Software and Cybersecurity"
+        }
+      ]
     },
     "services": {
       "title": [
-        "{count} wings.",
+        "Four wings.",
         "One blueprint."
       ],
-      "intro": "{count} services engineered as a single, connected system — so nothing gets lost between vendors.",
-      "exploreLabel": "Explore"
+      "intro": "Four services engineered as a single, connected system — so nothing gets lost between vendors.",
+      "exploreLabel": "Explore",
+      "marketing": {
+        "show": true,
+        "number": "01",
+        "label": "Foot traffic",
+        "title": "Digital Marketing",
+        "summary": "SEO, Meta, YouTube, email and WhatsApp campaigns that bring customers in.",
+        "image": {
+          "src": "",
+          "alt": "",
+          "width": 0,
+          "height": 0
+        },
+        "buttonLink": "/services/digital-marketing"
+      },
+      "apps": {
+        "show": true,
+        "number": "02",
+        "label": "Front doors",
+        "title": "App Development",
+        "summary": "Android and iOS apps, designed, tested, launched and supported.",
+        "image": {
+          "src": "",
+          "alt": "",
+          "width": 0,
+          "height": 0
+        },
+        "buttonLink": "/services/app-development"
+      },
+      "cad": {
+        "show": true,
+        "number": "03",
+        "label": "Architecture",
+        "title": "CAD Design and Planning",
+        "summary": "2D/3D plans and BOQ for homes, retail spaces and industry.",
+        "image": {
+          "src": "",
+          "alt": "",
+          "width": 0,
+          "height": 0
+        },
+        "buttonLink": ""
+      },
+      "software": {
+        "show": true,
+        "number": "04",
+        "label": "Foundation",
+        "title": "Software and Cybersecurity",
+        "summary": "Custom software on subscription or one-time, protected end to end.",
+        "image": {
+          "src": "",
+          "alt": "",
+          "width": 0,
+          "height": 0
+        },
+        "buttonLink": ""
+      },
+      "extraCards": [],
+      "a11y": {
+        "listLabel": "Services"
+      }
     },
     "why": {
       "eyebrow": "Why Tech Vedha",
+      "marqueeWords": [
+        "Digital Marketing",
+        "App Development",
+        "CAD Design",
+        "Software",
+        "Cybersecurity"
+      ],
+      "marqueeDirection": "right-to-left",
       "heading": "All of it, from one partner.",
       "text": "We design your space, build its software, launch its app, secure its data and market it — across India and abroad.",
       "primaryCta": {
@@ -173,7 +633,12 @@
         "One timeline",
         "One invoice",
         "One point of contact"
-      ]
+      ],
+      "promisesDirection": "left-to-right",
+      "a11y": {
+        "pauseLabel": "Pause scrolling text",
+        "playLabel": "Play scrolling text"
+      }
     },
     "security": {
       "eyebrow": "Security",
@@ -184,6 +649,12 @@
       "intro": "Every build ships with protection designed in, not bolted on — four layers, working together.",
       "layers": [
         {
+          "image": {
+            "src": "",
+            "alt": "",
+            "width": 0,
+            "height": 0
+          },
           "number": "01",
           "title": "Data protection",
           "summary": "Your records stay encrypted, backed up and private.",
@@ -194,6 +665,12 @@
           ]
         },
         {
+          "image": {
+            "src": "",
+            "alt": "",
+            "width": 0,
+            "height": 0
+          },
           "number": "02",
           "title": "Network security",
           "summary": "Only the right traffic reaches your systems.",
@@ -204,6 +681,12 @@
           ]
         },
         {
+          "image": {
+            "src": "",
+            "alt": "",
+            "width": 0,
+            "height": 0
+          },
           "number": "03",
           "title": "Threat detection",
           "summary": "Suspicious activity is spotted and stopped early.",
@@ -214,6 +697,12 @@
           ]
         },
         {
+          "image": {
+            "src": "",
+            "alt": "",
+            "width": 0,
+            "height": 0
+          },
           "number": "04",
           "title": "Compliance and risk",
           "summary": "Policies and audit trails keep you review-ready.",
@@ -233,12 +722,14 @@
       ],
       "intro": "Six clear steps, with something you can review at every one.",
       "exampleLabel": "Example project · Showroom app",
-      "nextLabel": "Next",
-      "restartLabel": "Start over",
-      "stepCounter": "Step {n} of {total}",
       "steps": [
         {
-          "id": "discover",
+          "image": {
+            "src": "",
+            "alt": "",
+            "width": 0,
+            "height": 0
+          },
           "number": "01",
           "title": "Discover",
           "summary": "We learn your goals, your customers and what the project must do.",
@@ -249,7 +740,12 @@
           ]
         },
         {
-          "id": "design",
+          "image": {
+            "src": "",
+            "alt": "",
+            "width": 0,
+            "height": 0
+          },
           "number": "02",
           "title": "Design",
           "summary": "Plans, screens and architecture you review before anything is built.",
@@ -260,7 +756,12 @@
           ]
         },
         {
-          "id": "build",
+          "image": {
+            "src": "",
+            "alt": "",
+            "width": 0,
+            "height": 0
+          },
           "number": "03",
           "title": "Build",
           "summary": "Clean, reviewed code and a secure setup from day one.",
@@ -271,7 +772,12 @@
           ]
         },
         {
-          "id": "test",
+          "image": {
+            "src": "",
+            "alt": "",
+            "width": 0,
+            "height": 0
+          },
           "number": "04",
           "title": "Test",
           "summary": "Rigorous QA across devices and real-world use before launch.",
@@ -282,7 +788,12 @@
           ]
         },
         {
-          "id": "launch",
+          "image": {
+            "src": "",
+            "alt": "",
+            "width": 0,
+            "height": 0
+          },
           "number": "05",
           "title": "Launch",
           "summary": "Deployment, store release and go-live, handled end to end.",
@@ -293,7 +804,12 @@
           ]
         },
         {
-          "id": "support",
+          "image": {
+            "src": "",
+            "alt": "",
+            "width": 0,
+            "height": 0
+          },
           "number": "06",
           "title": "Support",
           "summary": "Ongoing updates, fixes and care after launch.",
@@ -304,13 +820,26 @@
           ]
         }
       ],
+      "stepCounter": "Step {n} of {total}",
+      "nextLabel": "Next",
+      "restartLabel": "Start over",
       "banner": {
         "heading": "Ready for step one?",
         "text": "Tell us about your project and we'll start with a discovery call.",
         "primaryCta": {
           "label": "Start a project",
           "href": "/#contact"
+        },
+        "secondaryCta": {
+          "label": "Chat on WhatsApp",
+          "href": ""
         }
+      },
+      "a11y": {
+        "stepsLabel": "Process steps",
+        "previousLabel": "Previous step",
+        "nextLabel": "Next step",
+        "stepColumnLabel": "Step {number}: {title}"
       }
     },
     "pillars": {
@@ -321,6 +850,7 @@
       ],
       "intro": "Four promises behind every project.",
       "clientCentric": {
+        "number": "01",
         "brief": "We need billing for our [three stores], with [staff logins] and [live stock].",
         "briefCredit": "— your brief",
         "title": "Client-centric",
@@ -334,6 +864,7 @@
         ]
       },
       "quality": {
+        "number": "02",
         "gates": [
           "Code review",
           "Automated tests",
@@ -347,6 +878,7 @@
         "text": "Every release passes six gates before it ships."
       },
       "scalable": {
+        "number": "03",
         "stages": [
           "1 store",
           "City",
@@ -357,8 +889,20 @@
         "text": "Grows from one store to many countries."
       },
       "secure": {
+        "number": "04",
+        "image": {
+          "src": "",
+          "alt": "",
+          "width": 0,
+          "height": 0
+        },
         "title": "Secure and compliant",
         "text": "Your data is protected in every layer."
+      },
+      "a11y": {
+        "featuresLabel": "What the brief becomes",
+        "gatesLabel": "Release gates",
+        "stagesLabel": "Growth stages"
       }
     },
     "stories": {
@@ -367,117 +911,150 @@
         "In our clients'",
         "own words."
       ],
-      "showMore": "Show more stories",
-      "note": "Sample copy for review — replace with approved client stories, names and photos before launch.",
+      "filters": [
+        "All",
+        "Marketing",
+        "Apps",
+        "CAD",
+        "Software"
+      ],
       "items": [
         {
-          "id": "instagram-ads",
-          "column": 0,
           "kind": "quote",
-          "category": "Marketing",
+          "column": "left",
+          "photo": "",
+          "photoAlt": "",
+          "stat": "",
+          "statLabel": "",
           "quote": "Our Instagram ads finally reach people near the store, and enquiries now come straight into WhatsApp. We reply from one place instead of juggling DMs, calls and forms.",
+          "avatar": "/home/avatars/homedecor.jpg",
           "role": "Owner",
           "company": "Home décor store",
-          "avatar": "/home/avatars/homedecor.jpg"
+          "category": "Marketing"
         },
         {
-          "id": "app-launch",
-          "column": 0,
           "kind": "photo",
-          "category": "Apps",
+          "column": "left",
+          "photo": "/home/stories/app-launch.jpg",
+          "photoAlt": "Founder of a grocery delivery startup in their warehouse",
+          "stat": "",
+          "statLabel": "",
           "quote": "Our Android and iOS apps went live together, and updates still keep coming.",
+          "avatar": "",
           "role": "Founder",
           "company": "Grocery delivery startup",
-          "photo": "/home/stories/app-launch.jpg",
-          "photoAlt": "Founder of a grocery delivery startup in their warehouse"
+          "category": "Apps"
         },
         {
-          "id": "four-to-one",
-          "column": 0,
           "kind": "stat",
-          "category": "Apps",
+          "column": "left",
+          "photo": "",
+          "photoAlt": "",
           "stat": "4 → 1",
           "statLabel": "vendors to manage",
           "quote": "Design, app, software and marketing — all handled by one team with one invoice.",
+          "avatar": "/home/avatars/showroom.jpg",
           "role": "Owner",
           "company": "Multi-brand showroom",
-          "avatar": "/home/avatars/showroom.jpg"
+          "category": "Apps"
         },
         {
-          "id": "3d-showroom",
-          "column": 1,
           "kind": "photo",
-          "category": "CAD",
+          "column": "middle",
+          "photo": "/home/stories/3d-showroom.jpg",
+          "photoAlt": "Furniture showroom owner holding a tablet with a 3D floor plan",
+          "stat": "",
+          "statLabel": "",
           "quote": "The 3D views let us walk the showroom before a single partition went up.",
+          "avatar": "",
           "role": "Proprietor",
           "company": "Furniture showroom",
-          "photo": "/home/stories/3d-showroom.jpg",
-          "photoAlt": "Furniture showroom owner holding a tablet with a 3D floor plan"
+          "category": "CAD"
         },
         {
-          "id": "floor-plans",
-          "column": 1,
           "kind": "featured",
-          "category": "CAD",
+          "column": "middle",
+          "photo": "",
+          "photoAlt": "",
+          "stat": "",
+          "statLabel": "",
           "quote": "We came for floor plans and stayed for everything else. The same team drew our villas in 2D and 3D, prepared the BOQ, built the booking app and ran the launch campaign. One WhatsApp group replaced four vendors and endless follow-ups.",
+          "avatar": "/home/avatars/builder.jpg",
           "role": "Director",
           "company": "Residential builder",
-          "avatar": "/home/avatars/builder.jpg"
+          "category": "CAD"
         },
         {
-          "id": "clinic-app",
-          "column": 1,
           "kind": "quote",
-          "category": "Apps",
+          "column": "middle",
+          "photo": "",
+          "photoAlt": "",
+          "stat": "",
+          "statLabel": "",
           "quote": "Patients book appointments in the app and get WhatsApp reminders. The team tested it on every phone our patients use before launch.",
+          "avatar": "/home/avatars/clinic.jpg",
           "role": "Clinic administrator",
           "company": "Healthcare clinic",
-          "avatar": "/home/avatars/clinic.jpg"
+          "category": "Apps"
         },
         {
-          "id": "three-stores",
-          "column": 2,
           "kind": "stat",
-          "category": "Software",
+          "column": "right",
+          "photo": "",
+          "photoAlt": "",
           "stat": "3 stores",
           "statLabel": "on one billing system",
           "quote": "Billing, stock and staff logins run on one system now — no more end-of-day spreadsheets.",
+          "avatar": "/home/avatars/retail.jpg",
           "role": "Managing partner",
           "company": "Electronics retail chain",
-          "avatar": "/home/avatars/retail.jpg"
+          "category": "Software"
         },
         {
-          "id": "subscription",
-          "column": 2,
           "kind": "quote",
-          "category": "Software",
+          "column": "right",
+          "photo": "",
+          "photoAlt": "",
+          "stat": "",
+          "statLabel": "",
           "quote": "We chose the subscription model because our processes keep changing. Every new requirement gets added without a new contract, and the security checks run in the background.",
+          "avatar": "/home/avatars/manufacturing.jpg",
           "role": "Operations head",
           "company": "Manufacturing unit",
-          "avatar": "/home/avatars/manufacturing.jpg"
+          "category": "Software"
         },
         {
-          "id": "cad-drawings",
-          "column": 2,
           "kind": "quote",
-          "category": "CAD",
+          "column": "right",
+          "photo": "",
+          "photoAlt": "",
+          "stat": "",
+          "statLabel": "",
           "quote": "They turn our sketches into accurate CAD drawings quickly, and the bill of quantities matches the drawings line for line, which makes contractor quotes far easier.",
+          "avatar": "/home/avatars/studio.jpg",
           "role": "Architect",
           "company": "Interior design studio",
-          "avatar": "/home/avatars/studio.jpg"
+          "category": "CAD"
         },
         {
-          "id": "youtube-seo",
-          "column": 2,
           "kind": "photo",
-          "category": "Marketing",
+          "column": "right",
+          "photo": "/home/stories/youtube-seo.jpg",
+          "photoAlt": "Clothing boutique owner smiling in their store",
+          "stat": "",
+          "statLabel": "",
           "quote": "Our YouTube shorts and Google ranking now bring new customers in every week.",
+          "avatar": "",
           "role": "Owner",
           "company": "Clothing boutique",
-          "photo": "/home/stories/youtube-seo.jpg",
-          "photoAlt": "Clothing boutique owner smiling in their store"
+          "category": "Marketing"
         }
-      ]
+      ],
+      "showMore": "Show more stories",
+      "note": "Sample copy for review — replace with approved client stories, names and photos before launch.",
+      "a11y": {
+        "filtersLabel": "Filter stories by service"
+      }
     },
     "faq": {
       "eyebrow": "FAQ",
@@ -528,13 +1105,63 @@
       "form": {
         "nameLabel": "Name",
         "phoneLabel": "Phone / WhatsApp",
+        "phonePrefill": "+91 ",
         "phonePlaceholder": "+91 98765 43210",
         "emailLabel": "Email",
         "serviceLabel": "Service",
         "servicePlaceholder": "Select a service",
+        "serviceOptions": [
+          "Digital Marketing",
+          "App Development",
+          "CAD Design and Planning",
+          "Software and Cybersecurity"
+        ],
         "messageLabel": "Message",
         "messagePlaceholder": "A few lines about your project",
-        "submitLabel": "Send enquiry"
+        "errorMessage": "Please check your details and try again.",
+        "submitLabel": "Send enquiry",
+        "validation": {
+          "nameRequired": "Name is required.",
+          "nameTooShort": "Enter at least 2 characters.",
+          "nameTooLong": "Name is too long.",
+          "nameNumbers": "Name can't contain numbers.",
+          "nameLetters": "Use letters only.",
+          "phoneRequired": "Mobile number is required.",
+          "phoneCharacters": "Use digits only.",
+          "phoneLength": "Must be 10 digits.",
+          "phoneStart": "Must start with 5, 6, 7, 8 or 9.",
+          "emailRequired": "Email is required.",
+          "emailTooLong": "Email is too long.",
+          "emailSpaces": "Remove the spaces.",
+          "emailOneAt": "Use one @, like name@company.com",
+          "emailNameMissing": "Add your name before the @.",
+          "emailDots": "Check the dots in your email.",
+          "emailDomain": "Check the part after the @.",
+          "textRequired": "{field} is required.",
+          "textTooShort": "Enter at least 2 characters.",
+          "textTooLong": "Keep it under {max} characters.",
+          "serviceRequired": "Select at least one service.",
+          "otherServiceName": "The service you need",
+          "companyName": "Company",
+          "cityName": "City / country",
+          "timeframeRequired": "Pick when you'd like to start."
+        },
+        "sent": {
+          "icon": {
+            "src": "/icons/success.svg",
+            "alt": "",
+            "width": 64,
+            "height": 64
+          },
+          "title": "Enquiry sent",
+          "text": "Thank you. One person from our team will reply with next steps, and a written plan follows the discovery call.",
+          "homeLabel": "Back to home",
+          "homeHref": "/",
+          "closeLabel": "Close"
+        },
+        "emailSubject": "Project enquiry",
+        "emailNoService": "Not sure yet",
+        "formLabel": "Project enquiry"
       }
     }
   },
@@ -551,6 +1178,11 @@
       ]
     },
     "hero": {
+      "breadcrumb": {
+        "homeLabel": "Home",
+        "homeHref": "/",
+        "currentLabel": "About"
+      },
       "eyebrow": "About Tech Vedha",
       "titleLead": "One partner.",
       "titleAccent": "Built for tomorrow.",
@@ -563,48 +1195,84 @@
         "label": "How it connects",
         "href": "#how-it-connects"
       },
-      "panelLabel": "What we do · {count} wings",
-      "panelBadge": "One team"
-    },
-    "wingTags": {
-      "marketing": [
-        "SEO",
-        "Meta Ads",
-        "WhatsApp"
+      "panelLabel": "What we do · four wings",
+      "panelBadge": "One team",
+      "wingCards": [
+        {
+          "icon": "marketing",
+          "number": "01",
+          "wing": "Foot traffic",
+          "title": "Digital Marketing",
+          "href": "/services/digital-marketing",
+          "tags": [
+            "SEO",
+            "Meta Ads",
+            "WhatsApp"
+          ],
+          "featured": false
+        },
+        {
+          "icon": "apps",
+          "number": "02",
+          "wing": "Front doors",
+          "title": "App Development",
+          "href": "/services/app-development",
+          "tags": [
+            "Android",
+            "iOS",
+            "UI/UX"
+          ],
+          "featured": true
+        },
+        {
+          "icon": "cad",
+          "number": "03",
+          "wing": "Architecture",
+          "title": "CAD Design and Planning",
+          "href": "/#service-cad",
+          "tags": [
+            "2D/3D",
+            "BOQ",
+            "Retail"
+          ],
+          "featured": false
+        },
+        {
+          "icon": "software",
+          "number": "04",
+          "wing": "Foundation",
+          "title": "Software and Cybersecurity",
+          "href": "/#service-software",
+          "tags": [
+            "Subscription",
+            "Security"
+          ],
+          "featured": false
+        }
       ],
-      "apps": [
-        "Android",
-        "iOS",
-        "UI/UX"
+      "facts": [
+        {
+          "label": "Services",
+          "value": "Four wings, one team"
+        },
+        {
+          "label": "Where",
+          "value": "India and abroad"
+        },
+        {
+          "label": "Software models",
+          "value": "Subscription or one-time"
+        },
+        {
+          "label": "Apps",
+          "value": "Android and iOS"
+        }
       ],
-      "cad": [
-        "2D/3D",
-        "BOQ",
-        "Retail"
-      ],
-      "software": [
-        "Subscription",
-        "Security"
-      ]
-    },
-    "heroFacts": [
-      {
-        "label": "Services",
-        "value": "Four wings, one team"
-      },
-      {
-        "label": "Where",
-        "value": "India and abroad"
-      },
-      {
-        "label": "Software models",
-        "value": "Subscription or one-time"
-      },
-      {
-        "label": "Apps",
-        "value": "Android and iOS"
+      "a11y": {
+        "breadcrumbLabel": "Breadcrumb",
+        "cardTagsLabel": "{title} includes"
       }
-    ],
+    },
     "whyWeExist": {
       "eyebrow": "Why we exist",
       "title": [
@@ -614,104 +1282,114 @@
       "intro": "Most businesses juggle a designer, a developer, an app agency and a marketer. We started Tech Vedha to replace all four with one team.",
       "topicHeader": "What it takes",
       "vendorsHeader": "Four separate vendors",
-      "usHeader": "Tech Vedha"
-    },
-    "vendorComparison": [
-      {
-        "topic": "Who you call",
-        "vendors": [
-          "Designer",
-          "Developer",
-          "App agency",
-          "Marketer"
-        ],
-        "us": "One team, one point of contact"
-      },
-      {
-        "topic": "Timelines",
-        "vendors": [
-          "Plan A",
-          "Plan B",
-          "Plan C",
-          "Plan D"
-        ],
-        "us": "One shared plan from start to launch"
-      },
-      {
-        "topic": "Handoffs",
-        "vendors": [
-          "Files emailed",
-          "Briefs repeated",
-          "Specs lost"
-        ],
-        "us": "No handoffs — the same team builds it all"
-      },
-      {
-        "topic": "Updates",
-        "vendors": [
-          "4 chats",
-          "4 status calls"
-        ],
-        "us": "One update covering every wing"
-      },
-      {
-        "topic": "When something breaks",
-        "vendors": [
-          "Who owns it?",
-          "Back-and-forth"
-        ],
-        "us": "One team owns the fix"
+      "usHeader": "Tech Vedha",
+      "rows": [
+        {
+          "topic": "Who you call",
+          "vendors": [
+            "Designer",
+            "Developer",
+            "App agency",
+            "Marketer"
+          ],
+          "us": "One team, one point of contact"
+        },
+        {
+          "topic": "Timelines",
+          "vendors": [
+            "Plan A",
+            "Plan B",
+            "Plan C",
+            "Plan D"
+          ],
+          "us": "One shared plan from start to launch"
+        },
+        {
+          "topic": "Handoffs",
+          "vendors": [
+            "Files emailed",
+            "Briefs repeated",
+            "Specs lost"
+          ],
+          "us": "No handoffs — the same team builds it all"
+        },
+        {
+          "topic": "Updates",
+          "vendors": [
+            "4 chats",
+            "4 status calls"
+          ],
+          "us": "One update covering every wing"
+        },
+        {
+          "topic": "When something breaks",
+          "vendors": [
+            "Who owns it?",
+            "Back-and-forth"
+          ],
+          "us": "One team owns the fix"
+        }
+      ],
+      "a11y": {
+        "tableCaption": "What it takes: Four separate vendors / Tech Vedha"
       }
-    ],
+    },
     "whoWeWorkWith": {
       "eyebrow": "Who we work with",
       "title": [
         "Built for businesses",
         "with a space to run."
       ],
-      "intro": "From a single home to an industrial site — and the shops, showrooms and teams in between."
-    },
-    "audiences": [
-      {
-        "title": "Retail and showrooms",
-        "detail": "Shops and showrooms that need a layout, billing, an app and customers through the door.",
-        "icon": "retail",
-        "tags": [
-          "CAD",
-          "Software",
-          "Apps",
-          "Marketing"
-        ]
-      },
-      {
-        "title": "Homes and builders",
-        "detail": "Homeowners, villa and apartment projects that need accurate plans and costing.",
-        "icon": "homes",
-        "tags": [
-          "2D/3D plans",
-          "BOQ"
-        ]
-      },
-      {
-        "title": "Commercial and industrial",
-        "detail": "Offices, warehouses and plants planned at scale, with software to run them.",
-        "icon": "commercial",
-        "tags": [
-          "Planning",
-          "Software",
-          "Security"
-        ]
-      },
-      {
-        "title": "Growing businesses",
-        "detail": "Teams in India and abroad that want one partner instead of four vendors.",
-        "icon": "growth",
-        "tags": [
-          "Any wing",
-          "India and abroad"
-        ]
+      "intro": "From a single home to an industrial site — and the shops, showrooms and teams in between.",
+      "cards": [
+        {
+          "icon": "retail",
+          "title": "Retail and showrooms",
+          "detail": "Shops and showrooms that need a layout, billing, an app and customers through the door.",
+          "tags": [
+            "CAD",
+            "Software",
+            "Apps",
+            "Marketing"
+          ],
+          "featured": true
+        },
+        {
+          "icon": "homes",
+          "title": "Homes and builders",
+          "detail": "Homeowners, villa and apartment projects that need accurate plans and costing.",
+          "tags": [
+            "2D/3D plans",
+            "BOQ"
+          ],
+          "featured": false
+        },
+        {
+          "icon": "commercial",
+          "title": "Commercial and industrial",
+          "detail": "Offices, warehouses and plants planned at scale, with software to run them.",
+          "tags": [
+            "Planning",
+            "Software",
+            "Security"
+          ],
+          "featured": false
+        },
+        {
+          "icon": "growth",
+          "title": "Growing businesses",
+          "detail": "Teams in India and abroad that want one partner instead of four vendors.",
+          "tags": [
+            "Any wing",
+            "India and abroad"
+          ],
+          "featured": false
+        }
+      ],
+      "a11y": {
+        "tagsLabel": "Wings involved"
       }
-    ],
+    },
     "howItConnects": {
       "eyebrow": "How everything connects",
       "title": [
@@ -723,126 +1401,143 @@
       "exampleLabel": "Example: a new showroom",
       "exampleShortLabel": "Example",
       "examplePanelLabel": "Example · New showroom",
+      "stepCounter": "Step {n} of {total}",
+      "exampleDetail": "What this step would produce for one example project: a new retail showroom.",
+      "steps": [
+        {
+          "covers": {
+            "title": "Design the space",
+            "detail": "Plan the showroom, shop or site with accurate 2D and 3D drawings and a costed bill of quantities.",
+            "tags": [
+              "2D and 3D",
+              "BOQ",
+              "Space planning"
+            ]
+          },
+          "example": {
+            "title": "Showroom floor plan",
+            "tags": [
+              "2D layout",
+              "3D walkthrough",
+              "Costed BOQ"
+            ]
+          },
+          "link": {
+            "label": "CAD Design",
+            "href": "/#service-cad"
+          },
+          "wing": "CAD Design"
+        },
+        {
+          "covers": {
+            "title": "Build the infrastructure",
+            "detail": "Billing, stock and operations software to run it — on subscription or one-time, protected from day one.",
+            "tags": [
+              "Subscription",
+              "One-time",
+              "Security"
+            ]
+          },
+          "example": {
+            "title": "Billing and stock software",
+            "tags": [
+              "GST billing",
+              "Live stock",
+              "Staff logins"
+            ]
+          },
+          "link": {
+            "label": "Software",
+            "href": "/#service-software"
+          },
+          "wing": "Software"
+        },
+        {
+          "covers": {
+            "title": "Create the interface",
+            "detail": "Android and iOS apps so customers can browse, book and buy from anywhere.",
+            "tags": [
+              "Android",
+              "iOS",
+              "UI/UX"
+            ]
+          },
+          "example": {
+            "title": "The showroom’s customer app",
+            "tags": [
+              "Product catalogue",
+              "Offers and orders",
+              "Android and iOS"
+            ]
+          },
+          "link": {
+            "label": "App Development",
+            "href": "/services/app-development"
+          },
+          "wing": "Apps"
+        },
+        {
+          "covers": {
+            "title": "Drive the traffic",
+            "detail": "SEO, Meta, YouTube, email and WhatsApp campaigns that bring people to the space and the app.",
+            "tags": [
+              "SEO",
+              "Meta Ads",
+              "WhatsApp"
+            ]
+          },
+          "example": {
+            "title": "Launch campaign",
+            "tags": [
+              "Meta and Google ads",
+              "WhatsApp broadcast",
+              "Local SEO"
+            ]
+          },
+          "link": {
+            "label": "Digital Marketing",
+            "href": "/services/digital-marketing"
+          },
+          "wing": "Marketing"
+        }
+      ],
       "centerLabel": [
         "Client",
         "success"
       ],
       "stepTab": "Step {n}",
-      "stepCounter": "Step {n} of {total}"
-    },
-    "loopSteps": [
-      {
-        "service": "cad",
-        "wing": "CAD Design",
-        "covers": {
-          "title": "Design the space",
-          "detail": "Plan the showroom, shop or site with accurate 2D and 3D drawings and a costed bill of quantities.",
-          "tags": [
-            "2D and 3D",
-            "BOQ",
-            "Space planning"
-          ]
-        },
-        "example": {
-          "title": "Showroom floor plan",
-          "tags": [
-            "2D layout",
-            "3D walkthrough",
-            "Costed BOQ"
-          ]
-        }
-      },
-      {
-        "service": "software",
-        "wing": "Software",
-        "covers": {
-          "title": "Build the infrastructure",
-          "detail": "Billing, stock and operations software to run it — on subscription or one-time, protected from day one.",
-          "tags": [
-            "Subscription",
-            "One-time",
-            "Security"
-          ]
-        },
-        "example": {
-          "title": "Billing and stock software",
-          "tags": [
-            "GST billing",
-            "Live stock",
-            "Staff logins"
-          ]
-        }
-      },
-      {
-        "service": "apps",
-        "wing": "Apps",
-        "covers": {
-          "title": "Create the interface",
-          "detail": "Android and iOS apps so customers can browse, book and buy from anywhere.",
-          "tags": [
-            "Android",
-            "iOS",
-            "UI/UX"
-          ]
-        },
-        "example": {
-          "title": "The showroom’s customer app",
-          "tags": [
-            "Product catalogue",
-            "Offers and orders",
-            "Android and iOS"
-          ]
-        }
-      },
-      {
-        "service": "marketing",
-        "wing": "Marketing",
-        "covers": {
-          "title": "Drive the traffic",
-          "detail": "SEO, Meta, YouTube, email and WhatsApp campaigns that bring people to the space and the app.",
-          "tags": [
-            "SEO",
-            "Meta Ads",
-            "WhatsApp"
-          ]
-        },
-        "example": {
-          "title": "Launch campaign",
-          "tags": [
-            "Meta and Google ads",
-            "WhatsApp broadcast",
-            "Local SEO"
-          ]
-        }
+      "a11y": {
+        "viewLabel": "Loop view",
+        "tagsLabel": "Includes",
+        "stepsLabel": "Steps in the loop"
       }
-    ],
-    "loopExampleDetail": "What this step would produce for one example project: a new retail showroom.",
+    },
     "howWeWork": {
       "eyebrow": "How we work",
       "title": [
         "Four things we",
         "always do."
       ],
-      "intro": "However big the project, and whichever wing it starts in."
+      "intro": "However big the project, and whichever wing it starts in.",
+      "points": [
+        {
+          "title": "One point of contact",
+          "detail": "You talk to one team for every service, so nothing gets lost between vendors."
+        },
+        {
+          "title": "Plan before we build",
+          "detail": "Drawings, screens and architecture are agreed with you before any build starts."
+        },
+        {
+          "title": "Security from day one",
+          "detail": "Protection is designed into every build, not added at the end."
+        },
+        {
+          "title": "We stay after launch",
+          "detail": "Updates, fixes and support from the same team that built it."
+        }
+      ]
     },
-    "principles": [
-      {
-        "title": "One point of contact",
-        "detail": "You talk to one team for every service, so nothing gets lost between vendors."
-      },
-      {
-        "title": "Plan before we build",
-        "detail": "Drawings, screens and architecture are agreed with you before any build starts."
-      },
-      {
-        "title": "Security from day one",
-        "detail": "Protection is designed into every build, not added at the end."
-      },
-      {
-        "title": "We stay after launch",
-        "detail": "Updates, fixes and support from the same team that built it."
-      }
-    ],
     "missionVision": {
       "eyebrow": "Mission and vision",
       "title": [
@@ -850,19 +1545,132 @@
         "to do."
       ],
       "intro": "One purpose and one direction behind every project, in every wing.",
-      "missionLabel": "Mission",
-      "visionLabel": "Vision"
+      "mission": {
+        "number": "01",
+        "label": "Mission",
+        "statement": "Give businesses one trusted partner for complete IT solutions.",
+        "detail": "Space, software, apps, security and marketing — planned and delivered by the same team."
+      },
+      "vision": {
+        "number": "02",
+        "label": "Vision",
+        "statement": "Help businesses in India and abroad build for tomorrow.",
+        "regions": [
+          "India",
+          "Abroad"
+        ]
+      },
+      "a11y": {
+        "regionsLabel": "Where we work"
+      }
     },
-    "mission": {
-      "statement": "Give businesses one trusted partner for complete IT solutions.",
-      "detail": "Space, software, apps, security and marketing — planned and delivered by the same team."
-    },
-    "vision": {
-      "statement": "Help businesses in India and abroad build for tomorrow.",
-      "regions": [
-        "India",
-        "Abroad"
+    "faq": {
+      "eyebrow": "FAQ",
+      "title": [
+        "Questions,",
+        "answered."
+      ],
+      "helpTitle": "Still unsure?",
+      "helpText": "Chat with us on WhatsApp →",
+      "items": [
+        {
+          "question": "Can I hire you for just one service?",
+          "answer": "Yes. Each service is available on its own. Many clients start with one and add others as they grow."
+        },
+        {
+          "question": "Do you work with clients outside India?",
+          "answer": "Yes. We work with clients across India and abroad, with meetings and delivery handled remotely."
+        },
+        {
+          "question": "Subscription or one-time software: which suits me?",
+          "answer": "Subscription suits software whose requirements keep evolving and need ongoing support. One-time purchase suits fixed operational needs where you want complete ownership. We recommend one after understanding your requirements."
+        },
+        {
+          "question": "How long does a mobile app take to build?",
+          "answer": "It depends on scope: features, platforms and integrations. After a discovery call we share a timeline for your specific app."
+        },
+        {
+          "question": "What does a CAD project include?",
+          "answer": "Accurate 2D and 3D drawings, smart space planning and a bill of quantities (BOQ), for residential, retail, commercial and industrial projects."
+        },
+        {
+          "question": "Which marketing channels do you manage?",
+          "answer": "SEO, Meta (Facebook and Instagram) ads, YouTube, email and WhatsApp marketing."
+        },
+        {
+          "question": "How do you keep my data secure?",
+          "answer": "Security is built into every layer: data protection, network security, threat detection and prevention, and compliance and risk management."
+        }
       ]
+    },
+    "contact": {
+      "eyebrow": "Let's talk",
+      "heading": "Let's build your success together.",
+      "intro": "Tell us what you need. We'll reply with a plan.",
+      "emailLabel": "Email",
+      "whatsappLabel": "WhatsApp",
+      "whatsappValue": "Chat with us",
+      "form": {
+        "nameLabel": "Name",
+        "phoneLabel": "Phone / WhatsApp",
+        "phonePrefill": "+91 ",
+        "phonePlaceholder": "+91 98765 43210",
+        "emailLabel": "Email",
+        "serviceLabel": "Service",
+        "servicePlaceholder": "Select a service",
+        "serviceOptions": [
+          "Digital Marketing",
+          "App Development",
+          "CAD Design and Planning",
+          "Software and Cybersecurity"
+        ],
+        "messageLabel": "Message",
+        "messagePlaceholder": "A few lines about your project",
+        "errorMessage": "Please check your details and try again.",
+        "submitLabel": "Send enquiry",
+        "sent": {
+          "icon": {
+            "src": "/icons/success.svg",
+            "alt": "",
+            "width": 64,
+            "height": 64
+          },
+          "title": "Enquiry sent",
+          "text": "Thank you. One person from our team will reply with next steps, and a written plan follows the discovery call.",
+          "homeLabel": "Back to home",
+          "homeHref": "/",
+          "closeLabel": "Close"
+        },
+        "validation": {
+          "phoneRequired": "Mobile number is required.",
+          "phoneCharacters": "Use digits only.",
+          "phoneLength": "Must be 10 digits.",
+          "phoneStart": "Must start with 5, 6, 7, 8 or 9.",
+          "emailRequired": "Email is required.",
+          "emailTooLong": "Email is too long.",
+          "emailSpaces": "Remove the spaces.",
+          "emailOneAt": "Use one @, like name@company.com",
+          "emailNameMissing": "Add your name before the @.",
+          "emailDots": "Check the dots in your email.",
+          "emailDomain": "Check the part after the @.",
+          "nameRequired": "Name is required.",
+          "nameTooShort": "Enter at least 2 characters.",
+          "nameTooLong": "Name is too long.",
+          "nameNumbers": "Name can't contain numbers.",
+          "nameLetters": "Use letters only.",
+          "textRequired": "{field} is required.",
+          "textTooShort": "Enter at least 2 characters.",
+          "textTooLong": "Keep it under {max} characters.",
+          "serviceRequired": "Select at least one service.",
+          "otherServiceName": "The service you need",
+          "companyName": "Company",
+          "cityName": "City / country",
+          "timeframeRequired": "Pick when you'd like to start."
+        },
+        "emailSubject": "Project enquiry",
+        "emailNoService": "Not sure yet",
+        "formLabel": "Project enquiry"
+      }
     }
   },
   "contact": {
@@ -879,21 +1687,78 @@
       ]
     },
     "hero": {
+      "breadcrumb": {
+        "homeLabel": "Home",
+        "homeHref": "/",
+        "currentLabel": "Contact"
+      },
       "eyebrow": "Contact Tech Vedha · For businesses in India and abroad",
       "titleLead": "Tell us what you’re building.",
       "titleAccent": "We’ll plan it with you.",
-      "intro": "Send your project details once. One person from our team replies with next steps, and a written plan follows the discovery call."
+      "intro": "Send your project details once. One person from our team replies with next steps, and a written plan follows the discovery call.",
+      "a11y": {
+        "breadcrumbLabel": "Breadcrumb"
+      }
     },
     "brandCard": {
+      "wordmarkLead": "TECH",
+      "wordmarkAccent": "VEDHA",
       "title": "One partner. Built for tomorrow.",
       "text": "Space, software, apps, security and marketing — for businesses in India and abroad.",
-      "regionLabel": "India and abroad"
+      "quickContacts": [
+        {
+          "icon": "mail",
+          "label": "Email",
+          "value": "",
+          "link": "",
+          "highlight": false
+        },
+        {
+          "icon": "chat",
+          "label": "WhatsApp",
+          "value": "Chat with our team",
+          "link": "",
+          "highlight": false
+        },
+        {
+          "icon": "phone",
+          "label": "Phone",
+          "value": "",
+          "link": "",
+          "highlight": true
+        },
+        {
+          "icon": "user",
+          "label": "Who you talk to",
+          "value": "One point of contact, every service",
+          "link": "",
+          "highlight": false
+        }
+      ],
+      "phonePlaceholder": "+91 · number to add",
+      "promises": [
+        "Plan before we build",
+        "Security from day one",
+        "We stay after launch"
+      ],
+      "hours": "Mon–Sat · 10:00 AM – 7:00 PM IST",
+      "regionLabel": "India and abroad",
+      "a11y": {
+        "cardLabel": "Contact details",
+        "promisesLabel": "How we work"
+      }
     },
     "form": {
       "title": "Send an enquiry",
       "requiredNote": "Fields marked * are required.",
       "step1": "What you need",
       "servicesLabel": "What do you need?",
+      "serviceOptions": [
+        "Digital Marketing",
+        "App Development",
+        "CAD Design and Planning",
+        "Software and Cybersecurity"
+      ],
       "otherServiceLabel": "Others",
       "otherServicePlaceholder": "Tell us the service you need",
       "step2": "About you",
@@ -902,6 +1767,7 @@
       "companyLabel": "Company",
       "companyPlaceholder": "Business or brand name",
       "phoneLabel": "Phone / WhatsApp",
+      "phonePrefill": "+91 ",
       "phonePlaceholder": "98765 43210",
       "emailLabel": "Email",
       "emailPlaceholder": "you@company.com",
@@ -910,47 +1776,166 @@
       "step3": "Timing and details",
       "timeframeLabel": "When do you want to start?",
       "timeframePlaceholder": "Select a timeframe",
+      "timeframes": [
+        "As soon as possible",
+        "Within a month",
+        "In 1–3 months",
+        "Later this year",
+        "Just exploring"
+      ],
       "messageLabel": "Tell us about the project (optional)",
       "messagePlaceholder": "Goals, current setup, anything we should know…",
       "submitLabel": "Send enquiry",
       "whatsappLabel": "Prefer WhatsApp? Send these details there",
       "whatsappShortLabel": "Send on WhatsApp instead",
-      "note": "One person from our team replies with next steps. No spam, no sales calls."
+      "note": "One person from our team replies with next steps. No spam, no sales calls.",
+      "status": {
+        "fixFields": "Please fix the highlighted fields.",
+        "sending": "Sending your enquiry…",
+        "sent": "Your enquiry is in. We’ll reply with next steps.",
+        "error": "Please check your details and try again.",
+        "emailOpened": "Your email app should open with your details. Send it and we’ll reply.",
+        "whatsappOpened": "WhatsApp opened in a new tab with your details filled in."
+      },
+      "summary": {
+        "emailSubject": "Project enquiry",
+        "serviceLabel": "Service",
+        "servicesLabel": "Services",
+        "otherPrefix": "Other",
+        "startLabel": "Start",
+        "whatsappTitle": "NEW PROJECT ENQUIRY",
+        "whatsappSubtitle": "Sent from the website contact form",
+        "whatsappServicesHeading": "Services needed",
+        "whatsappContactHeading": "Contact details",
+        "whatsappLocationLabel": "Location",
+        "whatsappTimelineHeading": "Timeline",
+        "whatsappDetailsHeading": "Project details"
+      },
+      "validation": {
+        "serviceRequired": "Select at least one service.",
+        "otherServiceName": "The service you need",
+        "textRequired": "{field} is required.",
+        "textTooShort": "Enter at least 2 characters.",
+        "textTooLong": "Keep it under {max} characters.",
+        "nameRequired": "Name is required.",
+        "nameTooShort": "Enter at least 2 characters.",
+        "nameTooLong": "Name is too long.",
+        "nameNumbers": "Name can't contain numbers.",
+        "nameLetters": "Use letters only.",
+        "companyName": "Company",
+        "phoneRequired": "Mobile number is required.",
+        "phoneCharacters": "Use digits only.",
+        "phoneLength": "Must be 10 digits.",
+        "phoneStart": "Must start with 5, 6, 7, 8 or 9.",
+        "emailRequired": "Email is required.",
+        "emailTooLong": "Email is too long.",
+        "emailSpaces": "Remove the spaces.",
+        "emailOneAt": "Use one @, like name@company.com",
+        "emailNameMissing": "Add your name before the @.",
+        "emailDots": "Check the dots in your email.",
+        "emailDomain": "Check the part after the @.",
+        "cityName": "City / country",
+        "timeframeRequired": "Pick when you'd like to start."
+      },
+      "sent": {
+        "icon": {
+          "src": "/icons/success.svg",
+          "alt": "",
+          "width": 64,
+          "height": 64
+        },
+        "title": "Enquiry sent",
+        "text": "Thank you. One person from our team will reply with next steps, and a written plan follows the discovery call.",
+        "homeLabel": "Back to home",
+        "homeHref": "/",
+        "closeLabel": "Close"
+      }
     },
-    "channelsSection": {
+    "channels": {
       "eyebrow": "Other ways to reach us",
       "title": "Pick the channel",
       "highlight": "that suits you.",
-      "intro": "Every channel reaches the same Tech Vedha team — and the same person who will run your project."
+      "intro": "Every channel reaches the same Tech Vedha team — and the same person who will run your project.",
+      "cards": [
+        {
+          "icon": "mail",
+          "title": "Email",
+          "description": "Briefs, tenders, purchase orders and documents.",
+          "value": "",
+          "link": "",
+          "tag": {
+            "icon": "file",
+            "label": "Best for detailed briefs"
+          },
+          "cta": "Write to us"
+        },
+        {
+          "icon": "chat",
+          "title": "WhatsApp",
+          "description": "Quick questions, voice notes and photos of your space or app.",
+          "value": "Chat with our team",
+          "link": "",
+          "tag": {
+            "icon": "clock",
+            "label": "Answered in working hours"
+          },
+          "cta": "Start a chat"
+        },
+        {
+          "icon": "phone",
+          "title": "Call",
+          "description": "Talk through a project that needs to start soon.",
+          "value": "",
+          "link": "",
+          "tag": {
+            "icon": "user",
+            "label": "One point of contact"
+          },
+          "cta": "Call now"
+        }
+      ]
     },
-    "nextStepsSection": {
+    "nextSteps": {
       "eyebrow": "After you enquire",
       "title": "What happens next",
-      "stepLabel": "Step {n}"
+      "stepLabel": "Step {n}",
+      "steps": [
+        {
+          "title": "We get back to you",
+          "detail": "One point of contact confirms your goals and what you need."
+        },
+        {
+          "title": "Discovery call and plan",
+          "detail": "We map the wings you need and share a written plan."
+        },
+        {
+          "title": "Agree, then build",
+          "detail": "Drawings, screens and campaigns approved before work starts."
+        }
+      ]
     },
-    "companySection": {
+    "company": {
       "eyebrow": "Office and company details",
       "title": "Find us, and everything",
       "highlight": "procurement needs.",
       "intro": "Vendor registration paperwork is shared on request.",
+      "mapImage": {
+        "src": "",
+        "alt": "",
+        "width": 0,
+        "height": 0
+      },
+      "mapPinBadge": "TV",
       "mapPinTitle": "Tech Vedha office",
+      "addressShort": "Connaught Place, New Delhi",
       "directionsLabel": "Get directions",
+      "mapsQuery": "Connaught Place, New Delhi",
       "officeLabel": "Our office",
-      "whatsappLink": "Prefer WhatsApp? Message us anytime",
-      "procurementTitle": "For procurement teams",
-      "missingValue": "To add"
-    },
-    "exploreBand": {
-      "text": "Already know which service you need?",
-      "linkLabel": "Explore services",
-      "linkHref": "/#services"
-    },
-    "company": {
       "city": "New Delhi, India",
       "address": "2nd Floor, Sample Tower, Connaught Place, New Delhi 110001",
-      "addressShort": "Connaught Place, New Delhi",
       "hours": "Mon–Sat · 10:00 AM – 7:00 PM IST",
-      "mapsQuery": "Connaught Place, New Delhi",
+      "whatsappLink": "Prefer WhatsApp? Message us anytime",
+      "procurementTitle": "For procurement teams",
       "registration": [
         {
           "label": "Registered name",
@@ -972,228 +1957,40 @@
           "label": "Certifications",
           "value": "Shared on request"
         }
-      ]
+      ],
+      "missingValue": "To add"
     },
-    "phonePlaceholder": "+91 · number to add",
-    "quickContacts": [
-      {
-        "label": "Email",
-        "value": "",
-        "icon": "mail"
-      },
-      {
-        "label": "WhatsApp",
-        "value": "Chat with our team",
-        "icon": "chat"
-      },
-      {
-        "label": "Phone",
-        "value": "",
-        "icon": "phone",
-        "highlight": true
-      },
-      {
-        "label": "Who you talk to",
-        "value": "One point of contact, every service",
-        "icon": "user"
-      }
-    ],
-    "promises": [
-      "Plan before we build",
-      "Security from day one",
-      "We stay after launch"
-    ],
-    "timeframes": [
-      "As soon as possible",
-      "Within a month",
-      "In 1–3 months",
-      "Later this year",
-      "Just exploring"
-    ],
-    "channels": [
-      {
-        "title": "Email",
-        "icon": "mail",
-        "description": "Briefs, tenders, purchase orders and documents.",
-        "value": "",
-        "tag": {
-          "icon": "file",
-          "label": "Best for detailed briefs"
-        },
-        "cta": "Write to us"
-      },
-      {
-        "title": "WhatsApp",
-        "icon": "chat",
-        "description": "Quick questions, voice notes and photos of your space or app.",
-        "value": "Chat with our team",
-        "tag": {
-          "icon": "clock",
-          "label": "Answered in working hours"
-        },
-        "cta": "Start a chat"
-      },
-      {
-        "title": "Call",
-        "icon": "phone",
-        "description": "Talk through a project that needs to start soon.",
-        "value": "",
-        "tag": {
-          "icon": "user",
-          "label": "One point of contact"
-        },
-        "cta": "Call now"
-      }
-    ],
-    "nextSteps": [
-      {
-        "title": "We get back to you",
-        "detail": "One point of contact confirms your goals and what you need."
-      },
-      {
-        "title": "Discovery call and plan",
-        "detail": "We map the wings you need and share a written plan."
-      },
-      {
-        "title": "Agree, then build",
-        "detail": "Drawings, screens and campaigns approved before work starts."
-      }
-    ]
+    "exploreBand": {
+      "text": "Already know which service you need?",
+      "linkLabel": "Explore services",
+      "linkHref": "/#services"
+    }
   },
   "services": {
     "items": [
       {
         "id": "marketing",
         "slug": "digital-marketing",
-        "number": "01",
-        "wing": "Foot traffic",
         "title": "Digital Marketing",
-        "summary": "SEO, Meta, YouTube, email and WhatsApp campaigns that bring customers in.",
-        "short": [
-          "Digital Marketing"
-        ],
-        "offerings": [
-          {
-            "title": "SEO",
-            "detail": "Rank higher, grow organic traffic"
-          },
-          {
-            "title": "Meta Ads",
-            "detail": "Facebook and Instagram campaigns"
-          },
-          {
-            "title": "YouTube Marketing",
-            "detail": "Video and channel growth"
-          },
-          {
-            "title": "Email Marketing",
-            "detail": "Targeted global campaigns"
-          },
-          {
-            "title": "WhatsApp Marketing",
-            "detail": "Broadcasts and business messaging"
-          }
-        ]
+        "summary": "SEO, Meta, YouTube, email and WhatsApp campaigns that bring customers in."
       },
       {
         "id": "apps",
         "slug": "app-development",
-        "number": "02",
-        "wing": "Front doors",
         "title": "App Development",
-        "summary": "Android and iOS apps, designed, tested, launched and supported.",
-        "short": [
-          "App Development"
-        ],
-        "offerings": [
-          {
-            "title": "Android Apps",
-            "detail": "Native, high-performance"
-          },
-          {
-            "title": "iOS Apps",
-            "detail": "Secure, intuitive"
-          },
-          {
-            "title": "UI/UX Design",
-            "detail": "Interfaces people enjoy"
-          },
-          {
-            "title": "Testing and Launch",
-            "detail": "QA to store release"
-          },
-          {
-            "title": "Ongoing Support",
-            "detail": "Updates and maintenance"
-          }
-        ]
+        "summary": "Android and iOS apps, designed, tested, launched and supported."
       },
       {
         "id": "cad",
         "slug": "cad-design-and-planning",
-        "number": "03",
-        "wing": "Architecture",
         "title": "CAD Design and Planning",
-        "summary": "2D/3D plans and BOQ for homes, retail spaces and industry.",
-        "short": [
-          "CAD Design"
-        ],
-        "offerings": [
-          {
-            "title": "Residential",
-            "detail": "Homes, villas, apartments"
-          },
-          {
-            "title": "Retail and Showrooms",
-            "detail": "Shop layout planning"
-          },
-          {
-            "title": "Commercial and Industrial",
-            "detail": "Large-scale planning"
-          },
-          {
-            "title": "2D and 3D Modelling",
-            "detail": "Accurate drawings"
-          },
-          {
-            "title": "BOQ",
-            "detail": "Bill of quantities"
-          }
-        ]
+        "summary": "2D/3D plans and BOQ for homes, retail spaces and industry."
       },
       {
         "id": "software",
         "slug": "software-and-cybersecurity",
-        "number": "04",
-        "wing": "Foundation",
         "title": "Software and Cybersecurity",
-        "summary": "Custom software on subscription or one-time, protected end to end.",
-        "short": [
-          "Software",
-          "Cybersecurity"
-        ],
-        "offerings": [
-          {
-            "title": "Subscription Software",
-            "detail": "Monthly or yearly, always supported"
-          },
-          {
-            "title": "One-time Software",
-            "detail": "Full ownership"
-          },
-          {
-            "title": "Threat Detection",
-            "detail": "Prevention and monitoring"
-          },
-          {
-            "title": "Network and Data Protection",
-            "detail": "Secure your assets"
-          },
-          {
-            "title": "Compliance and Risk",
-            "detail": "Stay audit-ready"
-          }
-        ]
+        "summary": "Custom software on subscription or one-time, protected end to end."
       }
     ],
     "added": []
@@ -1214,27 +2011,36 @@
       ]
     },
     "hero": {
+      "breadcrumb": {
+        "homeLabel": "Home",
+        "homeHref": "/",
+        "servicesLabel": "Services",
+        "servicesHref": "/#services",
+        "currentLabel": "App Development"
+      },
+      "eyebrow": "02 · Front doors",
       "title": "Apps your customers",
       "highlight": "keep opening.",
       "intro": "Native Android and iOS apps, designed, tested, launched and supported by one team — so your app keeps getting better after launch.",
+      "primaryCta": {
+        "label": "Start a project",
+        "href": "#contact"
+      },
+      "secondaryCta": {
+        "label": "Chat on WhatsApp",
+        "href": ""
+      },
       "platforms": [
         "Android",
         "iOS"
-      ]
-    },
-    "labels": {
-      "coverage": "What we cover",
-      "coverageItemCta": "View details",
-      "coverageHelpTitle": "Not sure where to start?",
-      "coverageHelpCta": "Talk to us",
-      "whyUs": "Why Tech Vedha",
-      "deliverables": "What you get",
-      "deliverablesCta": "Explore",
-      "useCases": "Who it's for",
-      "process": "How it works",
-      "toolsWord": "tools"
+      ],
+      "a11y": {
+        "breadcrumbLabel": "Breadcrumb",
+        "platformsLabel": "Platforms"
+      }
     },
     "coverage": {
+      "eyebrow": "What we cover",
       "title": [
         "Everything your app needs,",
         "under one roof."
@@ -1242,33 +2048,52 @@
       "intro": "Five parts of one build. Hire us for one, or for all of them together.",
       "items": [
         {
+          "icon": "smartphone",
           "title": "iOS Apps",
           "detail": "Secure, intuitive iPhone and iPad apps that feel at home on Apple devices."
         },
         {
+          "icon": "screens",
           "title": "UI/UX Design",
           "detail": "Screens and flows you review and approve before any code is written."
         },
         {
+          "icon": "checklist",
           "title": "Testing and Launch",
           "detail": "QA on real devices, then store listing, submission and release."
         },
         {
+          "icon": "message",
           "title": "Ongoing Support",
           "detail": "Updates, fixes and new features as your business and your users change."
         },
         {
+          "icon": "tablet",
           "title": "Android Apps",
           "detail": "Native, high-performance apps for the phones most of your customers carry."
         }
       ],
-      "helpText": "Tell us the idea. We'll suggest the right mix of the five."
+      "itemCta": {
+        "label": "View details",
+        "href": "#contact"
+      },
+      "helpTitle": "Not sure where to start?",
+      "helpText": "Tell us the idea. We'll suggest the right mix of the five.",
+      "helpCta": {
+        "label": "Talk to us",
+        "href": "/contact"
+      },
+      "a11y": {
+        "itemCtaSuffix": "about {title}"
+      }
     },
     "whyUs": {
+      "eyebrow": "Why Tech Vedha",
       "title": [
         "One team, from first",
         "screen to every update."
       ],
+      "icon": "smartphone",
       "points": [
         {
           "title": "Native performance",
@@ -1289,6 +2114,7 @@
       ]
     },
     "deliverables": {
+      "eyebrow": "What you get",
       "title": [
         "Real things you can",
         "hold, test and ship."
@@ -1296,18 +2122,33 @@
       "intro": "Every project ends with deliverables you own and can review at each step.",
       "cards": [
         {
+          "image": {
+            "src": "",
+            "alt": "",
+            "width": 0,
+            "height": 0
+          },
+          "visual": "app-screens",
+          "checklist": [],
           "title": "Android and iOS apps",
           "detail": "Native apps for both platforms, built from screens you approved.",
-          "visual": "app-screens",
           "href": "#what-we-cover"
         },
         {
+          "image": {
+            "src": "",
+            "alt": "",
+            "width": 0,
+            "height": 0
+          },
+          "visual": "release-checklist",
+          "checklist": [],
           "title": "A release you can trust",
           "detail": "Every build is tested on real devices and checked off before it reaches the stores.",
-          "visual": "release-checklist",
           "href": "#how-it-works"
         }
       ],
+      "ctaLabel": "Explore",
       "ownership": {
         "title": "You own everything",
         "detail": "Handed over at launch, in your name.",
@@ -1320,6 +2161,7 @@
       }
     },
     "useCases": {
+      "eyebrow": "Who it's for",
       "title": [
         "Apps for the way",
         "your business runs."
@@ -1327,41 +2169,46 @@
       "intro": "From the shop floor to the field team — pick the one that sounds like you.",
       "items": [
         {
+          "icon": "shopping-bag",
           "title": "Retail and e-commerce",
           "detail": "Catalogue, cart and payments for your store."
         },
         {
+          "icon": "calendar",
           "title": "Bookings and appointments",
           "detail": "Let customers pick a slot and pay ahead."
         },
         {
+          "icon": "map-pin",
           "title": "Field staff",
           "detail": "Orders, visits and photos from the road."
         },
         {
+          "icon": "layout",
           "title": "Internal tools",
           "detail": "Stock, approvals and reports for your team."
         },
         {
+          "icon": "heart",
           "title": "Customer loyalty",
           "detail": "Points, offers and reminders that bring people back."
         },
         {
+          "icon": "grid",
           "title": "Showroom catalogues",
           "detail": "Show every product, even what is not on the floor."
         }
       ]
     },
     "process": {
+      "eyebrow": "How it works",
       "title": [
         "How your app",
         "gets built."
       ],
       "intro": "Pick where you're starting from. The steps change to match.",
-      "ctaDetail": "Tell us about your app and we'll start with a discovery call.",
       "tracks": [
         {
-          "id": "new",
           "label": "New app",
           "steps": [
             {
@@ -1421,7 +2268,6 @@
           ]
         },
         {
-          "id": "existing",
           "label": "Existing app",
           "steps": [
             {
@@ -1478,7 +2324,23 @@
             }
           ]
         }
-      ]
+      ],
+      "banner": {
+        "heading": "Ready for step one?",
+        "text": "Tell us about your app and we'll start with a discovery call.",
+        "primaryCta": {
+          "label": "Start a project",
+          "href": "#contact"
+        },
+        "secondaryCta": {
+          "label": "Chat on WhatsApp",
+          "href": ""
+        }
+      },
+      "a11y": {
+        "tabsLabel": "Project type",
+        "deliverablesLabel": "Deliverables"
+      }
     },
     "techStack": {
       "eyebrow": "Tech stack",
@@ -1495,136 +2357,222 @@
           "title": "Mobile",
           "tagline": "Native & cross-platform apps",
           "tools": [
-            {
-              "name": "Swift",
-              "color": "#f05138"
-            },
-            {
-              "name": "Kotlin",
-              "color": "#7f52ff"
-            },
-            {
-              "name": "Flutter",
-              "color": "#29b6f6"
-            },
-            {
-              "name": "React Native",
-              "color": "#61dafb"
-            }
+            "Swift",
+            "Kotlin",
+            "Flutter",
+            "React Native"
           ]
         },
         {
           "title": "Frontend",
           "tagline": "Fast, accessible interfaces",
           "tools": [
-            {
-              "name": "React",
-              "color": "#61dafb"
-            },
-            {
-              "name": "Next.js"
-            },
-            {
-              "name": "TypeScript",
-              "color": "#3178c6"
-            },
-            {
-              "name": "Tailwind",
-              "color": "#06b6d4"
-            }
+            "React",
+            "Next.js",
+            "TypeScript",
+            "Tailwind"
           ]
         },
         {
           "title": "Backend",
           "tagline": "APIs that scale with you",
           "tools": [
-            {
-              "name": "Node.js",
-              "color": "#5fa04e"
-            },
-            {
-              "name": "Python",
-              "color": "#3776ab"
-            },
-            {
-              "name": "Go",
-              "color": "#00add8"
-            },
-            {
-              "name": "GraphQL",
-              "color": "#e10098"
-            }
+            "Node.js",
+            "Python",
+            "Go",
+            "GraphQL"
           ]
         },
         {
           "title": "Data",
           "tagline": "Storage, sync & real-time",
           "tools": [
-            {
-              "name": "PostgreSQL",
-              "color": "#4169e1"
-            },
-            {
-              "name": "MongoDB",
-              "color": "#47a248"
-            },
-            {
-              "name": "Redis",
-              "color": "#ff4438"
-            },
-            {
-              "name": "Firebase",
-              "color": "#ffca28"
-            }
+            "PostgreSQL",
+            "MongoDB",
+            "Redis",
+            "Firebase"
           ]
         },
         {
           "title": "Cloud & DevOps",
           "tagline": "Ship daily, sleep well",
           "tools": [
-            {
-              "name": "AWS",
-              "color": "#ff9900"
-            },
-            {
-              "name": "Google Cloud",
-              "color": "#4285f4"
-            },
-            {
-              "name": "Docker",
-              "color": "#2496ed"
-            },
-            {
-              "name": "Kubernetes",
-              "color": "#326ce5"
-            }
+            "AWS",
+            "Google Cloud",
+            "Docker",
+            "Kubernetes"
           ]
         },
         {
           "title": "Design & QA",
           "tagline": "Pixel-checked, test-covered",
           "tools": [
-            {
-              "name": "Figma",
-              "color": "#f24e1e"
-            },
-            {
-              "name": "Jest",
-              "color": "#c21325"
-            },
-            {
-              "name": "Cypress"
-            },
-            {
-              "name": "GH Actions",
-              "color": "#2088ff"
-            }
+            "Figma",
+            "Jest",
+            "Cypress",
+            "GH Actions"
           ]
         }
-      ]
+      ],
+      "toolsWord": "tools"
+    },
+    "stories": {
+      "eyebrow": "Client stories",
+      "title": [
+        "In our clients'",
+        "own words."
+      ],
+      "filters": [
+        "All",
+        "Marketing",
+        "Apps",
+        "CAD",
+        "Software"
+      ],
+      "initialFilter": "Apps",
+      "items": [
+        {
+          "kind": "quote",
+          "column": "left",
+          "photo": "",
+          "photoAlt": "",
+          "stat": "",
+          "statLabel": "",
+          "quote": "Our Instagram ads finally reach people near the store, and enquiries now come straight into WhatsApp. We reply from one place instead of juggling DMs, calls and forms.",
+          "avatar": "/home/avatars/homedecor.jpg",
+          "role": "Owner",
+          "company": "Home décor store",
+          "category": "Marketing"
+        },
+        {
+          "kind": "photo",
+          "column": "left",
+          "photo": "/home/stories/app-launch.jpg",
+          "photoAlt": "Founder of a grocery delivery startup in their warehouse",
+          "stat": "",
+          "statLabel": "",
+          "quote": "Our Android and iOS apps went live together, and updates still keep coming.",
+          "avatar": "",
+          "role": "Founder",
+          "company": "Grocery delivery startup",
+          "category": "Apps"
+        },
+        {
+          "kind": "stat",
+          "column": "left",
+          "photo": "",
+          "photoAlt": "",
+          "stat": "4 → 1",
+          "statLabel": "vendors to manage",
+          "quote": "Design, app, software and marketing — all handled by one team with one invoice.",
+          "avatar": "/home/avatars/showroom.jpg",
+          "role": "Owner",
+          "company": "Multi-brand showroom",
+          "category": "Apps"
+        },
+        {
+          "kind": "photo",
+          "column": "middle",
+          "photo": "/home/stories/3d-showroom.jpg",
+          "photoAlt": "Furniture showroom owner holding a tablet with a 3D floor plan",
+          "stat": "",
+          "statLabel": "",
+          "quote": "The 3D views let us walk the showroom before a single partition went up.",
+          "avatar": "",
+          "role": "Proprietor",
+          "company": "Furniture showroom",
+          "category": "CAD"
+        },
+        {
+          "kind": "featured",
+          "column": "middle",
+          "photo": "",
+          "photoAlt": "",
+          "stat": "",
+          "statLabel": "",
+          "quote": "We came for floor plans and stayed for everything else. The same team drew our villas in 2D and 3D, prepared the BOQ, built the booking app and ran the launch campaign. One WhatsApp group replaced four vendors and endless follow-ups.",
+          "avatar": "/home/avatars/builder.jpg",
+          "role": "Director",
+          "company": "Residential builder",
+          "category": "CAD"
+        },
+        {
+          "kind": "quote",
+          "column": "middle",
+          "photo": "",
+          "photoAlt": "",
+          "stat": "",
+          "statLabel": "",
+          "quote": "Patients book appointments in the app and get WhatsApp reminders. The team tested it on every phone our patients use before launch.",
+          "avatar": "/home/avatars/clinic.jpg",
+          "role": "Clinic administrator",
+          "company": "Healthcare clinic",
+          "category": "Apps"
+        },
+        {
+          "kind": "stat",
+          "column": "right",
+          "photo": "",
+          "photoAlt": "",
+          "stat": "3 stores",
+          "statLabel": "on one billing system",
+          "quote": "Billing, stock and staff logins run on one system now — no more end-of-day spreadsheets.",
+          "avatar": "/home/avatars/retail.jpg",
+          "role": "Managing partner",
+          "company": "Electronics retail chain",
+          "category": "Software"
+        },
+        {
+          "kind": "quote",
+          "column": "right",
+          "photo": "",
+          "photoAlt": "",
+          "stat": "",
+          "statLabel": "",
+          "quote": "We chose the subscription model because our processes keep changing. Every new requirement gets added without a new contract, and the security checks run in the background.",
+          "avatar": "/home/avatars/manufacturing.jpg",
+          "role": "Operations head",
+          "company": "Manufacturing unit",
+          "category": "Software"
+        },
+        {
+          "kind": "quote",
+          "column": "right",
+          "photo": "",
+          "photoAlt": "",
+          "stat": "",
+          "statLabel": "",
+          "quote": "They turn our sketches into accurate CAD drawings quickly, and the bill of quantities matches the drawings line for line, which makes contractor quotes far easier.",
+          "avatar": "/home/avatars/studio.jpg",
+          "role": "Architect",
+          "company": "Interior design studio",
+          "category": "CAD"
+        },
+        {
+          "kind": "photo",
+          "column": "right",
+          "photo": "/home/stories/youtube-seo.jpg",
+          "photoAlt": "Clothing boutique owner smiling in their store",
+          "stat": "",
+          "statLabel": "",
+          "quote": "Our YouTube shorts and Google ranking now bring new customers in every week.",
+          "avatar": "",
+          "role": "Owner",
+          "company": "Clothing boutique",
+          "category": "Marketing"
+        }
+      ],
+      "showMore": "Show more stories",
+      "note": "Sample copy for review — replace with approved client stories, names and photos before launch.",
+      "a11y": {
+        "filtersLabel": "Filter stories by service"
+      }
     },
     "faq": {
+      "eyebrow": "FAQ",
       "title": "App questions, answered.",
+      "helpTitle": "Still unsure?",
+      "helpText": "Chat with us on WhatsApp →",
       "items": [
         {
           "question": "How long does an app take to build?",
@@ -1655,6 +2603,75 @@
           "answer": "Ongoing support: updates, fixes and improvements as your needs change."
         }
       ]
+    },
+    "contact": {
+      "eyebrow": "Let's talk",
+      "heading": "Let's build your success together.",
+      "intro": "Tell us what you need. We'll reply with a plan.",
+      "emailLabel": "Email",
+      "whatsappLabel": "WhatsApp",
+      "whatsappValue": "Chat with us",
+      "form": {
+        "nameLabel": "Name",
+        "phoneLabel": "Phone / WhatsApp",
+        "phonePrefill": "+91 ",
+        "phonePlaceholder": "+91 98765 43210",
+        "emailLabel": "Email",
+        "serviceLabel": "Service",
+        "servicePlaceholder": "Select a service",
+        "serviceOptions": [
+          "Digital Marketing",
+          "App Development",
+          "CAD Design and Planning",
+          "Software and Cybersecurity"
+        ],
+        "messageLabel": "Message",
+        "messagePlaceholder": "A few lines about your project",
+        "submitLabel": "Send enquiry",
+        "errorMessage": "Please check your details and try again.",
+        "validation": {
+          "nameRequired": "Name is required.",
+          "nameTooShort": "Enter at least 2 characters.",
+          "nameTooLong": "Name is too long.",
+          "nameNumbers": "Name can't contain numbers.",
+          "nameLetters": "Use letters only.",
+          "phoneRequired": "Mobile number is required.",
+          "phoneCharacters": "Use digits only.",
+          "phoneLength": "Must be 10 digits.",
+          "phoneStart": "Must start with 5, 6, 7, 8 or 9.",
+          "emailRequired": "Email is required.",
+          "emailTooLong": "Email is too long.",
+          "emailSpaces": "Remove the spaces.",
+          "emailOneAt": "Use one @, like name@company.com",
+          "emailNameMissing": "Add your name before the @.",
+          "emailDots": "Check the dots in your email.",
+          "emailDomain": "Check the part after the @.",
+          "textRequired": "{field} is required.",
+          "textTooShort": "Enter at least 2 characters.",
+          "textTooLong": "Keep it under {max} characters.",
+          "serviceRequired": "Select at least one service.",
+          "otherServiceName": "The service you need",
+          "companyName": "Company",
+          "cityName": "City / country",
+          "timeframeRequired": "Pick when you'd like to start."
+        },
+        "sent": {
+          "icon": {
+            "src": "/icons/success.svg",
+            "alt": "",
+            "width": 64,
+            "height": 64
+          },
+          "title": "Enquiry sent",
+          "text": "Thank you. One person from our team will reply with next steps, and a written plan follows the discovery call.",
+          "homeLabel": "Back to home",
+          "homeHref": "/",
+          "closeLabel": "Close"
+        },
+        "emailSubject": "Project enquiry",
+        "emailNoService": "Not sure yet",
+        "formLabel": "Project enquiry"
+      }
     }
   },
   "service-marketing": {
@@ -1674,27 +2691,36 @@
       ]
     },
     "hero": {
+      "breadcrumb": {
+        "homeLabel": "Home",
+        "homeHref": "/",
+        "servicesLabel": "Services",
+        "servicesHref": "/#services",
+        "currentLabel": "Digital Marketing"
+      },
+      "eyebrow": "01 · Foot traffic",
       "title": "Digital marketing",
       "highlight": "for more customers.",
       "intro": "Digital marketing services for businesses in India and abroad — SEO, Google and Meta ads, YouTube, email and WhatsApp marketing, planned, run and reported by one team.",
+      "primaryCta": {
+        "label": "Start a project",
+        "href": "#contact"
+      },
+      "secondaryCta": {
+        "label": "Chat on WhatsApp",
+        "href": ""
+      },
       "platforms": [
         "Search",
         "Social"
-      ]
-    },
-    "labels": {
-      "coverage": "What we cover",
-      "coverageItemCta": "View details",
-      "coverageHelpTitle": "Not sure where to start?",
-      "coverageHelpCta": "Talk to us",
-      "whyUs": "Why Tech Vedha",
-      "deliverables": "What you get",
-      "deliverablesCta": "Explore",
-      "useCases": "Who it's for",
-      "process": "How it works",
-      "toolsWord": "tools"
+      ],
+      "a11y": {
+        "breadcrumbLabel": "Breadcrumb",
+        "platformsLabel": "Platforms"
+      }
     },
     "coverage": {
+      "eyebrow": "What we cover",
       "title": [
         "Digital marketing services,",
         "under one roof."
@@ -1702,33 +2728,52 @@
       "intro": "SEO, paid ads, video, email and WhatsApp marketing. Hire us for one channel, or for a full-funnel plan.",
       "items": [
         {
+          "icon": "search",
           "title": "SEO Services",
           "detail": "Technical, on-page and local SEO that helps you rank higher on Google and grow organic traffic."
         },
         {
+          "icon": "megaphone",
           "title": "Meta Ads",
           "detail": "Facebook and Instagram ad campaigns that reach buyers by interest, location and intent."
         },
         {
+          "icon": "play",
           "title": "YouTube Marketing",
           "detail": "YouTube video ads and channel SEO that put your brand in front of the right viewers."
         },
         {
+          "icon": "mail",
           "title": "Email Marketing",
           "detail": "Email campaigns and automations that turn past customers into repeat buyers."
         },
         {
+          "icon": "message",
           "title": "WhatsApp Marketing",
           "detail": "WhatsApp Business broadcasts and messaging that turn enquiries into sales."
         }
       ],
-      "helpText": "Tell us the idea. We'll suggest the right mix of the five."
+      "itemCta": {
+        "label": "View details",
+        "href": "#contact"
+      },
+      "helpTitle": "Not sure where to start?",
+      "helpText": "Tell us the idea. We'll suggest the right mix of the five.",
+      "helpCta": {
+        "label": "Talk to us",
+        "href": "/contact"
+      },
+      "a11y": {
+        "itemCtaSuffix": "about {title}"
+      }
     },
     "whyUs": {
+      "eyebrow": "Why Tech Vedha",
       "title": [
         "One marketing team, from",
         "first search to every sale."
       ],
+      "icon": "megaphone",
       "points": [
         {
           "title": "Search-first strategy",
@@ -1749,6 +2794,7 @@
       ]
     },
     "deliverables": {
+      "eyebrow": "What you get",
       "title": [
         "Real results you can",
         "see, track and own."
@@ -1756,30 +2802,59 @@
       "intro": "Every digital marketing campaign comes with tracking, reports and creative assets you own.",
       "cards": [
         {
+          "image": {
+            "src": "",
+            "alt": "",
+            "width": 0,
+            "height": 0
+          },
+          "visual": "campaign-dashboard",
+          "checklist": [],
           "title": "Campaigns on every channel",
           "detail": "Google Search, Meta, YouTube, email and WhatsApp campaigns, managed from one plan you approved.",
-          "visual": "campaign-dashboard",
           "href": "#what-we-cover"
         },
         {
+          "image": {
+            "src": "",
+            "alt": "",
+            "width": 0,
+            "height": 0
+          },
+          "visual": "campaign-checklist",
+          "checklist": [],
           "title": "A launch you can trust",
           "detail": "Tracking, targeting and ad creatives are checked before any budget is spent.",
-          "visual": "campaign-checklist",
           "href": "#how-it-works"
         },
         {
+          "image": {
+            "src": "",
+            "alt": "",
+            "width": 0,
+            "height": 0
+          },
+          "visual": "search-rankings",
+          "checklist": [],
           "title": "Rank higher on Google",
           "detail": "SEO and keyword tracking that moves your pages up for the searches buyers actually make.",
-          "visual": "search-rankings",
           "href": "#what-we-cover"
         },
         {
+          "image": {
+            "src": "",
+            "alt": "",
+            "width": 0,
+            "height": 0
+          },
+          "visual": "monthly-report",
+          "checklist": [],
           "title": "Reports you can read",
           "detail": "A monthly report on leads by channel, what worked, and where next month’s budget goes.",
-          "visual": "monthly-report",
           "href": "#how-it-works"
         }
       ],
+      "ctaLabel": "Explore",
       "ownership": {
         "title": "You own everything",
         "detail": "Set up in your name from day one.",
@@ -1792,6 +2867,7 @@
       }
     },
     "useCases": {
+      "eyebrow": "Who it's for",
       "title": [
         "Digital marketing for the",
         "way your business runs."
@@ -1799,41 +2875,46 @@
       "intro": "From one store to many cities — lead generation and online growth built for your industry.",
       "items": [
         {
+          "icon": "store",
           "title": "Retail stores",
           "detail": "Local SEO and offers that bring footfall to your shop or showroom."
         },
         {
+          "icon": "shopping-cart",
           "title": "E-commerce",
           "detail": "Google Shopping, search and social ads that drive online orders."
         },
         {
+          "icon": "map-pin",
           "title": "Local services",
           "detail": "Google Business Profile and local search, so nearby customers find you."
         },
         {
+          "icon": "house",
           "title": "Real estate and builders",
           "detail": "Lead generation for new projects and site visits."
         },
         {
+          "icon": "graduation-cap",
           "title": "Education and coaching",
           "detail": "Admission campaigns across search, social and YouTube."
         },
         {
+          "icon": "utensils",
           "title": "Restaurants and cafés",
           "detail": "Reviews, offers and WhatsApp reminders that fill tables."
         }
       ]
     },
     "process": {
+      "eyebrow": "How it works",
       "title": [
         "How we grow",
         "your business."
       ],
       "intro": "Pick where you're starting from. The steps change to match.",
-      "ctaDetail": "Tell us about your business and we'll start with a discovery call.",
       "tracks": [
         {
-          "id": "new",
           "label": "Starting fresh",
           "steps": [
             {
@@ -1893,7 +2974,6 @@
           ]
         },
         {
-          "id": "existing",
           "label": "Already running ads",
           "steps": [
             {
@@ -1950,7 +3030,23 @@
             }
           ]
         }
-      ]
+      ],
+      "banner": {
+        "heading": "Ready for step one?",
+        "text": "Tell us about your business and we'll start with a discovery call.",
+        "primaryCta": {
+          "label": "Start a project",
+          "href": "#contact"
+        },
+        "secondaryCta": {
+          "label": "Chat on WhatsApp",
+          "href": ""
+        }
+      },
+      "a11y": {
+        "tabsLabel": "Project type",
+        "deliverablesLabel": "Deliverables"
+      }
     },
     "techStack": {
       "eyebrow": "Marketing stack",
@@ -1967,139 +3063,222 @@
           "title": "Search & SEO",
           "tagline": "Get found when buyers search",
           "tools": [
-            {
-              "name": "Search Console",
-              "color": "#458cf5"
-            },
-            {
-              "name": "Semrush",
-              "color": "#ff642d"
-            },
-            {
-              "name": "Business Profile",
-              "image": "/tools/google-business-profile.svg",
-              "color": "#4285f4"
-            },
-            {
-              "name": "GA4",
-              "color": "#e37400"
-            }
+            "Search Console",
+            "Semrush",
+            "Business Profile",
+            "GA4"
           ]
         },
         {
           "title": "Paid ads",
           "tagline": "Spend that is aimed and tracked",
           "tools": [
-            {
-              "name": "Google Ads",
-              "color": "#4285f4"
-            },
-            {
-              "name": "Meta Ads",
-              "color": "#0467df"
-            },
-            {
-              "name": "YouTube Ads",
-              "color": "#ff0000"
-            },
-            {
-              "name": "LinkedIn Ads",
-              "color": "#0a66c2"
-            }
+            "Google Ads",
+            "Meta Ads",
+            "YouTube Ads",
+            "LinkedIn Ads"
           ]
         },
         {
           "title": "Social",
           "tagline": "Content people stop for",
           "tools": [
-            {
-              "name": "Instagram",
-              "color": "#e4405f"
-            },
-            {
-              "name": "Facebook",
-              "color": "#0866ff"
-            },
-            {
-              "name": "Canva",
-              "image": "/tools/canva.svg",
-              "color": "#00c4cc"
-            },
-            {
-              "name": "Buffer"
-            }
+            "Instagram",
+            "Facebook",
+            "Canva",
+            "Buffer"
           ]
         },
         {
           "title": "Email",
           "tagline": "Campaigns that bring people back",
           "tools": [
-            {
-              "name": "Mailchimp",
-              "color": "#ffe01b"
-            },
-            {
-              "name": "Brevo",
-              "color": "#0b996e"
-            },
-            {
-              "name": "HubSpot",
-              "color": "#ff7a59"
-            },
-            {
-              "name": "Zapier",
-              "color": "#ff4f00"
-            }
+            "Mailchimp",
+            "Brevo",
+            "HubSpot",
+            "Zapier"
           ]
         },
         {
           "title": "WhatsApp",
           "tagline": "Messages where customers chat",
           "tools": [
-            {
-              "name": "WhatsApp API",
-              "color": "#25d366"
-            },
-            {
-              "name": "Broadcasts",
-              "color": "#25d366"
-            },
-            {
-              "name": "CRM sync",
-              "color": "#ff7a59"
-            },
-            {
-              "name": "Automations",
-              "color": "#ff4f00"
-            }
+            "WhatsApp API",
+            "Broadcasts",
+            "CRM sync",
+            "Automations"
           ]
         },
         {
           "title": "Tracking & reports",
           "tagline": "Know what is working",
           "tools": [
-            {
-              "name": "Tag Manager",
-              "color": "#246fdb"
-            },
-            {
-              "name": "Looker Studio",
-              "color": "#4285f4"
-            },
-            {
-              "name": "Hotjar",
-              "color": "#ff3c00"
-            },
-            {
-              "name": "Analytics",
-              "color": "#e37400"
-            }
+            "Tag Manager",
+            "Looker Studio",
+            "Hotjar",
+            "Analytics"
           ]
         }
-      ]
+      ],
+      "toolsWord": "tools"
+    },
+    "stories": {
+      "eyebrow": "Client stories",
+      "title": [
+        "In our clients'",
+        "own words."
+      ],
+      "filters": [
+        "All",
+        "Marketing",
+        "Apps",
+        "CAD",
+        "Software"
+      ],
+      "initialFilter": "Marketing",
+      "items": [
+        {
+          "kind": "quote",
+          "column": "left",
+          "photo": "",
+          "photoAlt": "",
+          "stat": "",
+          "statLabel": "",
+          "quote": "Our Instagram ads finally reach people near the store, and enquiries now come straight into WhatsApp. We reply from one place instead of juggling DMs, calls and forms.",
+          "avatar": "/home/avatars/homedecor.jpg",
+          "role": "Owner",
+          "company": "Home décor store",
+          "category": "Marketing"
+        },
+        {
+          "kind": "photo",
+          "column": "left",
+          "photo": "/home/stories/app-launch.jpg",
+          "photoAlt": "Founder of a grocery delivery startup in their warehouse",
+          "stat": "",
+          "statLabel": "",
+          "quote": "Our Android and iOS apps went live together, and updates still keep coming.",
+          "avatar": "",
+          "role": "Founder",
+          "company": "Grocery delivery startup",
+          "category": "Apps"
+        },
+        {
+          "kind": "stat",
+          "column": "left",
+          "photo": "",
+          "photoAlt": "",
+          "stat": "4 → 1",
+          "statLabel": "vendors to manage",
+          "quote": "Design, app, software and marketing — all handled by one team with one invoice.",
+          "avatar": "/home/avatars/showroom.jpg",
+          "role": "Owner",
+          "company": "Multi-brand showroom",
+          "category": "Apps"
+        },
+        {
+          "kind": "photo",
+          "column": "middle",
+          "photo": "/home/stories/3d-showroom.jpg",
+          "photoAlt": "Furniture showroom owner holding a tablet with a 3D floor plan",
+          "stat": "",
+          "statLabel": "",
+          "quote": "The 3D views let us walk the showroom before a single partition went up.",
+          "avatar": "",
+          "role": "Proprietor",
+          "company": "Furniture showroom",
+          "category": "CAD"
+        },
+        {
+          "kind": "featured",
+          "column": "middle",
+          "photo": "",
+          "photoAlt": "",
+          "stat": "",
+          "statLabel": "",
+          "quote": "We came for floor plans and stayed for everything else. The same team drew our villas in 2D and 3D, prepared the BOQ, built the booking app and ran the launch campaign. One WhatsApp group replaced four vendors and endless follow-ups.",
+          "avatar": "/home/avatars/builder.jpg",
+          "role": "Director",
+          "company": "Residential builder",
+          "category": "CAD"
+        },
+        {
+          "kind": "quote",
+          "column": "middle",
+          "photo": "",
+          "photoAlt": "",
+          "stat": "",
+          "statLabel": "",
+          "quote": "Patients book appointments in the app and get WhatsApp reminders. The team tested it on every phone our patients use before launch.",
+          "avatar": "/home/avatars/clinic.jpg",
+          "role": "Clinic administrator",
+          "company": "Healthcare clinic",
+          "category": "Apps"
+        },
+        {
+          "kind": "stat",
+          "column": "right",
+          "photo": "",
+          "photoAlt": "",
+          "stat": "3 stores",
+          "statLabel": "on one billing system",
+          "quote": "Billing, stock and staff logins run on one system now — no more end-of-day spreadsheets.",
+          "avatar": "/home/avatars/retail.jpg",
+          "role": "Managing partner",
+          "company": "Electronics retail chain",
+          "category": "Software"
+        },
+        {
+          "kind": "quote",
+          "column": "right",
+          "photo": "",
+          "photoAlt": "",
+          "stat": "",
+          "statLabel": "",
+          "quote": "We chose the subscription model because our processes keep changing. Every new requirement gets added without a new contract, and the security checks run in the background.",
+          "avatar": "/home/avatars/manufacturing.jpg",
+          "role": "Operations head",
+          "company": "Manufacturing unit",
+          "category": "Software"
+        },
+        {
+          "kind": "quote",
+          "column": "right",
+          "photo": "",
+          "photoAlt": "",
+          "stat": "",
+          "statLabel": "",
+          "quote": "They turn our sketches into accurate CAD drawings quickly, and the bill of quantities matches the drawings line for line, which makes contractor quotes far easier.",
+          "avatar": "/home/avatars/studio.jpg",
+          "role": "Architect",
+          "company": "Interior design studio",
+          "category": "CAD"
+        },
+        {
+          "kind": "photo",
+          "column": "right",
+          "photo": "/home/stories/youtube-seo.jpg",
+          "photoAlt": "Clothing boutique owner smiling in their store",
+          "stat": "",
+          "statLabel": "",
+          "quote": "Our YouTube shorts and Google ranking now bring new customers in every week.",
+          "avatar": "",
+          "role": "Owner",
+          "company": "Clothing boutique",
+          "category": "Marketing"
+        }
+      ],
+      "showMore": "Show more stories",
+      "note": "Sample copy for review — replace with approved client stories, names and photos before launch.",
+      "a11y": {
+        "filtersLabel": "Filter stories by service"
+      }
     },
     "faq": {
+      "eyebrow": "FAQ",
       "title": "Digital marketing questions, answered.",
+      "helpTitle": "Still unsure?",
+      "helpText": "Chat with us on WhatsApp →",
       "items": [
         {
           "question": "How soon will I see results from SEO and ads?",
@@ -2130,6 +3309,75 @@
           "answer": "Yes. We run digital marketing campaigns for businesses across India and abroad."
         }
       ]
+    },
+    "contact": {
+      "eyebrow": "Let's talk",
+      "heading": "Let's build your success together.",
+      "intro": "Tell us what you need. We'll reply with a plan.",
+      "emailLabel": "Email",
+      "whatsappLabel": "WhatsApp",
+      "whatsappValue": "Chat with us",
+      "form": {
+        "nameLabel": "Name",
+        "phoneLabel": "Phone / WhatsApp",
+        "phonePrefill": "+91 ",
+        "phonePlaceholder": "+91 98765 43210",
+        "emailLabel": "Email",
+        "serviceLabel": "Service",
+        "servicePlaceholder": "Select a service",
+        "serviceOptions": [
+          "Digital Marketing",
+          "App Development",
+          "CAD Design and Planning",
+          "Software and Cybersecurity"
+        ],
+        "messageLabel": "Message",
+        "messagePlaceholder": "A few lines about your project",
+        "submitLabel": "Send enquiry",
+        "errorMessage": "Please check your details and try again.",
+        "validation": {
+          "nameRequired": "Name is required.",
+          "nameTooShort": "Enter at least 2 characters.",
+          "nameTooLong": "Name is too long.",
+          "nameNumbers": "Name can't contain numbers.",
+          "nameLetters": "Use letters only.",
+          "phoneRequired": "Mobile number is required.",
+          "phoneCharacters": "Use digits only.",
+          "phoneLength": "Must be 10 digits.",
+          "phoneStart": "Must start with 5, 6, 7, 8 or 9.",
+          "emailRequired": "Email is required.",
+          "emailTooLong": "Email is too long.",
+          "emailSpaces": "Remove the spaces.",
+          "emailOneAt": "Use one @, like name@company.com",
+          "emailNameMissing": "Add your name before the @.",
+          "emailDots": "Check the dots in your email.",
+          "emailDomain": "Check the part after the @.",
+          "textRequired": "{field} is required.",
+          "textTooShort": "Enter at least 2 characters.",
+          "textTooLong": "Keep it under {max} characters.",
+          "serviceRequired": "Select at least one service.",
+          "otherServiceName": "The service you need",
+          "companyName": "Company",
+          "cityName": "City / country",
+          "timeframeRequired": "Pick when you'd like to start."
+        },
+        "sent": {
+          "icon": {
+            "src": "/icons/success.svg",
+            "alt": "",
+            "width": 64,
+            "height": 64
+          },
+          "title": "Enquiry sent",
+          "text": "Thank you. One person from our team will reply with next steps, and a written plan follows the discovery call.",
+          "homeLabel": "Back to home",
+          "homeHref": "/",
+          "closeLabel": "Close"
+        },
+        "emailSubject": "Project enquiry",
+        "emailNoService": "Not sure yet",
+        "formLabel": "Project enquiry"
+      }
     }
   }
 }

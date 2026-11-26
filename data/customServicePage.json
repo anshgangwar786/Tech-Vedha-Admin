@@ -1,38 +1,61 @@
 {
   "defaults": {
+    "id": "",
     "seo": {
       "title": "",
       "description": "",
       "keywords": []
     },
     "hero": {
+      "breadcrumb": {
+        "homeLabel": "Home",
+        "homeHref": "/",
+        "servicesLabel": "Services",
+        "servicesHref": "/#services",
+        "currentLabel": ""
+      },
+      "eyebrow": "",
       "title": "",
       "highlight": "",
       "intro": "",
-      "platforms": []
-    },
-    "labels": {
-      "coverage": "What we cover",
-      "coverageItemCta": "View details",
-      "coverageHelpTitle": "Not sure where to start?",
-      "coverageHelpCta": "Talk to us",
-      "whyUs": "Why Tech Vedha",
-      "deliverables": "What you get",
-      "deliverablesCta": "Explore",
-      "useCases": "Who it's for",
-      "process": "How it works",
-      "toolsWord": "tools"
+      "primaryCta": {
+        "label": "Start a project",
+        "href": "#contact"
+      },
+      "secondaryCta": {
+        "label": "Chat on WhatsApp",
+        "href": ""
+      },
+      "platforms": [],
+      "a11y": {
+        "breadcrumbLabel": "Breadcrumb",
+        "platformsLabel": "Platforms"
+      }
     },
     "coverage": {
+      "eyebrow": "What we cover",
       "title": [
         "Everything it covers,",
         "under one roof."
       ],
       "intro": "Hire us for one part, or for all of them together.",
       "items": [],
-      "helpText": "Tell us what you need. We'll suggest where to start."
+      "itemCta": {
+        "label": "View details",
+        "href": "#contact"
+      },
+      "helpTitle": "Not sure where to start?",
+      "helpText": "Tell us what you need. We'll suggest where to start.",
+      "helpCta": {
+        "label": "Talk to us",
+        "href": "/contact"
+      },
+      "a11y": {
+        "itemCtaSuffix": "about {title}"
+      }
     },
     "whyUs": {
+      "eyebrow": "Why Tech Vedha",
       "title": [
         "One team, from the first",
         "plan to every update."
@@ -58,12 +81,14 @@
       ]
     },
     "deliverables": {
+      "eyebrow": "What you get",
       "title": [
         "Real things you can",
         "review and keep."
       ],
       "intro": "Every project ends with deliverables you own and can review at each step.",
       "cards": [],
+      "ctaLabel": "Explore",
       "ownership": {
         "title": "You own everything",
         "detail": "Handed over at the end, in your name.",
@@ -71,6 +96,7 @@
       }
     },
     "useCases": {
+      "eyebrow": "Who it's for",
       "title": [
         "Who it's",
         "built for."
@@ -79,13 +105,29 @@
       "items": []
     },
     "process": {
+      "eyebrow": "How it works",
       "title": [
         "How it",
         "gets done."
       ],
       "intro": "",
-      "ctaDetail": "Tell us what you need and we'll start with a discovery call.",
-      "tracks": []
+      "tracks": [],
+      "banner": {
+        "heading": "Ready for step one?",
+        "text": "Tell us what you need and we'll start with a discovery call.",
+        "primaryCta": {
+          "label": "Start a project",
+          "href": "#contact"
+        },
+        "secondaryCta": {
+          "label": "Chat on WhatsApp",
+          "href": ""
+        }
+      },
+      "a11y": {
+        "tabsLabel": "Project type",
+        "deliverablesLabel": "Deliverables"
+      }
     },
     "techStack": {
       "eyebrow": "Tech stack",
@@ -93,10 +135,166 @@
       "highlight": "Zero lock-in.",
       "intro": "",
       "highlights": [],
-      "groups": []
+      "groups": [],
+      "toolsWord": "tools"
+    },
+    "stories": {
+      "eyebrow": "Client stories",
+      "title": [
+        "In our clients'",
+        "own words."
+      ],
+      "filters": [
+        "All",
+        "Marketing",
+        "Apps",
+        "CAD",
+        "Software"
+      ],
+      "initialFilter": "",
+      "items": [
+        {
+          "kind": "quote",
+          "column": "left",
+          "photo": "",
+          "photoAlt": "",
+          "stat": "",
+          "statLabel": "",
+          "quote": "Our Instagram ads finally reach people near the store, and enquiries now come straight into WhatsApp. We reply from one place instead of juggling DMs, calls and forms.",
+          "avatar": "/home/avatars/homedecor.jpg",
+          "role": "Owner",
+          "company": "Home décor store",
+          "category": "Marketing"
+        },
+        {
+          "kind": "photo",
+          "column": "left",
+          "photo": "/home/stories/app-launch.jpg",
+          "photoAlt": "Founder of a grocery delivery startup in their warehouse",
+          "stat": "",
+          "statLabel": "",
+          "quote": "Our Android and iOS apps went live together, and updates still keep coming.",
+          "avatar": "",
+          "role": "Founder",
+          "company": "Grocery delivery startup",
+          "category": "Apps"
+        },
+        {
+          "kind": "stat",
+          "column": "left",
+          "photo": "",
+          "photoAlt": "",
+          "stat": "4 → 1",
+          "statLabel": "vendors to manage",
+          "quote": "Design, app, software and marketing — all handled by one team with one invoice.",
+          "avatar": "/home/avatars/showroom.jpg",
+          "role": "Owner",
+          "company": "Multi-brand showroom",
+          "category": "Apps"
+        },
+        {
+          "kind": "photo",
+          "column": "middle",
+          "photo": "/home/stories/3d-showroom.jpg",
+          "photoAlt": "Furniture showroom owner holding a tablet with a 3D floor plan",
+          "stat": "",
+          "statLabel": "",
+          "quote": "The 3D views let us walk the showroom before a single partition went up.",
+          "avatar": "",
+          "role": "Proprietor",
+          "company": "Furniture showroom",
+          "category": "CAD"
+        },
+        {
+          "kind": "featured",
+          "column": "middle",
+          "photo": "",
+          "photoAlt": "",
+          "stat": "",
+          "statLabel": "",
+          "quote": "We came for floor plans and stayed for everything else. The same team drew our villas in 2D and 3D, prepared the BOQ, built the booking app and ran the launch campaign. One WhatsApp group replaced four vendors and endless follow-ups.",
+          "avatar": "/home/avatars/builder.jpg",
+          "role": "Director",
+          "company": "Residential builder",
+          "category": "CAD"
+        },
+        {
+          "kind": "quote",
+          "column": "middle",
+          "photo": "",
+          "photoAlt": "",
+          "stat": "",
+          "statLabel": "",
+          "quote": "Patients book appointments in the app and get WhatsApp reminders. The team tested it on every phone our patients use before launch.",
+          "avatar": "/home/avatars/clinic.jpg",
+          "role": "Clinic administrator",
+          "company": "Healthcare clinic",
+          "category": "Apps"
+        },
+        {
+          "kind": "stat",
+          "column": "right",
+          "photo": "",
+          "photoAlt": "",
+          "stat": "3 stores",
+          "statLabel": "on one billing system",
+          "quote": "Billing, stock and staff logins run on one system now — no more end-of-day spreadsheets.",
+          "avatar": "/home/avatars/retail.jpg",
+          "role": "Managing partner",
+          "company": "Electronics retail chain",
+          "category": "Software"
+        },
+        {
+          "kind": "quote",
+          "column": "right",
+          "photo": "",
+          "photoAlt": "",
+          "stat": "",
+          "statLabel": "",
+          "quote": "We chose the subscription model because our processes keep changing. Every new requirement gets added without a new contract, and the security checks run in the background.",
+          "avatar": "/home/avatars/manufacturing.jpg",
+          "role": "Operations head",
+          "company": "Manufacturing unit",
+          "category": "Software"
+        },
+        {
+          "kind": "quote",
+          "column": "right",
+          "photo": "",
+          "photoAlt": "",
+          "stat": "",
+          "statLabel": "",
+          "quote": "They turn our sketches into accurate CAD drawings quickly, and the bill of quantities matches the drawings line for line, which makes contractor quotes far easier.",
+          "avatar": "/home/avatars/studio.jpg",
+          "role": "Architect",
+          "company": "Interior design studio",
+          "category": "CAD"
+        },
+        {
+          "kind": "photo",
+          "column": "right",
+          "photo": "/home/stories/youtube-seo.jpg",
+          "photoAlt": "Clothing boutique owner smiling in their store",
+          "stat": "",
+          "statLabel": "",
+          "quote": "Our YouTube shorts and Google ranking now bring new customers in every week.",
+          "avatar": "",
+          "role": "Owner",
+          "company": "Clothing boutique",
+          "category": "Marketing"
+        }
+      ],
+      "showMore": "Show more stories",
+      "note": "Sample copy for review — replace with approved client stories, names and photos before launch.",
+      "a11y": {
+        "filtersLabel": "Filter stories by service"
+      }
     },
     "faq": {
+      "eyebrow": "FAQ",
       "title": "Questions, answered.",
+      "helpTitle": "Still unsure?",
+      "helpText": "Chat with us on WhatsApp →",
       "items": [
         {
           "question": "How long does a project take?",
@@ -111,29 +309,116 @@
           "answer": "Yes. We work with businesses across India and abroad."
         }
       ]
+    },
+    "contact": {
+      "eyebrow": "Let's talk",
+      "heading": "Let's build your success together.",
+      "intro": "Tell us what you need. We'll reply with a plan.",
+      "emailLabel": "Email",
+      "whatsappLabel": "WhatsApp",
+      "whatsappValue": "Chat with us",
+      "form": {
+        "nameLabel": "Name",
+        "phoneLabel": "Phone / WhatsApp",
+        "phonePrefill": "+91 ",
+        "phonePlaceholder": "+91 98765 43210",
+        "emailLabel": "Email",
+        "serviceLabel": "Service",
+        "servicePlaceholder": "Select a service",
+        "serviceOptions": [
+          "Digital Marketing",
+          "App Development",
+          "CAD Design and Planning",
+          "Software and Cybersecurity"
+        ],
+        "messageLabel": "Message",
+        "messagePlaceholder": "A few lines about your project",
+        "submitLabel": "Send enquiry",
+        "errorMessage": "Please check your details and try again.",
+        "validation": {
+          "nameRequired": "Name is required.",
+          "nameTooShort": "Enter at least 2 characters.",
+          "nameTooLong": "Name is too long.",
+          "nameNumbers": "Name can't contain numbers.",
+          "nameLetters": "Use letters only.",
+          "phoneRequired": "Mobile number is required.",
+          "phoneCharacters": "Use digits only.",
+          "phoneLength": "Must be 10 digits.",
+          "phoneStart": "Must start with 5, 6, 7, 8 or 9.",
+          "emailRequired": "Email is required.",
+          "emailTooLong": "Email is too long.",
+          "emailSpaces": "Remove the spaces.",
+          "emailOneAt": "Use one @, like name@company.com",
+          "emailNameMissing": "Add your name before the @.",
+          "emailDots": "Check the dots in your email.",
+          "emailDomain": "Check the part after the @.",
+          "textRequired": "{field} is required.",
+          "textTooShort": "Enter at least 2 characters.",
+          "textTooLong": "Keep it under {max} characters.",
+          "serviceRequired": "Select at least one service.",
+          "otherServiceName": "The service you need",
+          "companyName": "Company",
+          "cityName": "City / country",
+          "timeframeRequired": "Pick when you'd like to start."
+        },
+        "sent": {
+          "icon": {
+            "src": "/icons/success.svg",
+            "alt": "",
+            "width": 64,
+            "height": 64
+          },
+          "title": "Enquiry sent",
+          "text": "Thank you. One person from our team will reply with next steps, and a written plan follows the discovery call.",
+          "homeLabel": "Back to home",
+          "homeHref": "/",
+          "closeLabel": "Close"
+        },
+        "emailSubject": "Project enquiry",
+        "emailNoService": "Not sure yet",
+        "formLabel": "Project enquiry"
+      }
     }
   },
   "templates": {
     "seo.keywords": "",
     "hero.platforms": "",
+    "coverage.title": "",
     "coverage.items": {
+      "icon": "sparkles",
       "title": "",
-      "detail": "",
-      "icon": "sparkles"
+      "detail": ""
     },
-    "deliverables.cards": {
+    "whyUs.title": "",
+    "whyUs.points": {
       "title": "",
-      "detail": "",
+      "detail": ""
+    },
+    "deliverables.title": "",
+    "deliverables.cards": {
+      "image": {
+        "src": "",
+        "alt": "",
+        "width": 0,
+        "height": 0
+      },
+      "visual": "checklist",
       "checklist": [
         ""
-      ]
-    },
-    "deliverables.ownership.items": "",
-    "useCases.items": {
+      ],
       "title": "",
       "detail": "",
-      "icon": "store"
+      "href": ""
     },
+    "deliverables.cards[].checklist": "",
+    "deliverables.ownership.items": "",
+    "useCases.title": "",
+    "useCases.items": {
+      "icon": "store",
+      "title": "",
+      "detail": ""
+    },
+    "process.title": "",
     "process.tracks": {
       "label": "",
       "steps": [
@@ -146,6 +431,14 @@
         }
       ]
     },
+    "process.tracks[].steps": {
+      "title": "",
+      "summary": "",
+      "deliverables": [
+        ""
+      ]
+    },
+    "process.tracks[].steps[].deliverables": "",
     "techStack.highlights": "",
     "techStack.groups": {
       "title": "",
@@ -153,11 +446,31 @@
       "tools": [
         ""
       ]
+    },
+    "techStack.groups[].tools": "",
+    "stories.filters": "",
+    "stories.items": {
+      "kind": "quote",
+      "column": "auto",
+      "photo": "",
+      "photoAlt": "",
+      "stat": "",
+      "statLabel": "",
+      "quote": "",
+      "avatar": "",
+      "role": "",
+      "company": "",
+      "category": ""
+    },
+    "faq.items": {
+      "question": "",
+      "answer": ""
     }
   },
   "icons": [
     "sparkles",
     "check",
+    "checklist",
     "layers",
     "rocket",
     "target",
@@ -174,6 +487,10 @@
     "database",
     "monitor",
     "smartphone",
+    "tablet",
+    "screens",
+    "layout",
+    "grid",
     "globe",
     "shield",
     "shield-check",
@@ -186,6 +503,7 @@
     "mail",
     "message",
     "video",
+    "play",
     "camera",
     "palette",
     "pen-tool",
@@ -197,6 +515,7 @@
     "briefcase",
     "store",
     "shopping-cart",
+    "shopping-bag",
     "wallet",
     "package",
     "truck",
@@ -204,7 +523,11 @@
     "house",
     "factory",
     "graduation-cap",
+    "heart",
     "heart-pulse",
-    "clock"
+    "calendar",
+    "clock",
+    "map-pin",
+    "utensils"
   ]
 }

@@ -1,20 +1,392 @@
 {
-  "services": {
-    "added": {
-      "title": "",
-      "slug": "",
+  "site": {
+    "seo.keywords": "",
+    "header.links": {
+      "label": "",
+      "href": ""
+    },
+    "header.menuServices": {
+      "number": "",
       "wing": "",
-      "summary": "",
-      "short": [
-        ""
-      ],
+      "title": "",
+      "href": "",
       "offerings": [
         {
           "title": "",
           "detail": ""
         }
+      ]
+    },
+    "header.menuServices[].offerings": {
+      "title": "",
+      "detail": ""
+    },
+    "projectForm.serviceOptions": "",
+    "projectForm.timeframes": "",
+    "footer.serviceLinks": {
+      "label": "",
+      "href": ""
+    },
+    "footer.companyLinks": {
+      "label": "",
+      "href": ""
+    },
+    "footer.legalLinks": {
+      "label": "",
+      "href": ""
+    },
+    "notFound.links": {
+      "label": "",
+      "href": ""
+    },
+    "sitemapPage.services": {
+      "title": "",
+      "description": "",
+      "href": ""
+    },
+    "sitemapPage.homeSections": {
+      "title": "",
+      "href": "/#"
+    }
+  },
+  "home": {
+    "blueprint.slabs": {
+      "number": "",
+      "wing": "",
+      "title": ""
+    },
+    "services.extraCards": {
+      "show": true,
+      "number": "",
+      "label": "",
+      "title": "",
+      "summary": "",
+      "image": {
+        "src": "",
+        "alt": "",
+        "width": 0,
+        "height": 0
+      },
+      "buttonLink": ""
+    },
+    "security.layers": {
+      "image": {
+        "src": "",
+        "alt": "",
+        "width": 0,
+        "height": 0
+      },
+      "number": "",
+      "title": "",
+      "summary": "",
+      "points": [
+        ""
+      ]
+    },
+    "process.steps": {
+      "image": {
+        "src": "",
+        "alt": "",
+        "width": 0,
+        "height": 0
+      },
+      "number": "",
+      "title": "",
+      "summary": "",
+      "deliverables": [
+        ""
+      ]
+    },
+    "stories.items": {
+      "kind": "quote",
+      "column": "auto",
+      "photo": "",
+      "photoAlt": "",
+      "stat": "",
+      "statLabel": "",
+      "quote": "",
+      "avatar": "",
+      "role": "",
+      "company": "",
+      "category": ""
+    },
+    "faq.items": {
+      "question": "",
+      "answer": ""
+    }
+  },
+  "about": {
+    "hero.wingCards": {
+      "icon": "generic",
+      "number": "",
+      "wing": "",
+      "title": "",
+      "href": "",
+      "tags": [
+        ""
       ],
+      "featured": false
+    },
+    "hero.facts": {
+      "label": "",
+      "value": ""
+    },
+    "whyWeExist.rows": {
+      "topic": "",
+      "vendors": [
+        ""
+      ],
+      "us": ""
+    },
+    "whoWeWorkWith.cards": {
+      "icon": "retail",
+      "title": "",
+      "detail": "",
+      "tags": [
+        ""
+      ],
+      "featured": false
+    },
+    "howItConnects.steps": {
+      "covers": {
+        "title": "",
+        "detail": "",
+        "tags": [
+          ""
+        ]
+      },
+      "example": {
+        "title": "",
+        "tags": [
+          ""
+        ]
+      },
+      "link": {
+        "label": "",
+        "href": ""
+      },
+      "wing": ""
+    },
+    "howWeWork.points": {
+      "title": "",
+      "detail": ""
+    },
+    "faq.items": {
+      "question": "",
+      "answer": ""
+    }
+  },
+  "contact": {
+    "seo.keywords": "",
+    "brandCard.quickContacts": {
+      "icon": "user",
+      "label": "",
+      "value": "",
+      "link": "",
+      "highlight": false
+    },
+    "brandCard.promises": "",
+    "channels.cards": {
+      "icon": "file",
+      "title": "",
+      "description": "",
+      "value": "",
+      "link": "",
+      "tag": {
+        "icon": "clock",
+        "label": ""
+      },
+      "cta": ""
+    },
+    "nextSteps.steps": {
+      "title": "",
+      "detail": ""
+    },
+    "company.registration": {
+      "label": "",
+      "value": ""
+    }
+  },
+  "services": {
+    "added": {
+      "title": "",
+      "slug": "",
+      "summary": "",
       "page": false
+    }
+  },
+  "service-apps": {
+    "seo.keywords": "",
+    "hero.platforms": "",
+    "coverage.title": "",
+    "coverage.items": {
+      "icon": "sparkles",
+      "title": "",
+      "detail": ""
+    },
+    "whyUs.title": "",
+    "whyUs.points": {
+      "title": "",
+      "detail": ""
+    },
+    "deliverables.title": "",
+    "deliverables.cards": {
+      "image": {
+        "src": "",
+        "alt": "",
+        "width": 0,
+        "height": 0
+      },
+      "visual": "checklist",
+      "checklist": [
+        ""
+      ],
+      "title": "",
+      "detail": "",
+      "href": ""
+    },
+    "deliverables.cards[].checklist": "",
+    "deliverables.ownership.items": "",
+    "useCases.title": "",
+    "useCases.items": {
+      "icon": "store",
+      "title": "",
+      "detail": ""
+    },
+    "process.title": "",
+    "process.tracks": {
+      "label": "",
+      "steps": [
+        {
+          "title": "",
+          "summary": "",
+          "deliverables": [
+            ""
+          ]
+        }
+      ]
+    },
+    "process.tracks[].steps": {
+      "title": "",
+      "summary": "",
+      "deliverables": [
+        ""
+      ]
+    },
+    "process.tracks[].steps[].deliverables": "",
+    "techStack.highlights": "",
+    "techStack.groups": {
+      "title": "",
+      "tagline": "",
+      "tools": [
+        ""
+      ]
+    },
+    "techStack.groups[].tools": "",
+    "stories.filters": "",
+    "stories.items": {
+      "kind": "quote",
+      "column": "auto",
+      "photo": "",
+      "photoAlt": "",
+      "stat": "",
+      "statLabel": "",
+      "quote": "",
+      "avatar": "",
+      "role": "",
+      "company": "",
+      "category": ""
+    },
+    "faq.items": {
+      "question": "",
+      "answer": ""
+    }
+  },
+  "service-marketing": {
+    "seo.keywords": "",
+    "hero.platforms": "",
+    "coverage.title": "",
+    "coverage.items": {
+      "icon": "sparkles",
+      "title": "",
+      "detail": ""
+    },
+    "whyUs.title": "",
+    "whyUs.points": {
+      "title": "",
+      "detail": ""
+    },
+    "deliverables.title": "",
+    "deliverables.cards": {
+      "image": {
+        "src": "",
+        "alt": "",
+        "width": 0,
+        "height": 0
+      },
+      "visual": "checklist",
+      "checklist": [
+        ""
+      ],
+      "title": "",
+      "detail": "",
+      "href": ""
+    },
+    "deliverables.cards[].checklist": "",
+    "deliverables.ownership.items": "",
+    "useCases.title": "",
+    "useCases.items": {
+      "icon": "store",
+      "title": "",
+      "detail": ""
+    },
+    "process.title": "",
+    "process.tracks": {
+      "label": "",
+      "steps": [
+        {
+          "title": "",
+          "summary": "",
+          "deliverables": [
+            ""
+          ]
+        }
+      ]
+    },
+    "process.tracks[].steps": {
+      "title": "",
+      "summary": "",
+      "deliverables": [
+        ""
+      ]
+    },
+    "process.tracks[].steps[].deliverables": "",
+    "techStack.highlights": "",
+    "techStack.groups": {
+      "title": "",
+      "tagline": "",
+      "tools": [
+        ""
+      ]
+    },
+    "techStack.groups[].tools": "",
+    "stories.filters": "",
+    "stories.items": {
+      "kind": "quote",
+      "column": "auto",
+      "photo": "",
+      "photoAlt": "",
+      "stat": "",
+      "statLabel": "",
+      "quote": "",
+      "avatar": "",
+      "role": "",
+      "company": "",
+      "category": ""
+    },
+    "faq.items": {
+      "question": "",
+      "answer": ""
     }
   }
 }

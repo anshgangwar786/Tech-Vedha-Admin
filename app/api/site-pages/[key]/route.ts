@@ -1,7 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import type { Prisma } from "@prisma/client";
 import prisma from "@/app/lib/config/db";
-import { requirePermission } from "@/app/lib/utils/authorization";
+import { syncSavedSitePage } from "@/app/lib/server/previewStore";
+import { hasPermission, requirePermission } from "@/app/lib/utils/authorization";
+import { PUBLISH_DENIED_MESSAGE, samePublishedPages } from "@/app/lib/server/servicePublishing";
 import { PERMISSIONS, CONTENT_PERMISSIONS } from "@/app/lib/constants/permissions";
 import {
   errorResponse,
@@ -56,11 +58,19 @@ export async function PUT(req: NextRequest, { params }: Context) {
     }
     // Never trust the client shape: unknown keys dropped, bad values and unsafe image URLs reverted.
     const content = normalizeSitePage(key, body.content) as Prisma.InputJsonValue;
+    // Publishing a new service page (or taking a live one offline / renaming it) needs the publish permission.
+    if (key === "services" && !hasPermission(auth, PERMISSIONS.PAGES_PUBLISH)) {
+      const current = await prisma.jmtSitePage.findUnique({ where: { key }, select: { content: true } });
+      if (!samePublishedPages(normalizeSitePage(key, current?.content ?? null), content)) {
+        return NextResponse.json({ success: false, message: PUBLISH_DENIED_MESSAGE }, { status: 403 });
+      }
+    }
     const row = await prisma.jmtSitePage.upsert({
       where: { key },
       create: { key, content },
       update: { content },
     });
+    syncSavedSitePage(key, row.content);
     await revalidateSitePage(key);
     return NextResponse.json({
       success: true,
@@ -84,7 +94,15 @@ export async function DELETE(req: NextRequest, { params }: Context) {
   if (stale) return stale;
 
   try {
+    // Resetting the catalogue would take every added service page offline.
+    if (key === "services" && !hasPermission(auth, PERMISSIONS.PAGES_PUBLISH)) {
+      const current = await prisma.jmtSitePage.findUnique({ where: { key }, select: { content: true } });
+      if (!samePublishedPages(normalizeSitePage(key, current?.content ?? null), normalizeSitePage(key, null))) {
+        return NextResponse.json({ success: false, message: PUBLISH_DENIED_MESSAGE }, { status: 403 });
+      }
+    }
     await prisma.jmtSitePage.deleteMany({ where: { key } });
+    syncSavedSitePage(key, null);
     await revalidateSitePage(key);
     return NextResponse.json({
       success: true,

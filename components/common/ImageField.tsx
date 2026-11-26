@@ -44,7 +44,8 @@ export default function ImageField({ label, value, onChange, defaultSrc, hint, s
   const urlInvalid = Boolean(value.src) && !isSafeImageSrc(value.src);
   // Remembers which address failed, so a new image is tried again.
   const [failedSrc, setFailedSrc] = useState("");
-  const previewFailed = failedSrc === previewSrc;
+  // Only a real address can fail; an empty field simply has no image yet.
+  const previewFailed = Boolean(previewSrc) && failedSrc === previewSrc;
 
   const handleUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -84,7 +85,9 @@ export default function ImageField({ label, value, onChange, defaultSrc, hint, s
           ) : (
             <div className="flex flex-col items-center gap-1 px-2 text-center">
               <ImageIcon className="h-8 w-8 text-muted-foreground" />
-              {previewFailed && <span className="text-[11px] text-muted-foreground">Preview unavailable</span>}
+              <span className="text-[11px] text-muted-foreground">
+                {previewFailed ? "Preview unavailable" : urlInvalid ? "Invalid address" : "No image yet — upload one"}
+              </span>
             </div>
           )}
           {usingDefault && (

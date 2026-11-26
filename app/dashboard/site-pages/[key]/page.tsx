@@ -17,6 +17,8 @@ import { addedServiceSlugOf, getSitePageDefinition, isSitePageKey } from "@/app/
 import { refreshAddedServices, useAddedServices } from "@/hooks/useAddedServices";
 import type { PlainObject } from "@/lib/sitePages/mergeContent";
 import { liveSiteUrl, useDraftPreview } from "@/hooks/useDraftPreview";
+import { usePermissions } from "@/components/common/PermissionsProvider";
+import { PERMISSIONS } from "@/app/lib/constants/permissions";
 
 interface ServerDoc {
   success?: boolean;
@@ -38,6 +40,9 @@ export default function SitePageEditor() {
     [key, addedService?.title],
   );
 
+  const { can } = usePermissions();
+  const canPublish = can(PERMISSIONS.PAGES_PUBLISH);
+  const [publishing, setPublishing] = useState(false);
   const [content, setContent] = useState<PlainObject | null>(null);
   const [saved, setSaved] = useState("");
   const [exists, setExists] = useState(false);
@@ -45,6 +50,8 @@ export default function SitePageEditor() {
   const [loadError, setLoadError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const [open, setOpen] = useState<Record<string, boolean>>({ hero: true });
+  /** "content": every field, section by section; "images": only the page's images (upload / Media Library). */
+  const [view, setView] = useState<"content" | "images">("content");
 
   const dirty = content !== null && JSON.stringify(content) !== saved;
 
@@ -113,6 +120,33 @@ export default function SitePageEditor() {
       toast.error((error as Error).message || "Request failed", { id: toastId, closeButton: true });
     } finally {
       setBusy(false);
+    }
+  };
+
+  /** Puts this added service's page live, or back to draft (publishers only; the server checks too). */
+  const setPublished = async (publish: boolean) => {
+    if (!addedSlug) return;
+    const question = publish
+      ? "Publish this page? It goes live on the website straight away."
+      : "Take this page offline? It becomes a draft again and visitors get “page not found”.";
+    if (!window.confirm(question)) return;
+    setPublishing(true);
+    const toastId = toast.loading(publish ? "Publishing..." : "Taking offline...");
+    try {
+      const res = await fetch("/api/site-pages/publish", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({ slug: addedSlug, publish }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.success) throw new Error(data.message || "Could not change the page");
+      refreshAddedServices();
+      toast.success(data.message, { id: toastId, closeButton: true });
+    } catch (error) {
+      toast.error((error as Error).message, { id: toastId, closeButton: true });
+    } finally {
+      setPublishing(false);
     }
   };
 
@@ -222,18 +256,30 @@ export default function SitePageEditor() {
                 .
               </p>
             ) : addedService.page ? (
-              <p>
-                <strong>Live</strong> at {page.path}. Every Services link on the website points here.
-              </p>
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <p>
+                  <strong>Live</strong> at {page.path}. Changes you save appear on the website straight away.
+                </p>
+                {canPublish && (
+                  <Button variant="outline" disabled={publishing} onClick={() => setPublished(false)} className="shrink-0">
+                    Take offline
+                  </Button>
+                )}
+              </div>
             ) : (
-              <p>
-                <strong>Not live yet.</strong> Write the page, check it with Preview, then switch on “Page” for{" "}
-                {addedService.title} in the{" "}
-                <Link href="/dashboard/site-pages/services" className="underline">
-                  Service catalogue
-                </Link>
-                . Until then its Services links go to its card on the homepage.
-              </p>
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <p>
+                  <strong>Draft — not on the website yet.</strong> Build the page, save, and check it with Preview.{" "}
+                  {canPublish
+                    ? "When it's ready, publish it."
+                    : "When it's ready, ask the Super Admin to publish it."}
+                </p>
+                {canPublish && (
+                  <Button disabled={publishing || dirty} onClick={() => setPublished(true)} className="shrink-0" title={dirty ? "Save your changes first" : undefined}>
+                    Publish this page
+                  </Button>
+                )}
+              </div>
             )}
           </div>
         )}
@@ -242,10 +288,37 @@ export default function SitePageEditor() {
 
         {content && (
           <>
-            <h2 className="px-1 pt-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-              Page sections — same order as the website, top to bottom
-            </h2>
+            <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:items-center sm:justify-between">
+              <div role="tablist" aria-label="Editor view" className="inline-flex w-fit rounded-lg border border-border bg-muted/40 p-1">
+                {(
+                  [
+                    ["content", "Page content"],
+                    ["images", "Images"],
+                  ] as const
+                ).map(([value, label]) => (
+                  <button
+                    key={value}
+                    type="button"
+                    role="tab"
+                    aria-selected={view === value}
+                    onClick={() => setView(value)}
+                    className={`rounded-md px-4 py-1.5 text-sm font-medium transition-colors ${
+                      view === value ? "bg-background text-foreground shadow-xs" : "text-muted-foreground hover:text-foreground"
+                    }`}
+                  >
+                    {label}
+                  </button>
+                ))}
+              </div>
+              <h2 className="px-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                {view === "images"
+                  ? "Every image on this page — upload or pick from the Media Library, section by section"
+                  : "Page sections — same order as the website, top to bottom"}
+              </h2>
+            </div>
             <ContentEditor
+              can={(permission) => can(permission as Parameters<typeof can>[0])}
+              imagesOnly={view === "images"}
               page={page}
               content={content}
               onChange={(update) => setContent((prev) => (prev ? update(prev) : prev))}
